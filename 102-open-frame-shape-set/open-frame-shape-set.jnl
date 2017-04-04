@@ -1,0 +1,28 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from optimization import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openAuxMdb(pathName=
+    'C:/AbaqusTemp/smst17-elp-frame/AVFrame-OSS-pulsatile-2017-02-14.cae')
+mdb.copyAuxMdbModel(fromName='shape-set-AV-OSS-D101-01', toName=
+    'shape-set-AV-OSS-D101-01')
+mdb.closeAuxMdb()
+del mdb.models['Model-1']
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='shape-set-AV-OSS-D101-01', 
+    modelPrint=OFF, multiprocessingMode=DEFAULT, name='shape-set', 
+    nodalOutputPrecision=SINGLE, numCpus=1, numGPUs=0, queue=None, 
+    resultsFormat=ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=
+    0, waitMinutes=0)
+# Save by cbonsignore on 2017_04_04-10.55.07; build 2017 2016_09_27-14.54.59 126836
