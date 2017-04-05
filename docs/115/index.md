@@ -6,7 +6,7 @@ Prerequisites: [NDC-110 Design](../105), [NDC-115 Mechanical Properties](../110)
 
 ## Introduction
 
-In [NDC-110 Design](../105) and [NDC-115 Mechanical Properties](../110), we created a design and characterized the material from which it is to be fabricated. Now it's time to dive into the world of computational simulation using finite element analysis (FEA), starting with an expansion analysis. 
+In [NDC-105 Design](../105) and [NDC-115 Mechanical Properties](../110), we created a design and characterized the material from which it is to be fabricated. Now it's time to dive into the world of computational simulation using finite element analysis (FEA), starting with an expansion analysis. 
 
 We are often asked why use FEA to create expanded geometry; why not just create an expanded 3D geometry in Solidworks instead? Well, nitinol components are commonly formed in several steps, with intermediate heat treatments between each step. Each step imparts subtle influences in the shape, curvature, bend, and twist of design features that are difficult (or perhaps impossible) to replicate using conventional CAD. By matching the virtual expansion process step-for-step with the physical process, we can ensure that the virtual geometry is an accurate match with its physical counterpart. In fact, in a first iteration expansion simulation, a mismatch is quite common! The design, simulation, and prototyping cycle often includes adjustments to modeling assumptions (and/or physical tooling) to converge on a solution that matches the design intent. Let's get started!
 
@@ -25,12 +25,23 @@ The first step is to import and partition the ACIS (.SAT) file from [NDC-110 Des
 
 ## Mesh
 
-In this example, the nitinol component is meshed with at least four elements across each feature, the absolute minimum for any simulation. Typically at least six to eigth elements are required to reach strain convergence. We typically use C3D8R elements, brick shaped elements with six faces, eight nodes, and a single centered integration point. Because this is a reduced integration element, it is prone to shear locking, so an hourglass stiffness must be applied to compensate for this (checking "enhanced" in the mesh control dialog is usually sufficient).
+In this example, the nitinol component is meshed with at least four elements across each feature, the absolute minimum for any simulation. Typically at least six to eigth elements are required to reach strain convergence. We typically use C3D8R elements, brick shaped elements with six faces, eight nodes, and a single centered integration point. Because this is a reduced integration element, it is prone to shear locking, so an hourglass stiffness must be applied to compensate for this (checking "enhanced" in the mesh control dialog is usually sufficient). At this step, it is convenient to define a local cylindrical coordinate system coaxial with the component, having an r, theta, and Z axis aligned with the tubing material, and define a material orientation for the nitinol component that references this coordinate system. 
 ![mesh](115-mesh.png)
 
 ## Properties
 
-discuss section defition, material definition, material orientation, etc.
+Abaqus 2017 includes native support for superelastic material models, but this example uses the prior convention (which is still supported). Material parameters are derived from tensile testing results as explained in [NDC-110 Material Properties](../110). The image below shows a view of the interactive material definition dialog in Abaqus CAE, and the code below show the resulting lines in the input file.
+```
+*Material, name=ABQ_SUPER_ELASTIC_PLASTIC_Af19
+*Depvar
+     31,
+*User Material, constants=32, unsymm
+62857.,  0.33,27778.,  0.33, 0.046,  6.52,  460.,  500.
+   37.,  6.52,  240.,  210.,  690.,    0.,    0.,    8.
+ 1170., 0.087, 1240., 0.091, 1320., 0.095, 1370., 0.099
+ 1440., 0.106, 1460., 0.112, 1500.,  0.12, 1510., 0.128
+```
+![material-properties](115-material.png)
 
 ## Forming Tools
 
