@@ -43,4 +43,13 @@ Each of the components is added to the assembly, and aligned in a colinear fashi
 ## Interactions
 
 Each step of the forming analysis is driven by contact interactions. Contact pairs are defined between the outer or inner surface of the nitinol component and the appropriate tool(s), and enabled or disabled as necessary at each step using the interaction manager as shown below.
-![interaction-manager](115-interaction-manager)
+![interaction-manager](115-interaction-manager.png)
+
+## Boundary Conditions
+
+As with the interactions, boundary conditions are created or modified for each step of the analysis.
+![boundary-condition-manager](115-bc-manager.png)
+
+## Field Outputs
+
+For the expansion analysis, the only essential field output is displacement U for the final frame of the final step. It is usually also interesting to report strain LE and superelasticity internal state variables SDV as well, including at intermediate steps.
