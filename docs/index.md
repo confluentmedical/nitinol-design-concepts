@@ -1,9 +1,9 @@
 Welcome to NDC
 ==============
 
-Nitinol Devices and Components was founded in 1991, and has always been a leader in design, development, and commercialization of nitinol materials, components, and medical devices. Now as part of Confluent Medical Technologies, our capabilities have expanded to include medical balloons, catheters, polymers, textiles, and world class manufacturing capabilities. Science, publication, outreach, and education have always been a priority for us, as you can see at the Confluent nitinol reference library found at [nitinol.com](https://nitinol.com). This site, Nitinol Design Concepts, is an open-source, creative-commons spin on that tradition, including real-world examples to help engineers get started with design and simulation of nitinol components.
+Nitinol Devices and Components was founded in 1991, and has always been a leader in design, development, and commercialization of nitinol materials, components, and medical devices. Now as part of Confluent Medical Technologies, our capabilities have expanded to include medical balloons, catheters, polymers, textiles, and world class manufacturing capabilities. Science, publication, outreach, and education have always been a priority for us, and you can find many of our papers at nitinol reference library on [nitinol.com](https://nitinol.com). This GitHub site, Nitinol Design Concepts, is an open-source, creative-commons spin on that tradition. "The Basics" provides an introduction to design and simulation of a nitinol component, following methods that are commonly applied in the medical device industry. "Advanced Topics" ventures into some more speculative territory, including new and emerging approaches that we find interesting. 
 
-All of the resources found here, including complete native design and simulation files, as well as the pages you are now reading, are available [here on GitHub](https://github.com/cbonsig/nitinol-design-concepts).
+All of the resources found here, including complete native design and simulation files, as well as the pages you are now reading, are available [here on GitHub](https://github.com/cbonsig/nitinol-design-concepts). We welcome your input and suggestions!
 
 ## The Basics
 
