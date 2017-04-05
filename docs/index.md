@@ -9,10 +9,10 @@ All of the resources found here, including complete native design and simulation
 
 This first series follows each step in the design and analysis of a realistic (but non-proprietary) laser cut nitinol component, from designing the geometry using Solidworks to shape setting and fatigue cycling using Abaqus.
 
-* [NDC-105: Design](105) | Create a 3D model of a laser cut Open Frame component using Solidworks.
-* [NDC-110: Mechanical Properties](110) | Perform tensile testing to characterize mechanical properties for simulation.
-* [NDC-115: Shape Setting](115) | Expand the laser cut component into a complex expanded shape using Abaqus finite element analysis.
-* [NDC-120: Fatigue Simulation](120) | Apply fatigue loading conditions using Abaqus.
+* [NDC-105: Design](105) \| Create a 3D model of a laser cut Open Frame component using Solidworks.
+* [NDC-110: Mechanical Properties](110) \| Perform tensile testing to characterize mechanical properties for simulation.
+* [NDC-115: Shape Setting](115) \| Expand the laser cut component into a complex expanded shape using Abaqus finite element analysis.
+* [NDC-120: Fatigue Simulation](120) \| Apply fatigue loading conditions using Abaqus.
 * NDC-125: Fatigue Point Cloud, manual and scripted
 
 ## Advanced Topics
