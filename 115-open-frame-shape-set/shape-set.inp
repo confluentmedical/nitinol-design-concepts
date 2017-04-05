@@ -25520,8 +25520,11 @@
      1,  15580,      1
 *Elset, elset=EALL, generate
     1,  9928,     1
+*Orientation, name=Ori-1, system=CYLINDRICAL
+          0.,           0.,           0.,           1.,           0.,           0.
+3, 0.
 ** Section: Section-1
-*Solid Section, elset=EALL, controls=EC-1, material=ABQ_SUPER_ELASTIC_PLASTIC_Af19
+*Solid Section, elset=EALL, orientation=Ori-1, controls=EC-1, material=ABQ_SUPER_ELASTIC_PLASTIC_Af19
 ,
 *End Part
 **  
