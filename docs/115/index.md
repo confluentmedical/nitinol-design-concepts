@@ -18,13 +18,17 @@ We will assume that the reader is familiar with creating, running, and troublesh
 
 ## Import and Partition
 
-The first step is to import and partition the ACIS (.SAT) file. The first objective is to split the imported geometry into well divided solid segments, thus enabling the meshing algorithm to create well formed hexagonal elements. This case required a few dozen partitions throughout the part geometry. This can be a bit tedious, and usually requires some iteration between the Part and Mesh modules until all the solid cells turn green or yellow, indicating their eligibility for ruled or swept meshing. 
+The first step is to import and partition the ACIS (.SAT) file, in this case a single strut represently the smallest symmetrical repeating section of the component. The first objective is to split the imported geometry into well divided solid segments, thus enabling the meshing algorithm to create well formed hexagonal elements. This case required a few dozen partitions throughout the part geometry. This can be a bit tedious, and usually requires some iteration between the Part and Mesh modules until all the solid cells turn green or yellow, indicating their eligibility for ruled or swept meshing. 
 ![partition](115-partition.png)
 
 ## Mesh
 
 In this example, the nitinol component is meshed with at least four elements across each feature, the absolute minimum for any simulation. Typically at least six to eigth elements are required to reach strain convergence. We typically use C3D8R elements, brick shaped elements with six faces, eight nodes, and a single centered integration point. Because this is a reduced integration element, it is prone to shear locking, so an hourglass stiffness must be applied to compensate for this (checking "enhanced" in the mesh control dialog is usually sufficient).
 ![mesh](115-mesh.png)
+
+## Properties
+
+discuss section defition, material definition, material orientation, etc.
 
 ## Forming Tools
 
@@ -33,5 +37,10 @@ Next, parts must be created to represent each of the forming tools that will be 
 
 ## Assembly
 
-Each of the components is added to the assembly.
+Each of the components is added to the assembly, and aligned in a colinear fashion. The image below is a partially transparent view of the assembly with each part positioned as necessary at the beginning of the simulation. In some cases, it may be necessary for tooling to expand (or contract) radially, and in some cases tooling may need to advance axially. The initial position of each tool relative the nitinol component will depend upon the forming strategy, and may also require some iteration as the simulation is developed.
 ![assembly](115-assembly.png)
+
+## Interactions
+
+Each step of the forming analysis is driven by contact interactions. Contact pairs are defined between the outer or inner surface of the nitinol component and the appropriate tool(s), and enabled or disabled as necessary at each step using the interaction manager as shown below.
+![interaction-manager](115-interaction-manager)
