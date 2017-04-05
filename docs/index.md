@@ -17,6 +17,8 @@ This first series follows each step in the design and analysis of a realistic (b
 
 ## Advanced Topics
 
-* advanced research
-* new methods
-* experimental approaches
+* submicron xray tomography: methods and results
+* xct material characterization
+* advanced scripting and volume weighted simulation results
+* probabilistic durability prediction using monte-carlo methods
+
