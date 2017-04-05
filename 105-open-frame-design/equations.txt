@@ -1,0 +1,14 @@
+﻿"Tube_OD"= 8.00mm
+"Tube_ID"= 7.01mm
+"removal"= 0
+"material removal"= 0.001in
+"wall_thickness"= ( "Tube_OD" - "Tube_ID" ) / 2 - "removal" * "material removal"
+"no_of_repeats"= "no_of_eyelets" * 2
+"cell_Y"= "Tube_OD" * pi / "no_of_repeats"
+"kerf_width"= 0.004in
+"strut_width"= 0.3508mm - 2 * "removal" * "material removal"
+"strut_length_1"= 5mm
+"strut_length_2"= 5mm
+"strut_length_3"= 8mm
+"apex_width"= 1.2 * "strut_width"
+"no_of_eyelets"= 16
