@@ -19,5 +19,5 @@ We will assume that the reader is familiar with creating, running, and troublesh
 ## Import
 
 The first step is to import the ACIS file.
-![import][115-assembly.png]
+![import](115-assembly.png)
 
