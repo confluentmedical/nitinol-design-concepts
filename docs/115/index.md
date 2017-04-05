@@ -68,3 +68,7 @@ As with the interactions, boundary conditions are created or modified for each s
 
 For the expansion analysis, the only essential field output is displacement U for the final frame of the final step. It is usually also interesting to report strain LE and superelasticity internal state variables SDV as well, including at intermediate steps.
 ![field-output](115-field-output.png)
+
+## Credits
+
+This model was developed by @karthikSenthi.
