@@ -13,6 +13,7 @@ This first series follows each step in the design and analysis of a realistic (b
 * [NDC-110: Mechanical Properties](110) Perform tensile testing to characterize mechanical properties for simulation.
 * [NDC-115: Shape Setting](115) Expand the laser cut component into a complex expanded shape using Abaqus finite element analysis.
 * [NDC-120: Fatigue Simulation](120) Apply fatigue loading conditions using Abaqus.
+* NDC-125: Fatigue Point Cloud, manual and scripted
 
 ## Advanced Topics
 
