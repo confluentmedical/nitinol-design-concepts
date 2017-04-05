@@ -71,4 +71,4 @@ For the expansion analysis, the only essential field output is displacement U fo
 
 ## Credits
 
-This model was developed by Karthik Senthilnathan, [@karthikSenthi](https://github.com/karthikSenthi), of Confluent Medical Technologies.
+This model was developed by Karthikeyan Senthilnathan, [@karthikSenthi](https://github.com/karthikSenthi), of Confluent Medical Technologies.
