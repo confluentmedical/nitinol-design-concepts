@@ -16,8 +16,22 @@ This example uses Abaqus 2017, a commercial finite element analysis package from
 
 We will assume that the reader is familiar with creating, running, and troubleshooting simulations in Abaqus, and we will not cover every detail of the model here. The original Abaqus CAE model files are available for download in this GitHub project, so please check them out and follow along.
 
-## Import
+## Import and Partition
 
-The first step is to import the ACIS file.
-![import](115-assembly.png)
+The first step is to import and partition the ACIS (.SAT) file. The first objective is to split the imported geometry into well divided solid segments, thus enabling the meshing algorithm to create well formed hexagonal elements. This case required a few dozen partitions throughout the part geometry. This can be a bit tedious, and usually requires some iteration between the Part and Mesh modules until all the solid cells turn green or yellow, indicating their eligibility for ruled or swept meshing. 
+![partition](115-partition.png)
 
+## Mesh
+
+In this example, the nitinol component is meshed with at least four elements across each feature, the absolute minimum for any simulation. Typically at least six to eigth elements are required to reach strain convergence. We typically use C3D8R elements, brick shaped elements with six faces, eight nodes, and a single centered integration point. Because this is a reduced integration element, it is prone to shear locking, so an hourglass stiffness must be applied to compensate for this (checking "enhanced" in the mesh control dialog is usually sufficient).
+![mesh](115-mesh.png)
+
+## Forming Tools
+
+Next, parts must be created to represent each of the forming tools that will be used to shape the component. In simple cases, these tools may be simple cylinders. Complex components may require contoured tools that engage the inner or outer surface of the component. Forming tools are typically modeled as rigid bodies, and may be defined as extruded or revolved surfaces as shown below. Each tool must have a reference point defined, as well as a surface to contact the nitinol component.
+![mandrel-core](115-mandrel-core.png)
+
+## Assembly
+
+Each of the components is added to the assembly.
+![assembly](115-assembly.png)
