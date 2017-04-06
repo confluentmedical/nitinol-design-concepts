@@ -51,3 +51,7 @@ In Solidworks, it is possible to create multiple *configurations* of a single pa
 
 A final configuration is created to isolate a single strut from the wrapped model. This geometry is exported in ACIS format (with a .SAT extension) to be improted into Abaqus for partitioning, meshing, and finite element analysis.
 ![single-strut](105-single-row.png)
+
+## Credits
+
+This model was developed by Karthikeyan Senthilnathan, @karthikSenthi, of Confluent Medical Technologies.
