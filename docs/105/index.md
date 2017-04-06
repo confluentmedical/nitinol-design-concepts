@@ -44,3 +44,10 @@ To understand how this model is constructed, it is helpful to "roll back" the mo
 
 ## Wrapped configuration
 
+In Solidworks, it is possible to create multiple *configurations* of a single part, each with different features enabled or disabled. In the image below, the planar solid features are disabled, and a wrapped solid is generated in its place, derived from the same driving global variables and equations.
+![wrapped](105-wrapped.png)
+
+## Single strut
+
+A final configuration is created to isolate a single strut from the wrapped model. This geometry is exported in ACIS format (with a .SAT extension) to be improted into Abaqus for partitioning, meshing, and finite element analysis.
+![single-strut](105-single-strut.png)
