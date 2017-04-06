@@ -30,7 +30,7 @@ In this example, the nitinol component is meshed with at least four elements acr
 
 ## Properties
 
-Abaqus 2017 includes native support for superelastic material models, but this example uses the prior convention (which is still supported). Material parameters are derived from tensile testing results as explained in [NDC-110 Material Properties](../110). The image below shows a view of the interactive material definition dialog in Abaqus CAE, and the code below show the resulting lines in the input file.
+Abaqus 2017 includes native [superelasticity](http://help.3ds.com/2017/english/dssimulia_established/simacaematrefmap/simamat-c-superelasticity.htm?contextscope=all) and [plasticity models for superelastic materials](http://help.3ds.com/2017/english/dssimulia_established/simacaematrefmap/simamat-c-plastsuperelastic.htm?contextscope=all) (documentation links require current Abaqus credentials). This example uses the prior convention, which is still supported, and can be implemented in previous Abaqus releases. Material parameters are derived from tensile testing results as explained in [NDC-110 Material Properties](../110). The image below shows a view of the interactive material definition dialog in Abaqus CAE, and the code below show the resulting lines in the input file.
 ```
 *Material, name=ABQ_SUPER_ELASTIC_PLASTIC_Af19
 *Depvar
