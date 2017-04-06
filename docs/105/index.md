@@ -54,4 +54,4 @@ A final configuration is created to isolate a single strut from the wrapped mode
 
 ## Credits
 
-This model was developed by Karthikeyan Senthilnathan, @karthikSenthi, of Confluent Medical Technologies.
+This model was developed by Karthikeyan Senthilnathan, [@karthikSenthi](https://github.com/karthikSenthi), of Confluent Medical Technologies.
