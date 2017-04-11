@@ -20,8 +20,8 @@ This first series follows each step in the design and analysis of a realistic (b
 
 ## Advanced Topics
 
-* [NDC-205: Advancing Nitinol Fatigue Prediction](205) | A review of present and future approaches to lifetime prediction of superelastic nitinol.
-* [NDC-210: Volumetric characterization of inclusions from submicron CT scans](210) | submicron xray tomography: methods and results
+* [NDC-205: Advancing Nitinol Fatigue Prediction](205) \| A review of present and future approaches to lifetime prediction of superelastic nitinol.
+* [NDC-210: Volumetric characterization of inclusions from submicron CT scans](210) \| submicron xray tomography: methods and results
 * advanced scripting and volume weighted simulation results
 * probabilistic durability prediction using monte-carlo methods
 
