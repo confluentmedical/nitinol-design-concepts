@@ -82,17 +82,13 @@ getSegmentation <- function(baseName, description){
 xct <-      getSegmentation('scan01','SE508') %>%
   bind_rows(getSegmentation('scan02','SE508ELI')) %>%
   bind_rows(getSegmentation('scan03','SE508ELI')) %>%
-  filter(Volume > cutoffVolume)
+  filter(Volume > cutoffVolume) %>%
+  mutate(vPerCuMm = Volume / 1e9)
 
 # convert scanID and scanDesc columns into factors
 xct <- xct %>%
   mutate(scanID = parse_factor(scanID, levels = factorID),
          scanDesc = parse_factor(scanDesc, levels = factorDesc))
-
-# add column for volume per cubic millimeter
-xct <- xct %>%
-  mutate(vPerCuMm = Volume / 1e9)
-
 
 # Create histogram plots ------------------------
 
@@ -171,3 +167,5 @@ print(countByDesc)
 
 # to-do: print out these tables -----------------
 # save plots to files
+
+# gumbel fitting --------------------------------
