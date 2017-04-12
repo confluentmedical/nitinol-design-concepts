@@ -13,9 +13,9 @@ X-ray computed tomography (XCT) methods can provide a three-dimensional view of 
 ##  Material
 
 This study considers standard purity (SE508) and high purity (SE508ELI) material. Each specimen was fabricated from tubing material 8.00mm OD x 7.01mm ID according to NDC-03-06673 rev 1, “µCT Matchstick Samples”. Individual “matchstick” shaped samples have a cross section of approximately 0.5mm x 0.5mm, and are approximately 50mm in length. The lot history for each scan:
-- scan01: SE508, Component Lot 2903620, Material Lot 1003492
-- scan02: SE508ELI, Component Lot 2093619, Material Lot 1003560
-- scan03: SE508ELI, Component Lot 2093617, Material Lot 1003711   
+- `scan01`: SE508, Component Lot 2903620, Material Lot 1003492
+- `scan02`: SE508ELI, Component Lot 2093619, Material Lot 1003560
+- `scan03`: SE508ELI, Component Lot 2093617, Material Lot 1003711   
 
 
 ## Methods
@@ -38,19 +38,35 @@ XCT scans were performed using a [Versa 520 3D X-ray microscope](https://www.zei
 
 All scans were conducted and reconstructed using the same settings to ensure that results are consistent between samples. Each scan produced approximately 26GB of raw output in Xradia's TXRM format. Reconstruction was completed following recommended procedures to mitigate beam hardening artifacts. Gaussian filtering was applied with a 0.7 kernel, and the reconstruction was saved in TXM format, approximately 16GB in size. The TXM results were imported into [ORS Visual SI](http://theobjects.com/orsvisual/orsvisual.html) (Object Research Systems, Montreal, Quebec), cropped and exported as a sequence of approximately 2,000 16-bit gray-scale TIFF images, 7 GB in total size. All subsequent analysis was conducted using open source software.
 
+*The original TIFF images from each scan are available for download at https://nitinol.app.box.com/v/nitinol-design-concepts*
+
 ### 2. Classifier Training
 
-Scanning through the acquired images, after some simple adjustments to brightness and contrast levels, impurities in the material could be easily observed. The animation below show 50 slices from scan01. The dark spots are the inclusions that we need to systematically identify in each frame. This process is called "segmentation".
+Scanning through the acquired images, after some simple adjustments to brightness and contrast levels, impurities in the material could be easily observed. The animation below show 50 slices from `scan01`. The dark spots are the inclusions that we need to systematically identify in each frame. This process is called "segmentation".
 ![slices](slices.gif)
 
-Image analysis was conducted using the FIJI distribution of ImageJ [13]–[15], an open source software tool widely used for image processing and analysis. The 3D Trainable WEKA Segmentation tool [16] was used to perform particle segmentation for each scan using a consistent method. With this machine-learning approach, particles are manually identified on a set of sample images to train a “classifier”. Once properly trained, this classifier was used to programmatically detect similar particles, matrix, air, and edge voxels in the full stack of images for each scan . The settings used for 3D Trainable WEKA Segmentation were selected to optimize for detecting “blob” like particles (difference of Gaussian) and orientation (Hessian) [17]:
-•   Training features
-o   Difference of Gaussian
-o   Hessian
-•   Sigma values
-o   Max = 8.0
-o   Min = 1.0
-•   Classifier options: Fast Random Forest, 200 trees, 2 features
+Image analysis was conducted using the [Fiji](https://fiji.sc/) distribution of [ImageJ](https://imagej.net), an open source software tool widely used for image processing and analysis. Conventional segmentation approaches require subjective judgments to select threshold levels, and often require manual adjustments to compensate for gradients or variations in background intensity. For this reason, repeatability and reproducibility is quite challenging. 
+
+To overcome this challenge, a machine learning segmentation method was developed and applied to each scan in this series. The [Trainable WEKA Segmentation](http://imagej.net/Trainable_Weka_Segmentation) ImageJ plugin, included with Fiji, was used to segment assign each voxel a probability of being one of four classes:
+
+1. **Matrix:** Nitinol material, including bulk nickel-titanium, as well as inclusions and/or voids.
+2. **NMI:** Non-metallic inclusion, voids, or other embedded particles.
+3. **Edge:** A trace of the border between matrix and air.
+4. **Air:** Empty space surrounding the sample.
+
+A 50-slice subset of the `scan01` image stack was used to train the model. The training process is manual and iterative, and each iteration requires computationally intensive processing. The following steps were first completed using a MacBook Pro Core i5 system with 16GB RAM.
+
+1. Launch Fiji distribution of ImageJ
+2. Open [scan01-0500-0549.tif](https://nitinol.box.com/s/7eywwq3ml46c0potmr4khkkah3elgfcv) (167MB 16-bit grayscale TIFF)
+3. Adjust threshold to improve visibility of particles. Image > Adjust > Window/Level. Level should be set to about 50700, and Window to about 11000.
+4. Launch Weka segmentation: Plugins > Segmentation > Trainable Weka Segmentation 3D
+5. Create a total of four classes (click `Create new class` twice)
+6. Click Settings. Apply settings and classifier options as shown below. (note: `numThreads` should be set to the number of available CPU cores; likely 2 or 4 on a personal computer, rather than 20 for a server as shown here.) ![weka-settings.png](segmentation-settings.png)
+7. Trace a path through the matrix (gray area) of the cross section, then click "add to matrix" in the label area at the right. Repeat this for several of the inclusions, the air, and the edge. Then repeat the process for multiple images in the stack (use the slider at the bottom to adjust the Z position). The image below shows an example training image for one frame. ![weka-training](weka-train.png)
+8. Click "Train Classifier", then go get at coffee. :coffee:
+9. When complete, each pixel will be assigned a probability of belonging to each of the four classes. Review the result, and if there are obvious mismatches, add more training traces in the problematic area and retrain the model. Repeat until satisfied. ![weka-classified](weka-classified.png)
+10. The final classifier model and data used for this example can be downloaded from the [nitinol.app.box.com](https://nitinol.box.com/s/kcpbivbdszlqtx9zxsgkq636hfnzbo9p) site.
+
 
 
 
