@@ -38,7 +38,7 @@ XCT scans were performed using a [Versa 520 3D X-ray microscope](https://www.zei
 
 All scans were conducted and reconstructed using the same settings to ensure that results are consistent between samples. Each scan produced approximately 26GB of raw output in Xradia's TXRM format. Reconstruction was completed following recommended procedures to mitigate beam hardening artifacts. Gaussian filtering was applied with a 0.7 kernel, and the reconstruction was saved in TXM format, approximately 16GB in size. The TXM results were imported into [ORS Visual SI](http://theobjects.com/orsvisual/orsvisual.html) (Object Research Systems, Montreal, Quebec), cropped and exported as a sequence of approximately 2,000 16-bit gray-scale TIFF images, 7 GB in total size. All subsequent analysis was conducted using open source software.
 
-*The original TIFF images from each scan are available for download at https://nitinol.app.box.com/v/nitinol-design-concepts*
+*All of the original TIFF images from each scan are available for download at [https://nitinol.app.box.com/v/nitinol-design-concepts](https://nitinol.app.box.com/v/nitinol-design-concepts) in the folder for this topic, [210-xct-methods](https://nitinol.box.com/s/jt6z3lv6nhtna7zs633lyuo1fpam0yvs)*
 
 ### 2. Classifier Training
 
@@ -60,12 +60,16 @@ A 50-slice subset of the `scan01` image stack was used to train the model. The t
 2. Open [scan01-0500-0549.tif](https://nitinol.box.com/s/7eywwq3ml46c0potmr4khkkah3elgfcv) (167MB 16-bit grayscale TIFF)
 3. Adjust threshold to improve visibility of particles. Image > Adjust > Window/Level. Level should be set to about 50700, and Window to about 11000.
 4. Launch Weka segmentation: Plugins > Segmentation > Trainable Weka Segmentation 3D
-5. Create a total of four classes (click `Create new class` twice)
-6. Click Settings. Apply settings and classifier options as shown below. (note: `numThreads` should be set to the number of available CPU cores; likely 2 or 4 on a personal computer, rather than 20 for a server as shown here.) ![weka-settings.png](segmentation-settings.png)
+5. Create a total of four classes (click "Create new class" twice)
+6. Click Settings. Apply settings and classifier options as shown below. (note: "numThreads" should be set to the number of available CPU cores; likely 2 or 4 on a personal computer, rather than 20 for a server as shown here.) ![weka-settings.png](segmentation-settings.png)
 7. Trace a path through the matrix (gray area) of the cross section, then click "add to matrix" in the label area at the right. Repeat this for several of the inclusions, the air, and the edge. Then repeat the process for multiple images in the stack (use the slider at the bottom to adjust the Z position). The image below shows an example training image for one frame. ![weka-training](weka-train.png)
-8. Click "Train Classifier", then go get at coffee. :coffee:
+8. Click "Train Classifier", then go get at coffee.
 9. When complete, each pixel will be assigned a probability of belonging to each of the four classes. Review the result, and if there are obvious mismatches, add more training traces in the problematic area and retrain the model. Repeat until satisfied. ![weka-classified](weka-classified.png)
-10. The final classifier model and data used for this example can be downloaded from the [nitinol.app.box.com](https://nitinol.box.com/s/kcpbivbdszlqtx9zxsgkq636hfnzbo9p) site.
+10. The final classifier model [classifier-0500-0549-3.model](https://nitinol.box.com/s/9d7hp332ppra56dzqnh1r40giamfzacb) used for this example can be downloaded from the [nitinol.app.box.com](https://nitinol.box.com/s/kcpbivbdszlqtx9zxsgkq636hfnzbo9p) site.
+
+### 3. Segmentation
+
+
 
 
 
