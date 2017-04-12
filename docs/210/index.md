@@ -40,7 +40,7 @@ All scans were conducted and reconstructed using the same settings to ensure tha
 
 ### 2. Classifier Training
 
-Scanning through the acquired images, after some simple adjustments to brightness and contrast levels, impurities in the material could be easily observed.
+Scanning through the acquired images, after some simple adjustments to brightness and contrast levels, impurities in the material could be easily observed. The animation below show 50 slices from scan01. The dark spots are the inclusions that we need to systematically identify in each frame. This process is called "segmentation".
 ![slices](slices.gif)
 
 Image analysis was conducted using the FIJI distribution of ImageJ [13]–[15], an open source software tool widely used for image processing and analysis. The 3D Trainable WEKA Segmentation tool [16] was used to perform particle segmentation for each scan using a consistent method. With this machine-learning approach, particles are manually identified on a set of sample images to train a “classifier”. Once properly trained, this classifier was used to programmatically detect similar particles, matrix, air, and edge voxels in the full stack of images for each scan . The settings used for 3D Trainable WEKA Segmentation were selected to optimize for detecting “blob” like particles (difference of Gaussian) and orientation (Hessian) [17]:
