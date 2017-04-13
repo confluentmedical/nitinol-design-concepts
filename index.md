@@ -12,16 +12,16 @@ The content here includes a deeper dive into topic covered in our Nitinol Univer
 
 This first series follows each step in the design and analysis of a realistic (but non-proprietary) laser cut nitinol component, from designing the geometry using Solidworks to shape setting and fatigue cycling using Abaqus.
 
-* [NDC-105: Design](105) \| Create a 3D model of a laser cut Open Frame component using Solidworks.
-* [NDC-110: Mechanical Properties](110) \| Perform tensile testing to characterize mechanical properties for simulation.
-* [NDC-115: Shape Setting](115) \| Expand the laser cut component into a complex expanded shape using Abaqus finite element analysis.
-* [NDC-120: Fatigue Simulation](120) \| Apply fatigue loading conditions using Abaqus.
+* [NDC-105: Design](105-open-frame-design) \| Create a 3D model of a laser cut Open Frame component using Solidworks.
+* [NDC-110: Mechanical Properties](110-material-characterization) \| Perform tensile testing to characterize mechanical properties for simulation.
+* [NDC-115: Shape Setting](115-open-frame-shape-set) \| Expand the laser cut component into a complex expanded shape using Abaqus finite element analysis.
+* [NDC-120: Fatigue Simulation](120open-frame-fatigue) \| Apply fatigue loading conditions using Abaqus.
 * NDC-125: Fatigue Point Cloud, manual and scripted
 
 ## Advanced Topics
 
-* [NDC-205: Advancing Nitinol Fatigue Prediction](205) \| A review of present and future approaches to lifetime prediction of superelastic nitinol.
-* [NDC-210: Volumetric characterization of inclusions from submicron CT scans](210) \| submicron xray tomography: methods and results
+* [NDC-205: Advancing Nitinol Fatigue Prediction](205-advancing-fatigue-prediction) \| A review of present and future approaches to lifetime prediction of superelastic nitinol.
+* [NDC-210: Volumetric characterization of inclusions from submicron CT scans](210-xct-methods) \| submicron xray tomography: methods and results
 * advanced scripting and volume weighted simulation results
 * probabilistic durability prediction using monte-carlo methods
 
