@@ -189,4 +189,4 @@ p.count.ll <- ggplot(xct) +
   ggtitle('inclusion count by size')
 plot(p.count.ll)
 ```
-![inclusion-count-histogram](out/hist-count-loglog.pdf)
+![inclusion-count-histogram](out/hist-count-loglog.png)
