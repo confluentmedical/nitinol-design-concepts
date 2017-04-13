@@ -76,7 +76,7 @@ A 50-slice subset of the `scan01` image stack was used to train the model. The t
 
 ### 3. Segmentation
 
-Now that the classifier model has been trained on a representative subset of images, the next step is to apply the model to the all of the image data. The basic process for this is as follows:
+Now that the classifier model has been trained on a representative subset of images, the next step is to apply the classifier to each of the full scan data sets. The basic process for this is as follows:
 
 1. From Fiji, launch Plugins > Segmentation > Trainable Weka Segmentation 3D.
 2. When prompted for a file, open an image stack to be segmented.
@@ -92,7 +92,7 @@ We will pause here to address some complications. This process is extraordinaril
 7. Split the channels into separate files for each class. ImageJ: Image > Stacks > Tools > Deinterleave. Discard the matrix, and save the nmi, air, and edge classes.
 8. Threshold the air and edge stacks to create a binary black and white image for each. ImageJ: Image > Adjust > Threshold...
 9. Combine the air and edge to create a new mask stack. We will use this to define the volume to disregard in the subsequent analysis. ImageJ: Process > Image Calculator
-10. Clean up the mask to remove any unwanted areas, using the ImageJ shape tools and flood fill tools as necessary. This may require some iteration.
+10. Clean up the mask to remove any unwanted areas, using erosion (Process > Binary > Erode > (Close-), abd the ImageJ shape tools and flood fill tools as necessary. This may require some iteration.
 11. Create a histogram of this volume, and save to file called (prefix)-mask-histogram.tsv. ImageJ: Analyze > Histogram > click "List" > right click results table > Save as...
 
 Now we have created the first of three output files that will be used by the analysis script in the next section. In `(prefix)-mask-histogram.tsv`, the count of pixels with a value of 255 represent the volume of the matrix, and those with a value of 0 represent the disregarded volume of the mask.
