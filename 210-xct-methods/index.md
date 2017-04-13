@@ -129,6 +129,64 @@ The previous sections document the process for distilling a 26GB scan into three
 
 Our next task is to visualize these results, and create a mathematical model to represent the probabilistic and volumetric distribution of inclusons found in each scan. This will be completed with the R script [xct-process-imagej-results.R](xct-process-imagej-results.R). R is an open source programming language and software environment for statistical computing and graphics, and is quite useful for data analysis tasks such as this. [RStudio](https://www.rstudio.com/) is freely available for all computing platforms, and [R for Data Science](http://r4ds.had.co.nz/) is an excellent primer on this environment.
 
+The [xct-process-imagej-results.R](xct-process-imagej-results.R) code is documented throughout, and some of the important steps are summarized here.
 
+The `getSegmentation` function compiles all of the data from the above noted `*.tsv` files into data table. It takes arguments `baseName` and `description` which define the prefix of the file names (e.g. scan01) and description of the material represented by that scan (e.g. SE508).
 
+```
+getSegmentation <- function(baseName, description){
 
+```
+
+The first few lines get the count of black (value 0) and white (value 255) pixels in the mask image stack, and use this to calculate the total volume and volume of the matrix.
+
+```
+histogram000 <- read_tsv(paste0('./image-data/',baseName,'-mask-histogram.tsv'),skip=1,col_names=FALSE)
+histogram255 <- read_tsv(paste0('./image-data/',baseName,'-mask-histogram.tsv'),skip=256,col_names=FALSE)
+voxels000 <- histogram000[[1,2]]
+volume000 <- voxels000 * cubicUmPerVoxel
+voxels255 <- histogram255[[1,2]]
+volume255 <- voxels255 * cubicUmPerVoxel
+totalVolume <- volume255 + volume000
+matrixVolume <- volume255
+```
+
+Next, a new data frame called `morpho` is created and filled with the results from MorphLibJ Particle Analysis 3D. This data frame now contains a row for each inclusion, and columns for volume, position, and other features.
+```
+morpho <- read_tsv(paste0('./image-data/',baseName,'-lbl-morpho.tsv'),col_names=TRUE)
+```
+
+Next, the bounding box data is read into a new data frame, and converted from pixel units to microns. Unnecessary columnds are discarded, and the micron denominated bounding box sizes are added to the `morpho` data frame.
+```
+bounds <- read_tsv(paste0('./image-data/',baseName,'-lbl-bounds.tsv'),col_names=TRUE) %>%
+mutate(xBox = (XMax-XMin)*umPerVoxel,
+       yBox = (YMax-YMin)*umPerVoxel,
+       zBox = (ZMax-ZMin)*umPerVoxel) %>%
+select(xBox,yBox,zBox)
+morpho <- bind_cols(morpho,bounds)
+```
+
+This function is called to several times to build a new data frame `xct` containing results for each scan of interest.
+
+```
+xct <-      getSegmentation('scan01','SE508') %>%
+  bind_rows(getSegmentation('scan02','SE508ELI')) %>%
+  bind_rows(getSegmentation('scan03','SE508ELI')) %>%
+  filter(Volume > cutoffVolume) %>%
+  mutate(vPerCuMm = Volume / 1e9)
+```
+
+With all of this data consolidated in a single table, we can now create some histograms to visualize the distribution of inclusions. It is convenient to use a log-log scale to visualize these results.
+
+```
+p.count.ll <- ggplot(xct) +
+  geom_histogram(aes(Volume,fill=scanID)) +
+  facet_grid(scanID ~ .) +
+  scale_y_log10() +
+  scale_x_log10(limits = c(1,NA)) +
+  xlab('inclusion size (cubic micron)') +
+  ylab('inclusion count') +
+  ggtitle('inclusion count by size')
+plot(p.count.ll)
+```
+![inclusion-count-histogram](out/hist-count-loglog.pdf)
