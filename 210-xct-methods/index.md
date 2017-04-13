@@ -120,7 +120,7 @@ In the next steps, we start with the 8-bit binary image stack from above, with p
 
 #### 3.5 Visualizing morphological results
 
-ImageJ provides a variety of methods to visualize complex volumetric data sets. One useful approach for visualizing three dimensional data is to create a *maximum intensity projection*, which projects the maximum voxel intensity through a solid volume to a selected plane. The images below show maximum intensity 0 degree and 90 degree projections for `scan01` (standard purity SE508 material) and `scan02` (high purity SE508ELI material).
+ImageJ provides a variety of methods to visualize complex volumetric data sets. One useful approach for visualizing three dimensional data is to create a *maximum intensity projection*, which projects the maximum voxel intensity through a solid volume to a selected plane. The images below show maximum intensity 0 degree and 90 degree projections of the 8-bit NMI probability map for `scan01` (standard purity SE508 material) and `scan02` (high purity SE508ELI material).
 
 ![maximum-intensity-projections](mip.png) 
 
