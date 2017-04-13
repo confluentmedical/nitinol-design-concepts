@@ -109,7 +109,7 @@ Now we have created the first of three output files that will be used by the ana
 
 We now have a binary 8-bit image stack, where white voxels represent particles (inclusions or voids). The next series of steps uses the MorphoLibJ library to measure the count these particles, and measure their size, location, and orientation.
 
-#### 3.4 MorphoLibJ 
+#### 3.4 Morphological calculations
 
 [MorphoLibJ](http://imagej.net/MorphoLibJ) is MorphoLibJ is a collection of mathematical morphology methods and plugins for ImageJ, created at [INRA-IJPB Modeling and Digital Imaging lab](http://www-ijpb.versailles.inra.fr/en/bc/equipes/modelisation-imagerie/). Source code and installation details can be found at [https://github.com/ijpb/MorphoLibJ/](https://github.com/ijpb/MorphoLibJ/).
 
@@ -135,14 +135,20 @@ The [xct-process-imagej-results.R](xct-process-imagej-results.R) code is documen
 
 #### 4.2 Import morphology data
 
+Some setup information is defined at the top of the script, including the cutoff volume, and volume per voxel. A cutoff volume of 8 cubic microns is selected for this example, meaning that we only consider particles (inclusions) with a volume equal or greater than 8 cubic microns. This corresponds to nominally a 2 micron edge length, or 4xx4x4=64 voxels.
+
+```
+cutoffVolume <- 8 # filter out particles less than this value (cubic microns)
+umPerVoxel <- 0.500973555972 # voxel edge size from scan (microns)
+```
+
 The `getSegmentation` function compiles all of the data from the above noted `*.tsv` files into data table. It takes arguments `baseName` and `description` which define the prefix of the file names (e.g. scan01) and description of the material represented by that scan (e.g. SE508).
 
 ```
 getSegmentation <- function(baseName, description){
-
 ```
 
-The first few lines get the count of black (value 0) and white (value 255) pixels in the mask image stack, and use this to calculate the total volume and volume of the matrix.
+The first few lines of this function get the count of black (value 0) and white (value 255) pixels in the mask image stack, and use this to calculate the total volume and volume of the matrix.
 
 ```
 histogram000 <- read_tsv(paste0('./image-data/',baseName,'-mask-histogram.tsv'),skip=1,col_names=FALSE)
@@ -219,7 +225,49 @@ print(countByScan)
 ```
 Inclusion density by scan, and consolidated by description (material type), are saved as text files, such as [count-by-scan.csv](out/count-by-scan.csv) and [count-by-type.csv](out/count-by-type.csv).
 
-#### 4.5 Fit Gumbel distribution
+#### 4.5 Estimate defect size in each plane
+
+In fracture mechanics, defect size is commonly expressed as the square root of defect area projected in a plane normal to an applied stress. Inclusions are often modeled as defects, so for our purposes, it will be useful measure the root-area size of inclusions, in each Cartesian plane.
+
+```
+xct <- xct %>%
+  mutate(xyArea = Volume / zBox, # area projected in XY plane (transverse)
+         xzArea = Volume / yBox, # area projected in XZ plane (longitudinal)
+         yzArea = Volume / xBox, # area projected in YZ plane (longitudinal)
+         rootXyArea = xyArea^(1/2),
+         rootXzArea = xzArea^(1/2),
+         rootYzArea = yzArea^(1/2))
+```
+
+#### 4.6 Gumbel fit for defect sizes
+
+It has been observed that the size of nonmetallic inclusions in (nitinol and other metals) follows an [extreme value distribution](https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution). We will use the `fitdistrplus` R package to create a Gubmel fitting function, and use this to fit the root-area data for each plane, and each scan, as shown below.
+
+```
+gumbelFit <- function(vector){
+  fit <- fitdist(vector, "gumbel",
+                 start=list(mu=4, s=1),
+                 method="mle")
+  return(fit)
+}
+xct.se508 <- filter(xct,scanDesc=='SE508')
+gumbel.se508.xz <- gumbelFit(xct.se508$rootXzArea)
+gumbel.se508.yz <- gumbelFit(xct.se508$rootYzArea)
+gumbel.se508.xy <- gumbelFit(xct.se508$rootXyArea)
+``` 
+
+A new data frame is created to summarize the results for each condition, including Gumbel parameters mu and sigma, are written to [gumbel-parameters.csv](out/gumbel-parameters.csv).
+
+```
+   matl plane cutoff   nPerMm3       mu         s
+  <chr> <chr>  <dbl>     <dbl>    <dbl>     <dbl>
+1 se508    xy      8 7474.7403 2.836400 1.3627438
+2 se508    yz      8 7474.7403 3.586776 1.9563104
+3 se508    xz      8 7474.7403 3.550664 1.8617355
+4   eli    xy      8  340.0763 1.768962 0.4022094
+5   eli    yz      8  340.0763 2.056096 0.3980918
+6   eli    xz      8  340.0763 2.267019 0.4506382
+```
 
 TO > BE > CONTINUED
 
