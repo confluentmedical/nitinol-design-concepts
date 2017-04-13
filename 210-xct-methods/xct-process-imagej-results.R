@@ -126,6 +126,7 @@ p.count.ll <- ggplot(xct) +
   ggtitle('inclusion count by size')
 plot(p.count.ll)
 ggsave('./out/hist-count-loglog.pdf',width = 6,height = 4)
+ggsave('./out/hist-count-loglog.png',width = 6,height = 4)
 
 p.vol.ll <- ggplot(xct) +
   geom_histogram(aes(Volume,fill=scanID,weight=Volume)) +
@@ -137,6 +138,7 @@ p.vol.ll <- ggplot(xct) +
   ggtitle('inclusion volume by size')
 plot(p.vol.ll)
 ggsave('./out/hist-volume-loglog.pdf',width = 6,height = 4)
+ggsave('./out/hist-volume-loglog.png',width = 6,height = 4)
 
 # Summarize inclusion density -------------------
 
