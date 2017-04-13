@@ -24,6 +24,13 @@ This study considers standard purity (SE508) and high purity (SE508ELI) material
 
 The flowchart above shows an overview of the method used to scan and analyze three samples of material. The primary steps are outlined in gray boxes and described below.
 
+This guide includes quite a bit of detail, hopefully enough to recreate the results, or repuropse for similar analysis. If you are not acquiring CT datasets yourself, you might want to skip ahead to the next sectioon. This Methods section is divided into four parts, following the gray boxes in the figure above.
+
+[1. Acquisition](#1.-acquisition)
+[2. Classifier Training](#2.-classifier-training)
+[3. Segmentation](#3.-segmentation)
+[4. Analysis](#4.-analysis)
+
 ### 1. Acquisition
 
 XCT scans were performed using a [Versa 520 3D X-ray microscope](https://www.zeiss.com/microscopy/us/products/x-ray-microscopy/zeiss-xradia-520-versa.html) (Carl Zeiss X-Ray Microscopy, Inc., Pleasanton CA) at the [Stanford Nano Shared Facility (SNSF Center)](https://snsf.stanford.edu/). Matchstick samples were secured by a pin vice and placed into the XCT tool between the source and detector. Scan settings were as follows:
@@ -69,6 +76,35 @@ A 50-slice subset of the `scan01` image stack was used to train the model. The t
 
 ### 3. Segmentation
 
+Now that the classifier model has been trained on a representative subset of images, the next step is to apply the model to the all of the image data. The basic process for this is as follows:
+
+1. From Fiji, launch Plugins > Segmentation > Trainable Weka Segmentation 3D.
+2. When prompted for a file, open an image stack to be segmented.
+3. Click "Load Classifier" and open the final classifier model from above.
+4. Click "Apply Classifier" and then go get some more coffee.
+
+We will pause here to address some complications. This process is extraordinarily memory and processor intensive. Using a high performance engineering server with 256GB of RAM and 20 CPU cores, each scan needed to be divided into about several sub-stacks, each no larger than about 1GB in size. After several minutes of effort, the result is multi-channel 32-bit TIFF probability map. Each channel corresponds to a class (matrix, nmi, edge, or air), and the intensity of each pixel in the stack corresponds to the probability of that pixel belonging to the class.
+
+32-bits of probability resolution is more than we will need for now. After completing segmentation of each sub-stack, we will next distill this data down to something we can use.
+
+5. Batch convert the 32-bit probability maps to 8-bit TIFF's. ImageJ: Process > Batch > Convert. Output = 8-bit TIFF.
+6. Reassemble the sub-stacks into a single merged TIFF file. ImageJ: File > Import > Image Sequence... Select the sub-stack TIFF's to merge.
+7. Split the channels into separate files for each class. ImageJ: Image > Stacks > Tools > Deinterleave. Discard the matrix, and save the nmi, air, and edge classes.
+8. Threshold the air and edge stacks to create a binary black and white image for each. ImageJ: Image > Adjust > Threshold...
+9. Combine the air and edge to create a new mask stack. We will use this to define the volume to disregard in the subsequent analysis. ImageJ: Process > Image Calculator
+10. Clean up the mask to remove any unwanted areas, using the ImageJ shape tools and flood fill tools as necessary. This may require some iteration.
+11. Create a histogram of this volume, and save to file called (prefix)-mask-histogram.tsv. ImageJ: Analyze > Histogram > click "List" > right click results table > Save as...
+
+Now we have created the first of three output files that will be used by the analysis script in the next section. In `(prefix)-mask-histogram.tsv`, the count of pixels with a value of 255 represent the volume of the matrix, and those with a value of 0 represent the disregarded volume of the mask.
+
+12. Next, create a new image to isolate the particles of interest (inclusions). We will start with the "nmi" stack, and delete any pixels from the mask. ImageJ: Process > Image Calculator > Minimum (nmi, mask)
+13. Now we can threshold the masked nmi probability map. Here, some judgement is required, because we must select a probability threshold to use for deciding how to select particles. To keep it simple, we will use a 50% threshold (an intensity of 128 on an 8-bit scale of 0-255). ImageJ: Adjust > Threshold > 128,255 > options: default, light, no checkboxes checked.
+14. Uninvert the lookup table, so particles are shown in white, with an intensity of 255. ImageJ: Image > Lookup Table > Invert LUT
+15. Save this stack as an 8-bit image
+
+We now have a binary 8-bit image stack, where white voxels represent particles (inclusions or voids). The next series of steps uses the MorphoLibJ library to measure the count these particles, and measure their size, location, and orientation.
+
+TO . BE . CONTINUTED .
 
 
 
