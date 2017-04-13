@@ -190,3 +190,24 @@ p.count.ll <- ggplot(xct) +
 plot(p.count.ll)
 ```
 ![inclusion-count-histogram](out/hist-count-loglog.png)
+
+We can now summarize inclusion density as follows.
+
+```
+countByScan <- xct %>%
+  group_by(scanID,scanDesc) %>%
+  summarize(vMatrix = max(vMatrix)) %>%
+  bind_cols(inclusionCount[,2]) %>%
+  mutate(nPerUm3 = n/vMatrix,
+         nPerMm3 = nPerUm3 * 1e9)
+print(countByScan)
+```
+```
+  scanID scanDesc   vMatrix     n      nPerUm3   nPerMm3
+  <fctr>   <fctr>     <dbl> <int>        <dbl>     <dbl>
+1 scan01    SE508 256463759  1917 7.474740e-06 7474.7403
+2 scan02 SE508ELI 247278718    68 2.749933e-07  274.9933
+3 scan03 SE508ELI 255549689   103 4.030527e-07  403.0527
+```
+Inclusion density by scan, and consolidated by description (material type), are saved as text files, such as [count-by-scan.csv](out/count-by-scan.csv) and [count-by-type.csv](out/count-by-type.csv).
+
