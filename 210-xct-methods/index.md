@@ -118,6 +118,16 @@ In the next steps, we start with the 8-bit binary image stack from above, with p
 17. Measure morphological characteristics of the labeled particles. ImageJ: Plugins > MorphoLibJ > Analyze > Particle Analysis 3D. Save the resulting table in the default format, a tab separated text file. `scan01-lbl-morpho.tsv` is an example of this result.
 18. Report bounding box details for each particle, which will be used later to characterize orientation, and estimate the area projected into each cartesian plane. ImageJ: Plugins > MorphoLibJ > Analyze > Nounding Box 3D. As above, save in the default format. `scan01-lbl-bounds.tsv` is an example of this result.
 
+#### 3.5 Visualizing morphological results
+
+ImageJ provides a variety of methods to visualize complex volumetric data sets. One useful approach for visualizing three dimensional data is to create a *maximum intensity projection*, which projects the maximum voxel intensity through a solid volume to a selected plane. The images below show maximum intensity 0 degree and 90 degree projections for `scan01` (standard purity SE508 material) and `scan02` (high purity SE508ELI material).
+
+![maximum-intensity-projections](mip.png) 
+
+ImageJ can also create animations to visualize the size, position, and orientation of inclusions throughout the volume. The animation below was created using the MorphoLibJ "assign measure to label" function to label each particle according to its volume in cubic microns.
+
+![scan01-animation](scan01-rotate.gif) 
+
 ### 4. Analysis
 
 The previous sections document the process for distilling a 26GB scan into three small text files containing a numerical representation of inclusion locations and morphology. Examples of these can be found here in the [image-data](image-data) folder:
