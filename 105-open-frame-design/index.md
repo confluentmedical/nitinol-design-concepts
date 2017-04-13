@@ -54,7 +54,7 @@ A final configuration is created to isolate a single strut from the wrapped mode
 
 ## Next
 
-With the design completed, the next step is a [Shape Setting](../115) analysis, which also requires [Material Characterization](../110).
+With the design completed, the next step is a [Shape Setting](../115-open-frame-shape-set) analysis, which also requires [Material Characterization](../110-material-characterization).
 
 ## Credits
 
