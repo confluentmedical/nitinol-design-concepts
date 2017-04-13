@@ -95,7 +95,7 @@ We will pause here to address some complications. This process is extraordinaril
 7. Split the channels into separate files for each class. ImageJ: Image > Stacks > Tools > Deinterleave. Discard the matrix, and save the nmi, air, and edge classes.
 8. Threshold the air and edge stacks to create a binary black and white image for each. ImageJ: Image > Adjust > Threshold...
 9. Combine the air and edge to create a new mask stack. We will use this to define the volume to disregard in the subsequent analysis. ImageJ: Process > Image Calculator
-10. Clean up the mask to remove any unwanted areas, using erosion (Process > Binary > Erode > (Close-), abd the ImageJ shape tools and flood fill tools as necessary. This may require some iteration.
+10. Clean up the mask to remove any unwanted areas, using erosion (Process > Binary > Erode > (Close-), and the ImageJ shape tools and flood fill tools as necessary. This may require some iteration.
 11. Create a histogram of this volume, and save to file called (prefix)-mask-histogram.tsv. ImageJ: Analyze > Histogram > click "List" > right click results table > Save as...
 
 Now we have created the first of three output files that will be used by the analysis script in the next section. `scan01-mask-histogram.tsv` is an example of this output, the count of pixels with a value of 255 represent the volume of the matrix, and those with a value of 0 represent the disregarded volume of the mask.
@@ -103,7 +103,7 @@ Now we have created the first of three output files that will be used by the ana
 #### 3.3 Isolate inclusions
 
 12. Next, create a new image to isolate the particles of interest (inclusions). We will combine the "nmi" stack with the "mask" stack, selecting the minimum pixel value at each location. Therefore the black pixels from the mask will effectively delete the air and edge regions from the combined stack. ImageJ: Process > Image Calculator > Minimum (nmi, mask)
-13. Now we can threshold the masked nmi probability map. Here, some judgement is required, because we must select a probability threshold to use for deciding how to select particles. To keep it simple, we will use a 50% probability threshold (an intensity of 128 on an 8-bit scale of 0-255). ImageJ: Adjust > Threshold > 128,255 > options: default, light, no checkboxes checked.
+13. Now we can threshold the masked nmi probability map. Here, some judgment is required, because we must select a probability threshold to use for deciding how to select particles. To keep it simple, we will use a 50% probability threshold (an intensity of 128 on an 8-bit scale of 0-255). ImageJ: Adjust > Threshold > 128,255 > options: default, light, no checkboxes checked.
 14. Invert the lookup table, so particles are shown in white, with an intensity of 255. ImageJ: Image > Lookup Table > Invert LUT
 15. Save this stack as an 8-bit image
 
@@ -127,9 +127,13 @@ The previous sections document the process for distilling a 26GB scan into three
 * [scan01-lbl-morpho.tsv](image-data/scan01-lbl-morpho.tsv)
 * [scan01-lbl-bounds.tsv](image-data/scan01-lbl-bounds.tsv)
 
+#### 4.1 R for Data Analysis
+
 Our next task is to visualize these results, and create a mathematical model to represent the probabilistic and volumetric distribution of inclusons found in each scan. This will be completed with the R script [xct-process-imagej-results.R](xct-process-imagej-results.R). R is an open source programming language and software environment for statistical computing and graphics, and is quite useful for data analysis tasks such as this. [RStudio](https://www.rstudio.com/) is freely available for all computing platforms, and [R for Data Science](http://r4ds.had.co.nz/) is an excellent primer on this environment.
 
 The [xct-process-imagej-results.R](xct-process-imagej-results.R) code is documented throughout, and some of the important steps are summarized here.
+
+#### 4.2 Import morphology data
 
 The `getSegmentation` function compiles all of the data from the above noted `*.tsv` files into data table. It takes arguments `baseName` and `description` which define the prefix of the file names (e.g. scan01) and description of the material represented by that scan (e.g. SE508).
 
@@ -176,6 +180,8 @@ xct <-      getSegmentation('scan01','SE508') %>%
   mutate(vPerCuMm = Volume / 1e9)
 ```
 
+#### 4.3 Visualize inclusion size and distribution
+
 With all of this data consolidated in a single table, we can now create some histograms to visualize the distribution of inclusions. It is convenient to use a log-log scale to visualize these results.
 
 ```
@@ -190,6 +196,8 @@ p.count.ll <- ggplot(xct) +
 plot(p.count.ll)
 ```
 ![inclusion-count-histogram](out/hist-count-loglog.png)
+
+#### 4.4 Report inclusion density
 
 We can now summarize inclusion density as follows.
 
@@ -210,4 +218,8 @@ print(countByScan)
 3 scan03 SE508ELI 255549689   103 4.030527e-07  403.0527
 ```
 Inclusion density by scan, and consolidated by description (material type), are saved as text files, such as [count-by-scan.csv](out/count-by-scan.csv) and [count-by-type.csv](out/count-by-type.csv).
+
+#### 4.5 Fit Gumbel distribution
+
+TO > BE > CONTINUED
 
