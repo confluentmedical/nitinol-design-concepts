@@ -19,7 +19,6 @@ This study considers standard purity (SE508) and high purity (SE508ELI) material
 - `scan02`: SE508ELI, Component Lot 2093619, Material Lot 1003560
 - `scan03`: SE508ELI, Component Lot 2093617, Material Lot 1003711   
 
-
 ## Methods
 
 ![flowchart](xct-flowchart.png)
@@ -53,7 +52,7 @@ Scanning through the acquired images, after some simple adjustments to brightnes
 
 Image analysis was conducted using the [Fiji](https://fiji.sc/) distribution of [ImageJ](https://imagej.net), an open source software tool widely used for image processing and analysis. Conventional segmentation approaches require subjective judgments to select threshold levels, and often require manual adjustments to compensate for gradients or variations in background intensity. For this reason, repeatability and reproducibility is quite challenging. 
 
-To overcome this challenge, a machine learning segmentation method was developed and applied to each scan in this series. The [Trainable WEKA Segmentation](http://imagej.net/Trainable_Weka_Segmentation) ImageJ plugin, included with Fiji, was used to segment assign each voxel a probability of being one of four classes:
+To overcome this challenge, a machine learning segmentation method was developed and applied to each scan in this series. The [Trainable WEKA Segmentation](http://imagej.net/Trainable_Weka_Segmentation) ImageJ plugin, included with Fiji, was used to assign each voxel a probability of being one of four classes:
 
 1. **Matrix:** Nitinol material, including bulk nickel-titanium, as well as inclusions and/or voids.
 2. **NMI:** Non-metallic inclusion, voids, or other embedded particles.
@@ -142,7 +141,7 @@ cutoffVolume <- 8 # filter out particles less than this value (cubic microns)
 umPerVoxel <- 0.500973555972 # voxel edge size from scan (microns)
 ```
 
-The `getSegmentation` function compiles all of the data from the above noted `*.tsv` files into data table. It takes arguments `baseName` and `description` which define the prefix of the file names (e.g. scan01) and description of the material represented by that scan (e.g. SE508).
+The `getSegmentation` function compiles all of the data from the above noted `*.tsv` files into a data table. It takes arguments `baseName` and `description` which define the prefix of the file names (e.g. scan01) and description of the material represented by that scan (e.g. SE508).
 
 ```
 getSegmentation <- function(baseName, description){
@@ -241,7 +240,7 @@ xct <- xct %>%
 
 #### 4.6 Gumbel fit for defect sizes
 
-It has been observed that the size of nonmetallic inclusions in (nitinol and other metals) follows an [extreme value distribution](https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution). We will use the `fitdistrplus` R package to create a Gubmel fitting function, and use this to fit the root-area data for each plane, and each scan, as shown below.
+It has been observed that the size of nonmetallic inclusions in (nitinol and other metals) follows an [extreme value distribution](https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution). We will use the `fitdistrplus` R package to create a Gumbel fitting function, and use this to fit the root-area data for each plane, and each scan, as shown below.
 
 ```
 gumbelFit <- function(vector){
@@ -269,5 +268,12 @@ A new data frame is created to summarize the results for each condition, includi
 6   eli    xz      8  340.0763 2.267019 0.4506382
 ```
 
-TO > BE > CONTINUED
+## Next
+
+This example documents feasible methods for distilling volumetric computed tomography image data into a compact mathematical "fingerprint", describing  inclusion density, distribution, size, and orientation in just a few numbers. The next topic in this series, [NDC-215](215-xct-fea), will explore methods for improved fatigue durability prediction, combining this information with results of finite element analysis.
+
+## Acknowledgment
+
+Part of this work was performed at the Stanford Nano Shared Facilities (SNSF)  using the ZEISS Xradia 250 Versa, acquired with support from the NSF under award [CMMI-1532224](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1532224). SNSF is supported by the NSF as part of the National Nanotechnology Coordinated Infrastructure under award [ECCS-1542152](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1542152).
+
 
