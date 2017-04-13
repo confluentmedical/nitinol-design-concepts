@@ -80,6 +80,8 @@ A 50-slice subset of the `scan01` image stack was used to train the model. The t
 
 Now that the classifier model has been trained on a representative subset of images, the next step is to apply the classifier to each of the full scan data sets. The basic process for this is as follows:
 
+#### 3.1 Apply Weka Classifier
+
 1. From Fiji, launch Plugins > Segmentation > Trainable Weka Segmentation 3D.
 2. When prompted for a file, open an image stack to be segmented.
 3. Click "Load Classifier" and open the final classifier model from above.
@@ -88,6 +90,8 @@ Now that the classifier model has been trained on a representative subset of ima
 We will pause here to address some complications. This process is extraordinarily memory and processor intensive. Using a high performance engineering server with 256GB of RAM and 20 CPU cores, each scan needed to be divided into about several sub-stacks, each no larger than about 1GB in size. After several minutes of effort, the result is multi-channel 32-bit TIFF probability map. Each channel corresponds to a class (matrix, nmi, edge, or air), and the intensity of each pixel in the stack corresponds to the probability of that pixel belonging to the class.
 
 32-bits of probability resolution is more than we will need for now. After completing segmentation of each sub-stack, we will next distill this data down to something we can use.
+
+#### 3.2 Create a mask to isolate the volume of interest
 
 5. Batch convert the 32-bit probability maps to 8-bit TIFF's. ImageJ: Process > Batch > Convert. Output = 8-bit TIFF.
 6. Reassemble the sub-stacks into a single merged TIFF file. ImageJ: File > Import > Image Sequence... Select the sub-stack TIFF's to merge.
@@ -99,12 +103,19 @@ We will pause here to address some complications. This process is extraordinaril
 
 Now we have created the first of three output files that will be used by the analysis script in the next section. In `(prefix)-mask-histogram.tsv`, the count of pixels with a value of 255 represent the volume of the matrix, and those with a value of 0 represent the disregarded volume of the mask.
 
+#### 3.3 Isolate inclusions
+
 12. Next, create a new image to isolate the particles of interest (inclusions). We will start with the "nmi" stack, and delete any pixels from the mask. ImageJ: Process > Image Calculator > Minimum (nmi, mask)
 13. Now we can threshold the masked nmi probability map. Here, some judgement is required, because we must select a probability threshold to use for deciding how to select particles. To keep it simple, we will use a 50% threshold (an intensity of 128 on an 8-bit scale of 0-255). ImageJ: Adjust > Threshold > 128,255 > options: default, light, no checkboxes checked.
 14. Uninvert the lookup table, so particles are shown in white, with an intensity of 255. ImageJ: Image > Lookup Table > Invert LUT
 15. Save this stack as an 8-bit image
 
 We now have a binary 8-bit image stack, where white voxels represent particles (inclusions or voids). The next series of steps uses the MorphoLibJ library to measure the count these particles, and measure their size, location, and orientation.
+
+
+#### 3.4 MorphoLibJ 
+
+[MorphoLibJ](http://imagej.net/MorphoLibJ) is MorphoLibJ is a collection of mathematical morphology methods and plugins for ImageJ, created at [INRA-IJPB Modeling and Digital Imaging lab](http://www-ijpb.versailles.inra.fr/en/bc/equipes/modelisation-imagerie/). Source code and installation details can be found at [https://github.com/ijpb/MorphoLibJ/](https://github.com/ijpb/MorphoLibJ/).
 
 TO . BE . CONTINUTED .
 
