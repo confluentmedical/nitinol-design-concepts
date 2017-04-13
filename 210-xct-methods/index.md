@@ -119,8 +119,16 @@ In the next steps, we start with the 8-bit binary image stack from above, with p
 17. Measure morphological characteristics of the labeled particles. ImageJ: Plugins > MorphoLibJ > Analyze > Particle Analysis 3D. Save the resulting table in the default format, a tab separated text file. `scan01-lbl-morpho.tsv` is an example of this result.
 18. Report bounding box details for each particle, which will be used later to characterize orientation, and estimate the area projected into each cartesian plane. ImageJ: Plugins > MorphoLibJ > Analyze > Nounding Box 3D. As above, save in the default format. `scan01-lbl-bounds.tsv` is an example of this result.
 
-
 ### 4. Analysis
+
+The previous sections document the process for distilling a 26GB scan into three small text files containing a numerical representation of inclusion locations and morphology. Examples of these can be found here in the [image-data](image-data) folder:
+
+* [scan01-mask-histogram.tsv](image-data/scan01-mask-histogram.tsv)
+* [scan01-lbl-morpho.tsv](image-data/scan01-lbl-morpho.tsv)
+* [scan01-lbl-bounds.tsv](image-data/scan01-lbl-bounds.tsv)
+
+Our next task is to visualize these results, and create a mathematical model to represent the probabilistic and volumetric distribution of inclusons found in each scan. This will be completed with the R script [xct-process-imagej-results.R](xct-process-imagej-results.R). R is an open source programming language and software environment for statistical computing and graphics, and is quite useful for data analysis tasks such as this. [RStudio](https://www.rstudio.com/) is freely available for all computing platforms, and [R for Data Science](http://r4ds.had.co.nz/) is an excellent primer on this environment.
+
 
 
 
