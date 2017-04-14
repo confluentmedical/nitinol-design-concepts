@@ -1,6 +1,6 @@
 # License for nitinol-device-concepts Content and Source Code
 
-The writing and images of this project are licensed under the Creative Commons Attribution 4.0 International Public license, and source code is licensed under the MIT license.
+The writing and images of this project are licensed under the Creative Commons Attribution 4.0 International Public license (summarized by [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/), and written in detail below), and source code is licensed under the MIT license, as written below.
 
 ## MIT License
 
