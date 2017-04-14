@@ -1,4 +1,4 @@
-# LICENSE for nitinol-device-concepts Content and Source Code
+# License for nitinol-device-concepts Content and Source Code
 
 The writing and images of this project are licensed under the Creative Commons Attribution 4.0 International license, and source code is licensed under the MIT license.
 
