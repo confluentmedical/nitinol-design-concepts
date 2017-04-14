@@ -61,7 +61,9 @@ These simulations can quickly generate many gigabytes of results! We try to keep
 
 ## TO > BE > CONTINUED
 
+## Credits
 
+This model was developed by Karthikeyan Senthilnathan, [@karthikSenthi](https://github.com/karthikSenthi), of Confluent Medical Technologies.
 
 
 
