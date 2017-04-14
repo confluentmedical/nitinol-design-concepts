@@ -15,7 +15,7 @@ This first series follows each step in the design and analysis of a realistic (b
 * [NDC-105: Design](105-open-frame-design) \| Create a 3D model of a laser cut Open Frame component using Solidworks.
 * [NDC-110: Mechanical Properties](110-material-characterization) \| Perform tensile testing to characterize mechanical properties for simulation.
 * [NDC-115: Shape Setting](115-open-frame-shape-set) \| Expand the laser cut component into a complex expanded shape using Abaqus finite element analysis.
-* [NDC-120: Fatigue Simulation](120open-frame-fatigue) \| Apply fatigue loading conditions using Abaqus.
+* [NDC-120: Fatigue Simulation](120-open-frame-fatigue) \| Apply fatigue loading conditions using Abaqus.
 * NDC-125: Fatigue Point Cloud, manual and scripted
 
 ## Advanced Topics
