@@ -15,7 +15,7 @@ This example assumes that the reader is familiar with parametric solid modeling 
 
 Stents and stent-like structures are often composed of repeating patterns of similar features. Commonly, designers will seek to consider many variations of a common architecture, each with a specific adjustment of feature dimensions, such as strut width, strut length, or wall thickness. As such, it is convenient to a build *parametric* solid model, with feature dimensions driven by equations and variables as shown below.
 
-```
+```vb
 "Tube_OD"= 8.00mm
 "Tube_ID"= 7.01mm
 "removal"= 0
