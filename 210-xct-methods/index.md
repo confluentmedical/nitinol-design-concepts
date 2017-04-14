@@ -146,20 +146,20 @@ The [xct-process-imagej-results.R](xct-process-imagej-results.R) code is documen
 
 Some setup information is defined at the top of the script, including the cutoff volume, and volume per voxel. A cutoff volume of 8 cubic microns is selected for this example, meaning that we only consider particles (inclusions) with a volume equal or greater than 8 cubic microns. This corresponds to nominally a 2 micron edge length, or 4xx4x4=64 voxels.
 
-```
+```Rscript
 cutoffVolume <- 8 # filter out particles less than this value (cubic microns)
 umPerVoxel <- 0.500973555972 # voxel edge size from scan (microns)
 ```
 
 The `getSegmentation` function compiles all of the data from the above noted `*.tsv` files into a data table. It takes arguments `baseName` and `description` which define the prefix of the file names (e.g. scan01) and description of the material represented by that scan (e.g. SE508).
 
-```
+```Rscript
 getSegmentation <- function(baseName, description){
 ```
 
 The first few lines of this function get the count of black (value 0) and white (value 255) pixels in the mask image stack, and use this to calculate the total volume and volume of the matrix.
 
-```
+```Rscript
 histogram000 <- read_tsv(paste0('./image-data/',baseName,'-mask-histogram.tsv'),skip=1,col_names=FALSE)
 histogram255 <- read_tsv(paste0('./image-data/',baseName,'-mask-histogram.tsv'),skip=256,col_names=FALSE)
 voxels000 <- histogram000[[1,2]]
@@ -171,12 +171,12 @@ matrixVolume <- volume255
 ```
 
 Next, a new data frame called `morpho` is created and filled with the results from MorphLibJ Particle Analysis 3D. This data frame now contains a row for each inclusion, and columns for volume, position, and other features.
-```
+```Rscript
 morpho <- read_tsv(paste0('./image-data/',baseName,'-lbl-morpho.tsv'),col_names=TRUE)
 ```
 
 Next, the bounding box data is read into a new data frame, and converted from pixel units to microns. Unnecessary columnds are discarded, and the micron denominated bounding box sizes are added to the `morpho` data frame.
-```
+```Rscript
 bounds <- read_tsv(paste0('./image-data/',baseName,'-lbl-bounds.tsv'),col_names=TRUE) %>%
 mutate(xBox = (XMax-XMin)*umPerVoxel,
        yBox = (YMax-YMin)*umPerVoxel,
@@ -187,7 +187,7 @@ morpho <- bind_cols(morpho,bounds)
 
 This function is called to several times to build a new data frame `xct` containing results for each scan of interest.
 
-```
+```Rscript
 xct <-      getSegmentation('scan01','SE508') %>%
   bind_rows(getSegmentation('scan02','SE508ELI')) %>%
   bind_rows(getSegmentation('scan03','SE508ELI')) %>%
@@ -199,7 +199,7 @@ xct <-      getSegmentation('scan01','SE508') %>%
 
 With all of this data consolidated in a single table, we can now create some histograms to visualize the distribution of inclusions. It is convenient to use a log-log scale to visualize these results.
 
-```
+```Rscript
 p.count.ll <- ggplot(xct) +
   geom_histogram(aes(Volume,fill=scanID)) +
   facet_grid(scanID ~ .) +
@@ -216,7 +216,7 @@ plot(p.count.ll)
 
 We can now summarize inclusion density as follows.
 
-```
+```Rscript
 countByScan <- xct %>%
   group_by(scanID,scanDesc) %>%
   summarize(vMatrix = max(vMatrix)) %>%
@@ -238,7 +238,7 @@ Inclusion density by scan, and consolidated by description (material type), are 
 
 In fracture mechanics, defect size is commonly expressed as the square root of defect area projected in a plane normal to an applied stress. Inclusions are often modeled as defects, so for our purposes, it will be useful measure the root-area size of inclusions, in each Cartesian plane.
 
-```
+```Rscript
 xct <- xct %>%
   mutate(xyArea = Volume / zBox, # area projected in XY plane (transverse)
          xzArea = Volume / yBox, # area projected in XZ plane (longitudinal)
@@ -252,7 +252,7 @@ xct <- xct %>%
 
 It has been observed that the size of nonmetallic inclusions in (nitinol and other metals) follows an [extreme value distribution](https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution). We will use the `fitdistrplus` R package to create a Gumbel fitting function, and use this to fit the root-area data for each plane, and each scan, as shown below.
 
-```
+```Rscript
 gumbelFit <- function(vector){
   fit <- fitdist(vector, "gumbel",
                  start=list(mu=4, s=1),
