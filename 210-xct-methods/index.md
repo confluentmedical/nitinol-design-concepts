@@ -252,7 +252,7 @@ xct <- xct %>%
 
 It has been observed that the size of nonmetallic inclusions in (nitinol and other metals) follows an [extreme value distribution](https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution). We will use the `fitdistrplus` R package to create a Gumbel fitting function, and use this to fit the root-area data for each plane, and each scan, as shown below.
 
-```Rscript
+```R
 gumbelFit <- function(vector){
   fit <- fitdist(vector, "gumbel",
                  start=list(mu=4, s=1),
