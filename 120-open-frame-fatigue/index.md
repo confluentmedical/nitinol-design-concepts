@@ -93,12 +93,45 @@ Now we visualize our newly calculated field outputs, mean strain and strain ampl
 ![mean-strain](120-mean-strain.png)
 ![strain-amplitude](120-strain-amp.png)
 
-Finally, we will want to export the mean strain and strain amplitude values. To do so, we create a field output report using the options shown below, selecting only the Max Principal (Abs) scalar for each field.
+Finally, we will want to export the mean strain and strain amplitude values. To do so, we create a field output report using the options shown below, selecting Max Principal scalar for mean strain, and the Max Principal (Abs) scalar for strain amplitude.
 
 ![report-field-output-1](120-report-field-output-1.png)
 ![report-field-output-2](120-report-field-output-2.png)
 
-The resulting report file, [open-frame-fatigue-v25mm-9pct.rpt](open-frame-fatigue-v25mm-9pct.rpt) is a table of mean strain ans strain amplitude values at every integration point. The C3D8R elements used in this simulation have a single integration point per element, so this file has one row per element. Strain 
+The resulting report file, [open-frame-fatigue-v25mm-9pct.rpt](open-frame-fatigue-v25mm-9pct.rpt) is a table of mean strain ans strain amplitude values at every integration point. The C3D8R elements used in this simulation have a single integration point per element, so this file has one row per element. 
+
+## Point Cloud
+
+Mean strain and strain amplitude results are commonly represented visually as a scatterplot called a "point cloud". Using a spreadsheet to create these plots becomes cumbersome quickly with large models. R is well suited to visualizing large datasets, so we'll create a short script, [point-cloud.R](point-cloud.R), to do the job.
+
+```R
+library(tidyverse) # http://r4ds.had.co.nz
+
+# set working directory to location of this script
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) 
+
+# read the field output results table
+results <- read_table('open-frame-fatigue-v25mm-9pct.rpt', 
+                      skip=19, col_names = FALSE)
+
+# set names for the columns
+colnames(results) <- c('elNum','intPt','eMean','eAmp')
+
+# create a point cloud
+pointCloud <- ggplot(results,aes(x=abs(eMean),y=abs(eAmp))) +
+  geom_point() +
+  ylab('strain amplitude') +
+  xlab('mean strain') +
+  scale_y_continuous(labels = scales::percent) +
+  scale_x_continuous(labels = scales::percent) +
+  ggtitle('point cloud','open-frame-fatigue-v25mm-9pct')
+
+# save as a PNG file
+ggsave('point-cloud.png')
+```
+![point-cloud](point-cloud.png)
+
+Note that our field output report provided us with the *absolute* maximum principal scalar values for strain amplitude. This considers the absolute value of the *maximum* principal strain, and the absolute value of the *minimum* principal strain, and returns the larger of the two while preserving the sign. We will consider this subtlety more carefully in upcoming episodes, but for now we are simply plotting the absolute value.
 
 ## Credits
 
