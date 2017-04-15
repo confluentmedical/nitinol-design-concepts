@@ -20,7 +20,7 @@ The original Abaqus CAE model files for this example are available for download 
 
 ## Import and Partition
 
-The first step is to import and partition the ACIS (.SAT) file from [NDC-105 Design](../105-open-frame-design), in this case a single strut represently the smallest symmetrical repeating section of the component. The first objective is to split the imported geometry into well divided solid segments, thus enabling the meshing algorithm to create well formed hexagonal elements. This case required a few dozen partitions throughout the part geometry. This can be a bit tedious, and usually requires some iteration between the Part and Mesh modules until all the solid cells turn green or yellow, indicating their eligibility for ruled or swept meshing. 
+The first step is to import and partition the ACIS (.SAT) file from [NDC-105 Design](../105-open-frame-design), in this case a single strut represently the smallest symmetrical repeating section of the component. The first objective is to split the imported geometry into well divided solid segments, thus enabling the meshing algorithm to create well formed hexahedral elements. This case required a few dozen partitions throughout the part geometry. This can be a bit tedious, and usually requires some iteration between the Part and Mesh modules until all the solid cells turn green or yellow, indicating their eligibility for ruled or swept meshing. 
 ![partition](115-partition.png)
 
 ## Mesh
