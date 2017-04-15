@@ -93,8 +93,12 @@ Now we visualize our newly calculated field outputs, mean strain and strain ampl
 ![mean-strain](120-mean-strain.png)
 ![strain-amplitude](120-strain-amp.png)
 
+Finally, we will want to export the mean strain and strain amplitude values. To do so, we create a field output report using the options shown below, selecting only the Max Principal (Abs) scalar for each field.
 
+![report-field-output-1](120-report-field-output-1.png)
+![report-field-output-2](120-report-field-output-2.png)
 
+The resulting report file, [open-frame-fatigue-v25mm-9pct.rpt](open-frame-fatigue-v25mm-9pct.rpt) is a table of mean strain ans strain amplitude values at every integration point. The C3D8R elements used in this simulation have a single integration point per element, so this file has one row per element. Strain 
 
 ## Credits
 
