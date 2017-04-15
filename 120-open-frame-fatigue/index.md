@@ -118,7 +118,7 @@ results <- read_table('open-frame-fatigue-v25mm-9pct.rpt',
 colnames(results) <- c('elNum','intPt','eMean','eAmp')
 
 # create a point cloud
-pointCloud <- ggplot(results,aes(x=abs(eMean),y=abs(eAmp))) +
+pointCloud <- ggplot(results,aes(x=eMean,y=abs(eAmp))) +
   geom_point() +
   ylab('strain amplitude') +
   xlab('mean strain') +
