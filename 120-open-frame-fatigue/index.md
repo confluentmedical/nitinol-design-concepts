@@ -59,7 +59,47 @@ These simulations can quickly generate many gigabytes of results! We try to keep
 
 ![field-outputs](120-field-output-create.png)
 
-## TO > BE > CONTINUED
+## Visualizing Results
+
+This simulation was required a total of about 2.7 CPU-hours on our system, and was completed in under 30 minutes of actual time using multiple CPU cores. The output database (65MB) can be downloaded from the 120-open-frame-fatigue folder at [nitinol.app.box.com/v/nitinol-design-concepts](https://nitinol.box.com/v/nitinol-design-concepts), and requires Abaqus 2017 CAE or Viwewer to post-process.
+
+We are only interested in visualizing the nitinol frame component, so we will first create a new display group. Select the nitinol part instance, and use this to replace the current selection.
+
+![display-group](120-display-group.png)
+
+Since the actual model is just a fraction of the real geometry, it is helpful to mirror and pattern the model to visualize the full frame.
+
+![mirror-rotate](120-mirror-rotate.png)
+
+When visualizing field outputs like stress and strain, by default Abaqus contour plots will extrapolate element field values to the nodes. We usually prefer to visualize element values directly. To do so, select "quilt" in contour plot options.
+
+![quilt](120-contour-plot-options.png)
+
+Now we can visualize the deformations, stresses, and strains associated with the fatigue cycle. The animation below cycles between stress of the "zeroth" increment of the final step, diastole-03 (which is actually the last increment of the previous step, systole-03). 
+
+![pulse](pulse.gif)
+
+Our fatigue analysis will consider the mean strain and strain amplitude relating to the two increments shown in the animation above. To calculate these values, we will create new calculated field outputs by performing mathematical operations on the logarithmic strain tensors associated with these increments, as shown below. Note that the strain amplitude calculation introduces a sense of direction, as we are subtracting one tensor from another. As shown in the image below, we choose to subtract the last increment of diastole-03 from the zeroth increment, because the deformation is greater in the zeroth increment, and more relaxed in the last increment.
+
+![create-mean-strain](120-create-mean-strain.png)
+![create-strain-amplitude](120-create-strain-amplitude.png)
+
+It is also helpful to use the same process to calculate average deformation during the fatigue cycle, and use this as the deformed variable when visualizing mean strain and strain amplitude.
+
+![mean-disp](120-mean-disp.png)
+
+Now we visualize our newly calculated field outputs, mean strain and strain amplitude, which are associated with a new step called "Session Step".
+
+![mean-strain](120-mean-strain.png)
+![strain-amplitude](120-strain-amplitude.png)
+
+
+
+
+create display group / part instances / frame, replace
+view / odb display options / mirror, rotate
+tools / field output / create from fields
+
 
 ## Credits
 
