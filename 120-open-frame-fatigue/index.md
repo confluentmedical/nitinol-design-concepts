@@ -88,7 +88,7 @@ It is also helpful to use the same process to calculate average deformation duri
 
 ![mean-disp](120-mean-disp.png)
 
-Now we visualize our newly calculated field outputs, mean strain and strain amplitude, which are associated with a new step called "Session Step".
+Now we visualize our newly calculated field outputs, mean strain and strain amplitude, which are associated with a new step called "Session Step". In the images below, note that the location of the maximum strain amplitude is not the same as the location of the maximum mean strain. 
 
 ![mean-strain](120-mean-strain.png)
 ![strain-amplitude](120-strain-amp.png)
@@ -131,7 +131,9 @@ ggsave('point-cloud.png')
 ```
 ![point-cloud](point-cloud.png)
 
-Note that our field output report provided us with the *absolute* maximum principal scalar values for strain amplitude. This considers the absolute value of the *maximum* principal strain, and the absolute value of the *minimum* principal strain, and returns the larger of the two while preserving the sign. We will consider this subtlety more carefully in upcoming episodes, but for now we are simply plotting the absolute value.
+Here again, we can see that the maximum mean strain occurs at a different point from the maximum strain amplitude. We call this "point cloud divergence", and it is more likely to be seen as parts of the model experience high mean strains. This introduces some ambiguity about which point is actually most critical, a topic we will revisit in the next sections.
+
+Note also that our field output report provided us with the *absolute* maximum principal scalar values for strain amplitude. This considers the absolute value of the *maximum* principal strain, and the absolute value of the *minimum* principal strain, and returns the larger of the two while preserving the sign. We will consider this subtlety more carefully in upcoming episodes, but for now we are simply plotting the absolute value.
 
 ## Credits
 
