@@ -1,6 +1,6 @@
 # Nitinol Component Fatigue Analysis
 
-**Objective:** Deploy a nitinol component in a simulated use case, apply a fatigue loading condition, calculate mean strains and strain amplitudes, abd create a "point cloud" to predict fatigue performance. 
+**Objective:** Deploy a nitinol component in a simulated use case, apply a fatigue loading condition, calculate mean strains and strain amplitudes, and create a "point cloud" to predict fatigue performance. 
 
 **Prerequisites:** [NDC-105 Open Frame Design](../105-open-frame-design), [NDC-115 Open Frame Shape Set](../115-open-frame-shape-set), Simulia Abaqus 2017
 
