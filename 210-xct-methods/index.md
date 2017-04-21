@@ -25,7 +25,7 @@ This study considers standard purity (SE508) and high purity (SE508ELI) material
 
 The flowchart above shows an overview of the method used to scan and analyze three samples of material. The primary steps are outlined in gray boxes and described below.
 
-This guide includes quite a bit of detail, hopefully enough to recreate the results, or repuropse for similar analysis. If you are not acquiring CT datasets yourself, you might want to skip ahead to the next sectioon. This Methods section is divided into four parts, following the gray boxes in the figure above.
+This guide includes quite a bit of detail, hopefully enough to recreate the results, or re-purpose for similar analysis. If you are not acquiring CT datasets yourself, you might want to skip ahead to the next section. This Methods section is divided into four parts, following the gray boxes in the figure above.
 
 [1. Acquisition](#1.-acquisition) \| [2. Classifier Training](#2.-classifier-training) \| [3. Segmentation](#3.-segmentation) \| [4. Analysis](#4.-analysis)
 
@@ -116,7 +116,7 @@ In the next steps, we start with the 8-bit binary image stack from above, with p
 
 16. Select the 8-bit binary inclusion image, and create a 16-bit labeled image. ImageJ: Plugins > MorphoLibJ > Binary Images > Connected Components Labeling. Options: connectivity = 6, 16-bit output.
 17. Measure morphological characteristics of the labeled particles. ImageJ: Plugins > MorphoLibJ > Analyze > Particle Analysis 3D. Save the resulting table in the default format, a tab separated text file. `scan01-lbl-morpho.tsv` is an example of this result.
-18. Report bounding box details for each particle, which will be used later to characterize orientation, and estimate the area projected into each cartesian plane. ImageJ: Plugins > MorphoLibJ > Analyze > Nounding Box 3D. As above, save in the default format. `scan01-lbl-bounds.tsv` is an example of this result.
+18. Report bounding box details for each particle, which will be used later to characterize orientation, and estimate the area projected into each Cartesian plane. ImageJ: Plugins > MorphoLibJ > Analyze > Bounding Box 3D. As above, save in the default format. `scan01-lbl-bounds.tsv` is an example of this result.
 
 #### 3.5 Visualizing morphological results
 
@@ -138,7 +138,7 @@ The previous sections document the process for distilling a 26GB scan into three
 
 #### 4.1 R for Data Analysis
 
-Our next task is to visualize these results, and create a mathematical model to represent the probabilistic and volumetric distribution of inclusons found in each scan. This will be completed with the R script [xct-process-imagej-results.R](xct-process-imagej-results.R). R is an open source programming language and software environment for statistical computing and graphics, and is quite useful for data analysis tasks such as this. [RStudio](https://www.rstudio.com/) is freely available for all computing platforms, and [R for Data Science](http://r4ds.had.co.nz/) is an excellent primer on this environment.
+Our next task is to visualize these results, and create a mathematical model to represent the probabilistic and volumetric distribution of inclusions found in each scan. This will be completed with the R script [xct-process-imagej-results.R](xct-process-imagej-results.R). R is an open source programming language and software environment for statistical computing and graphics, and is quite useful for data analysis tasks such as this. [RStudio](https://www.rstudio.com/) is freely available for all computing platforms, and [R for Data Science](http://r4ds.had.co.nz/) is an excellent primer on this environment.
 
 The [xct-process-imagej-results.R](xct-process-imagej-results.R) code is documented throughout, and some of the important steps are summarized here.
 
@@ -175,7 +175,7 @@ Next, a new data frame called `morpho` is created and filled with the results fr
 morpho <- read_tsv(paste0('./image-data/',baseName,'-lbl-morpho.tsv'),col_names=TRUE)
 ```
 
-Next, the bounding box data is read into a new data frame, and converted from pixel units to microns. Unnecessary columnds are discarded, and the micron denominated bounding box sizes are added to the `morpho` data frame.
+Next, the bounding box data is read into a new data frame, and converted from pixel units to microns. Unnecessary columns are discarded, and the micron denominated bounding box sizes are added to the `morpho` data frame.
 ```R
 bounds <- read_tsv(paste0('./image-data/',baseName,'-lbl-bounds.tsv'),col_names=TRUE) %>%
 mutate(xBox = (XMax-XMin)*umPerVoxel,

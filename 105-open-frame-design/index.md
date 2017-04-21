@@ -6,7 +6,7 @@
 
 ## Introduction
 
-Many nitinol medical components take the form of expandable patterned stuctures laser cut from tubing, including vascular stents, vena cava filters, neurovascular clot retreivers, and transcatheter heart valve frames. In this design example, we will extend methods described in [Open Stent Design](https://github.com/cbonsig/open-stent) to create an expandable frame similar in form to nitinol components used for transcatheter valves. This frame is expanded to a contoured diameter ranging from 28-40mm, and can be crimped to a profile of 10mm. A real medical component would have strict performance requirements for radial stiffness, fatigue durability, and crimped profile, for a range of expected clinical loading conditions. Fortunately for us, this example design is unconstrained by any of those concerns! It only needs to look cool, and hopefully teach us something about how to create similar structures that may be more useful.
+Many nitinol medical components take the form of expandable patterned structures laser cut from tubing, including vascular stents, vena cava filters, neurovascular clot retrievers, and transcatheter heart valve frames. In this design example, we will extend methods described in [Open Stent Design](https://github.com/cbonsig/open-stent) to create an expandable frame similar in form to nitinol components used for transcatheter valves. This frame is expanded to a contoured diameter ranging from 28-40mm, and can be crimped to a profile of 10mm. A real medical component would have strict performance requirements for radial stiffness, fatigue durability, and crimped profile, for a range of expected clinical loading conditions. Fortunately for us, this example design is unconstrained by any of those concerns! It only needs to look cool, and hopefully teach us something about how to create similar structures that may be more useful.
 ![photo](105-photo.jpg)
 
 This example assumes that the reader is familiar with parametric solid modeling using Solidworks. [Open Stent Design](https://github.com/cbonsig/open-stent) provides much more step-by-step detail for creating a similar model, and [Generic IVC Filter](https://github.com/kenaycock/Generic-IVC-Filter) applies these methods to a different type of design. The native Solidworks 2016 files for this example are available from this GitHub repository, and some highlights are shown below.
@@ -49,7 +49,7 @@ In Solidworks, it is possible to create multiple *configurations* of a single pa
 
 ## Single strut
 
-A final configuration is created to isolate a single strut from the wrapped model. This geometry is exported in [ACIS format](https://en.wikipedia.org/wiki/ACIS) (with a .SAT extension) to be improted into Abaqus for partitioning, meshing, and finite element analysis.
+A final configuration is created to isolate a single strut from the wrapped model. This geometry is exported in [ACIS format](https://en.wikipedia.org/wiki/ACIS) (with a .SAT extension) to be imported into Abaqus for partitioning, meshing, and finite element analysis.
 ![single-strut](105-single-row.png)
 
 ## Next
