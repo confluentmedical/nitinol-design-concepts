@@ -25,7 +25,7 @@ This study considers standard purity (SE508) and high purity (SE508ELI) material
 
 The flowchart above shows an overview of the method used to scan and analyze three samples of material. The primary steps are outlined in gray boxes and described below.
 
-This guide includes quite a bit of detail, hopefully enough to recreate the results, or repuropse for similar analysis. If you are not acquiring CT datasets yourself, you might want to skip ahead to the next sectioon. This Methods section is divided into four parts, following the gray boxes in the figure above.
+This guide includes quite a bit of detail, hopefully enough to recreate the results, or repurpose for similar analysis. If you are not acquiring CT datasets yourself, you might want to skip ahead to the next sectioon. This Methods section is divided into four parts, following the gray boxes in the figure above.
 
 [1. Acquisition](#1.-acquisition) \| [2. Classifier Training](#2.-classifier-training) \| [3. Segmentation](#3.-segmentation) \| [4. Analysis](#4.-analysis)
 
