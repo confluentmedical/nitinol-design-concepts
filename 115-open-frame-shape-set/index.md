@@ -60,7 +60,7 @@ Each step of the forming analysis is driven by contact interactions. Contact pai
 
 ## Boundary Conditions
 
-As with the interactions, boundary conditions are created or modified for each step of the analysis. It is important to remember that the material property definition includes a reference temperature, and the mechanical properties shift according to the model temperature relative to that reference temperature. Therefore, the initial temperature of the model must be defined as a "predefined field". In this case, we apply a temperature of 22 degrees C, and threfore stresses correspond to those expected at room temperature.
+As with the interactions, boundary conditions are created or modified for each step of the analysis. It is important to remember that the material property definition includes a reference temperature, and the mechanical properties shift according to the model temperature relative to that reference temperature. Therefore, the initial temperature of the model must be defined as a "predefined field". In this case, we apply a temperature of 22 degrees C, and therefore stresses correspond to those expected at room temperature.
 ![boundary-condition-manager](115-bc-manager.png)
 ![temperature](115-temperature.png)
 
