@@ -12,11 +12,11 @@ Superelastic nitinol has remarkable abilities to transform in shape, from large 
 
 In the most broad terms, any fatigue simulation includes three essential components:
 
-1. **Geometry**: The shape and form of the component of interest. We typically start a nitinol fatigue simulation with geometry that represents the expanded shape of the component, with finished feature dimensions. This example will use nominal dimensions; tolerance variations are an important consideration that will be excluded from this example. We will strart this simulation with the expanded geometry created in [[NDC-115 Open Frame Shape Set](../115-open-frame-shape-set).
+1. **Geometry**: The shape and form of the component of interest. We typically start a nitinol fatigue simulation with geometry that represents the expanded shape of the component, with finished feature dimensions. This example will use nominal dimensions; tolerance variations are an important consideration that will be excluded from this example. We will start this simulation with the expanded geometry created in [NDC-115 Open Frame Shape Set](../115-open-frame-shape-set).
 
 2. **Material**: Material properties and constituitive model. Here will will use the tensile properties described in [NDC-110 Material Characterization](../110-material-characterization), derived from the same tubing material from which the component is fabricated, subjected to the same heat treatments as the formed component as well. This simulation uses the superelasticity constituitive model that has been included with Abaqus for many years.
 
-3. **Boundary Conditions**: This is often the most challenging of the three components, as realistic biomechanical boundary conditions can be difficult to know with confidence. Usually there are several differnt loading modes to consider (e.g. cardiovascular pulsatile pressure changes, bending or axial deformation related to the gait cycle, crushing related to the respiratory cycle). For this example, we will apply a single fictional radial deformation cycle, just to show how the process works.
+3. **Boundary Conditions**: This is often the most challenging of the three components, as realistic biomechanical boundary conditions can be difficult to know with confidence. Usually there are several different loading modes to consider (e.g. cardiovascular pulsatile pressure changes, bending or axial deformation related to the gait cycle, crushing related to the respiratory cycle). For this example, we will apply a single fictional radial deformation cycle, just to show how the process works.
 
 ## Geometry
 
@@ -30,7 +30,7 @@ In this example, we will constrain the expanded component to a small diameter, t
 
 ![chamber-sketch](120-chamber-sketch.png)
 
-We also use Abaqus CAE to create a cyndrical surface to constrain to frame from its large to small configuration, another to contact the inner surface at the minimimum constrained diameter. Instances of all parts are created in an assembly as shown below.
+We also use Abaqus CAE to create a cyndrical surface to constrain the frame from its large to small configuration, and another to contact the inner surface at the minimimum constrained diameter. Instances of all parts are created in an assembly as shown below.
 
 ![assembly](120-assembly.png)
 
@@ -51,7 +51,7 @@ Contact interactions are created and modified as necessary at each step in the s
 ![interaction](120-interaction.png)
 ![edit-interaction](120-edit-interaction.png)
 
-Boundary condary conditions are applied and modified as necessary expand and contract the driving cylinders to crimp and deploy the stent. The diameter of the chamber is cycled between "systole" and "diastole" three times, allowing shakedown effects to stabilize.
+Boundary conditions are applied and modified as necessary to expand and contract the driving cylinders to crimp and deploy the stent. The diameter of the chamber is cycled between "systole" and "diastole" three times, allowing shakedown effects to stabilize.
 
 ![boundary-conditions](120-bc.png)
 
@@ -61,7 +61,7 @@ These simulations can quickly generate many gigabytes of results! We try to keep
 
 ## Visualizing Results
 
-This simulation was required a total of about 2.7 CPU-hours on our system, and was completed in under 30 minutes of actual time using multiple CPU cores. The output database (65MB) can be downloaded from the 120-open-frame-fatigue folder at [nitinol.app.box.com/v/nitinol-design-concepts](https://nitinol.box.com/v/nitinol-design-concepts), and requires Abaqus 2017 CAE or Viwewer to post-process.
+This simulation was required a total of about 2.7 CPU-hours on our system, and was completed in under 30 minutes of actual time using multiple CPU cores. The output database (65MB) can be downloaded from the 120-open-frame-fatigue folder at [nitinol.app.box.com/v/nitinol-design-concepts](https://nitinol.box.com/v/nitinol-design-concepts), and requires Abaqus 2017 CAE or Viewer to post-process.
 
 We are only interested in visualizing the nitinol frame component, so we will first create a new display group. Select the nitinol part instance, and use this to replace the current selection.
 
@@ -98,7 +98,7 @@ Finally, we will want to export the mean strain and strain amplitude values. To 
 ![report-field-output-1](120-report-field-output-1.png)
 ![report-field-output-2](120-report-field-output-2.png)
 
-The resulting report file, [open-frame-fatigue-v25mm-9pct.rpt](open-frame-fatigue-v25mm-9pct.rpt) is a table of mean strain ans strain amplitude values at every integration point. The C3D8R elements used in this simulation have a single integration point per element, so this file has one row per element. 
+The resulting report file, [open-frame-fatigue-v25mm-9pct.rpt](open-frame-fatigue-v25mm-9pct.rpt) is a table of mean strain and strain amplitude values at every integration point. The C3D8R elements used in this simulation have a single integration point per element, so this file has one row per element. 
 
 ## Point Cloud
 
