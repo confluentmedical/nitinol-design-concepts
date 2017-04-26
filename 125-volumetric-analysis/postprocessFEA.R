@@ -221,7 +221,7 @@ p3 <- ggplot(data=df) +
   scale_x_continuous(limits = c(NA,limitEM) , labels = scales::percent) +
   scale_y_continuous(limits = c(NA,limitSWT) ) +
   xlab(expression(epsilon["m"])) +
-  ylab(expression(sigma["a"]%.%epsilon["m"])) +
+  ylab(expression(sigma["max"]%.%epsilon["a"])) +
   ggtitle('Smith-Watson-Topper point cloud',baseName)
 plot(p3)
 savePdfPng('p03')
@@ -400,7 +400,7 @@ savePdfPng('p08')
 # histogram of phase volume, by SWT
 p7 <- ggplot(df,aes(x=SWT, weight = ldV, fill=phase)) +
   geom_histogram(bins = 30) +
-  xlab(expression(sigma["a"]%.%epsilon["m"])) +
+  xlab(expression(sigma["max"]%.%epsilon["a"])) +
   ylab(expression(mm^3)) +
   scale_y_sqrt() +
   scale_x_continuous(limits = c(0,limitSWT)) +
