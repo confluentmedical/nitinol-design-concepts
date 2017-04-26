@@ -38,16 +38,17 @@ savePdfPng <- function(name){
 # Setup -----------------------------------------------------------------------
 
 # strain axis limits. replace NA with desired values.
-limitEM <- 0.015
-limitEA <- 0.015
-limitSWT <- 600
+limitEM <- NA
+limitEA <- NA
+limitSWT <- NA
 
 # stress axis limits. replace NA with desired values.
-limitSM <- NA # 500
+limitSM <- NA
 limitSA <- NA
 
-# results are for one apex of 12 total
-symmetry <- 12
+# symmetry factor. if the FEA model represents 1/4 of the full component,
+# sett this to 4. all volumes are multiplied by this value.
+symmetry <- 1
 
 # Read files ------------------------------------------------------------------
 
@@ -62,7 +63,8 @@ files <- list.files(path = "./", pattern = "\\.ivol.csv$",
 resultsFile <- files[fileSelect]
 baseName <- basename(resultsFile)
 baseName <- substring(baseName,1,nchar(baseName)-9)
-ident <- substring(baseName,17,24)
+#ident <- substring(baseName,17,24)
+ident <- baseName
 
 # create folders for results if they do not already exist
 dir.create('pdf', showWarnings = FALSE)
