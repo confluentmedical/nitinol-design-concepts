@@ -1,5 +1,7 @@
 # point-cloud.R
 
+# if you are starting with a new R installation, install with the following command.
+#install.packages('tidyverse')
 library(tidyverse) # http://r4ds.had.co.nz
 
 # set working directory to location of this script
