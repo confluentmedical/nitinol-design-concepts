@@ -199,7 +199,7 @@ p1 <- ggplot(data=df) +
   scale_y_continuous(limits = c(0,limitEA), labels = scales::percent) +
   xlab(expression(epsilon["m"])) +
   ylab(expression(epsilon["a"])) +
-  ggtitle('p1 flip negative strain values to positive axis',baseName)
+  ggtitle('Transform to absolute value, set EA to zero for points in compression',baseName)
 plot(p1)
 savePdfPng('p01')
 
@@ -222,7 +222,7 @@ p3 <- ggplot(data=df) +
   scale_y_continuous(limits = c(NA,limitSWT) ) +
   xlab(expression(epsilon["m"])) +
   ylab(expression(sigma["a"]%.%epsilon["m"])) +
-  ggtitle('p3 smith-watson-topper: tensile stress amplitude * max stress vs tensile mean stress',baseName)
+  ggtitle('Smith-Watson-Topper point cloud',baseName)
 plot(p3)
 savePdfPng('p03')
 
@@ -356,7 +356,7 @@ p5 = p5 +
   scale_y_continuous(limits = c(0,limitEA), labels = scales::percent) +
   xlab(expression(epsilon["m"])) +
   ylab(expression(epsilon["a"])) +
-  ggtitle('p5 point cloud, highlighting phase of each element during cycle',
+  ggtitle('Point cloud highlighting phase of each element during cycle',
           baseName)
 plot(p5)
 savePdfPng('p05')
@@ -375,7 +375,7 @@ p6 = p6 +
   scale_y_continuous(limits = c(0,limitEA), labels = scales::percent) +
   xlab(expression(epsilon["m"])) +
   ylab(expression(epsilon["a"])) +
-  ggtitle('p6 point cloud, isolating points alternating A-M during cycle',
+  ggtitle('Point cloud isolating points alternating A-M during cycle',
           baseName)
 plot(p6)
 savePdfPng('p06')
@@ -393,7 +393,7 @@ p8 <- ggplot(df,aes(x=cycEA, weight = ldV, fill=phase)) +
   ylab(expression(mm^3)) +
   scale_y_sqrt() +
   scale_x_continuous(limits = c(0,limitEA) , labels = scales::percent) +
-  ggtitle('p8 volume of material in each phase, by strain amplitude',baseName)
+  ggtitle('Volume of material in each phase, by strain amplitude',baseName)
 plot(p8)
 savePdfPng('p08')
 
@@ -404,7 +404,7 @@ p7 <- ggplot(df,aes(x=SWT, weight = ldV, fill=phase)) +
   ylab(expression(mm^3)) +
   scale_y_sqrt() +
   scale_x_continuous(limits = c(0,limitSWT)) +
-  ggtitle('p7 volume of material in each phase, by SWT',baseName)
+  ggtitle('Volume of material in each phase, by SWT',baseName)
 plot(p7)
 savePdfPng('p07')
 
