@@ -14,7 +14,7 @@
 
 In [Open Frame Fatigue Analysis](../120-open-frame-fatigue), we created a finite element analysis simulation of crimping, deployment, and fatigue cycling of a generic nitinol frame component. If you followed along using Abaqus, you have already created the 65MB output database for this simulation. If not, the file can be downloaded from the 120-open-frame-fatigue folder at [nitinol.app.box.com/v/nitinol-design-concepts](https://nitinol.box.com/v/nitinol-design-concepts). The scripts in the following section will be used to process this ODB.
 
-## ivolResults.py
+## Extract results with ivolResults.py
 
 [ivolResults.py](ivolResults.004.py) is a Python script that can be used to extract useful information from the output database. Invoke the script as follows:
 
@@ -129,3 +129,11 @@ el, ip, cycEM, cycEA, cycTau, cycSM, cycSA, preE, preS, preP, preM, preV, ldE, l
 3, 1,0.0381633, 0.00586188, 0.00426864, 372.964, 122.887, 0.0820324, 1007.88, -340.392, 1, 0.00106124, 0.0439823, 0.0337849, 495.751, -198.198, 0.698028, 0.0010536, 0.0323587, 0.0253476, 250.276, -101.539, 0.587902, 0.00105064, 79.3104, 29.0659, 486.219, 43.1876, 17.7542, 243.674, -0.0151119, -0.0223899, 0.0427704, -0.0115536, -0.0115536, -0.0115536
 ```
 This Python script does everything that we did manually in [Open Frame Fatigue Analysis](../120-open-frame-fatigue), and quite a bit more. You should read through the [ivolResults.py](./ivolResults.004.py) code and comments to see how it works.
+
+## Process results with postprocessFEA.R
+
+If we were only interested in creating a point cloud, we could use a spreadsheet or a simple script like [point-cloud.R](../120-open-frame-fatigue/point-cloud.R). But now we have about 30 columns of results for thousands of integration points, and we're going to need some bigger guns. The [postprocessFEA.R](postprocessFEA.R) script is designed for this purpose. If you're new to R, it is an open-source statistical computing environment, with great tools for analyzing and processing large data sets. Download a copy from [RStudio](https://www.rstudio.com/), and learn more at [R for Data Science](http://r4ds.had.co.nz/).
+
+If you are starting up R for the first time, you will need to install some packages before running postprocessFEA.R](postprocessFEA.R). Using the tool bar menu, select Tools > Install Packages. Type in `tidyverse, forcats` in the Packages field, and click install. 
+
+Create a new project in RStudio and select New Directory. Copy [postprocessFEA.R](postprocessFEA.R) into the newly created directory, and open it in RStudio (File > Open File). Copy [open-frame-fatigue-v25mm-9pct.ivol.csv](./open-frame-fatigue-v25mm-9pct.ivol.csv) to that same directory. To run the R script, click the "Source" button at the top right of the code window. In a few seconds, it will create and save several plots in the [./png](./pdf) and [./pdf](./pdf) folders, and a summary of output information in the [./out](./out) folder.
