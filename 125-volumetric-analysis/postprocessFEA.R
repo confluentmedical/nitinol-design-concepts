@@ -164,7 +164,7 @@ p0 <- ggplot(data=df) +
   scale_color_brewer(palette="Set1") +
   xlab(expression(epsilon["m"])) +
   ylab(expression(epsilon["a"])) +
-  ggtitle('p0 raw point cloud',baseName)
+  ggtitle('Raw point cloud, highlighting points in hydrostatic tension/compression',baseName)
 plot(p0)
 savePdfPng('p00')
 
