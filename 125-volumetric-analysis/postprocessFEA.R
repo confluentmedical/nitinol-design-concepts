@@ -46,9 +46,9 @@ limitSWT <- NA
 limitSM <- NA
 limitSA <- NA
 
-# symmetry factor. if the FEA model represents 1/4 of the full component,
-# sett this to 4. all volumes are multiplied by this value.
-symmetry <- 1
+# symmetry factor. if the FEA model represents 1/16 of the full component,
+# sett this to 16. all volumes are multiplied by this value.
+symmetry <- 16
 
 # Read files ------------------------------------------------------------------
 
