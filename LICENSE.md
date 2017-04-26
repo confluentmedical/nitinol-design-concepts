@@ -2,7 +2,7 @@
 
 The writing and images of this project, including without limitation files with extensions .md, .png, .pdf, .jpg, are licensed under the Creative Commons Attribution 4.0 International Public license (summarized by [CC-BY-ND-4.0](https://creativecommons.org/licenses/by-nd/4.0/), and written in detail below). The source code of this project, including without limitation files with extensions .inp, .py, and .R, is licensed under the Apache 2.0 license, as written below.
 
-## Apache License
+# Apache License
 
 _Version 2.0, January 2004_  
 _&lt;<http://www.apache.org/licenses/>&gt;_
@@ -171,10 +171,7 @@ incurred by, or claims asserted against, such Contributor by reason of your
 accepting any such warranty or additional liability.
 
 
-
-## Creative Commons Attribution 4.0 International Public License
-
-# Attribution-NoDerivatives 4.0 International
+# Creative Commons Attribution-NoDerivatives 4.0 International
 
 Creative Commons Corporation (“Creative Commons”) is not a law firm and does not provide legal services or legal advice. Distribution of Creative Commons public licenses does not create a lawyer-client or other relationship. Creative Commons makes its licenses and related information available on an “as-is” basis. Creative Commons gives no warranties regarding its licenses, any material licensed under their terms and conditions, or any related information. Creative Commons disclaims all liability for damages resulting from their use to the fullest extent possible.
 
