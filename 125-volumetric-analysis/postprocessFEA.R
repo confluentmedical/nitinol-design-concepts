@@ -20,6 +20,7 @@ library(forcats) # http://r4ds.had.co.nz/factors.html
 
 # index number of the file to process
 # manually change this from 1 to (qty of files) and re-source this script
+# file must end with ".ivol.csv"
 fileSelect <- 1
 
 # Helper functions  -----------------------------------------------------------
@@ -50,8 +51,11 @@ symmetry <- 12
 
 # Read files ------------------------------------------------------------------
 
+# set working directory to location of this script
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) 
+
 # create a list of files in the specified directory
-files <- list.files(path = "./", 
+files <- list.files(path = "./", pattern = "\\.ivol.csv$",
                     full.names = TRUE, recursive = FALSE)
 
 # read selected file
