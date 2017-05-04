@@ -5,23 +5,22 @@ Nitinol Devices and Components was founded in 1991, and has always been a leader
 
 GitHub is a collaboration platform that is widely used for software development. You don't need to know how it works to read or use the content here - just click on the links below! We welcome your feedback and contributions. See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 
-The content here includes a deeper dive into topic covered in our Nitinol University courses, as well as research supporting scientific presentation and publications. [The Basics](#the-basics) provides an introduction to design and simulation of a nitinol component, following methods that are commonly applied in the medical device industry. [Advanced Topics](#advanced-topics) ventures into some more speculative territory, including new and emerging approaches that we find interesting. 
+The content here includes a deeper dive into topic covered in our Nitinol University courses, as well as research supporting scientific presentation and publications. [Design Tutorial](#design-tutorial) provides an introduction to design and simulation of a nitinol component, following methods that are commonly applied in the medical device industry. [Advanced Topics](#advanced-topics) ventures into some more speculative territory, including new and emerging approaches that we find interesting. 
 
 
-## The Basics
+## Design Tutorial
 
 This first series follows each step in the design and analysis of a realistic (but non-proprietary) laser cut nitinol component, from designing the geometry using Solidworks to shape setting and fatigue cycling using Abaqus.
 
-* [NDC-105: Design](105-open-frame-design) \| Create a 3D model of a laser cut Open Frame component using Solidworks.
-* [NDC-110: Mechanical Properties](110-material-characterization) \| Perform tensile testing to characterize mechanical properties for simulation.
-* [NDC-115: Shape Setting](115-open-frame-shape-set) \| Expand the laser cut component into a complex expanded shape using Abaqus finite element analysis.
-* [NDC-120: Fatigue Simulation](120-open-frame-fatigue) \| Apply fatigue loading conditions using Abaqus.
-* NDC-125: Fatigue Point Cloud, manual and scripted
+* [Design](105-open-frame-design) \| Create a 3D model of a laser cut Open Frame component using Solidworks.
+* [Mechanical Properties](110-material-characterization) \| Perform tensile testing to characterize mechanical properties for simulation.
+* [Shape Setting](115-open-frame-shape-set) \| Expand the laser cut component into a complex expanded shape using Abaqus finite element analysis.
+* [Fatigue Simulation](120-open-frame-fatigue) \| Apply fatigue loading conditions using Abaqus.
 
 ## Advanced Topics
 
-* [NDC-205: Advancing Nitinol Fatigue Prediction](205-advancing-fatigue-prediction) \| A review of present and future approaches to lifetime prediction of superelastic nitinol.
-* [NDC-210: Volumetric characterization of inclusions from submicron CT scans](210-xct-methods) \| submicron xray tomography: methods and results
-* advanced scripting and volume weighted simulation results
+* [Volumetric FEA Postprocessing](125-volumetric-analysis) \| Advanced scripting to extract volumetric stress and strain data from an Abaqus output database.
+* [Advancing Nitinol Fatigue Prediction](205-advancing-fatigue-prediction) \| A review of present and future approaches to lifetime prediction of superelastic nitinol.
+* [Volumetric characterization of inclusions from submicron CT scans](210-xct-methods) \| submicron xray tomography: methods and results
 * probabilistic durability prediction using Monte-Carlo methods
 
