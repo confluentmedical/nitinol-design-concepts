@@ -39,7 +39,7 @@ library(readr)
 # number of montecarlo cases to run
 # 10 runs in <30 seconds, 100 in < 1 hour, 1000 < 1 day
 # (laptop class hardware)
-monteCarloRuns <- 500
+monteCarloRuns <- 10
 
 # material selection
 # typically, change this then re-source the script
@@ -317,8 +317,8 @@ for(m in 1:monteCarloRuns){
     out.23 <- signif(df$xzD[dK22.row],4)
     out.24 <- signif(df$dS22[dK22.row],4)
     out.25 <- signif(df$dK22[dK22.row],4)
-    out.26 <- signif(df$k11[dK11.row],4)    
-    out.27 <- signif(df$k11[k11.row],4)   
+    out.26 <- signif(df$k22[dK22.row],4)    
+    out.27 <- signif(df$k22[k22.row],4)   
     
     # repeat for 33 (axial) direction
     
@@ -327,8 +327,8 @@ for(m in 1:monteCarloRuns){
     out.33 <- signif(df$xyD[dK33.row],4)
     out.34 <- signif(df$dS33[dK33.row],4)
     out.35 <- signif(df$dK33[dK33.row],4)
-    out.36 <- signif(df$k11[dK11.row],4) 
-    out.37 <- signif(df$k11[k11.row],4)
+    out.36 <- signif(df$k33[dK33.row],4) 
+    out.37 <- signif(df$k33[k33.row],4)
     
     # assemble line to write to output fi;e
     
