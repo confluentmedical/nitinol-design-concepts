@@ -26,6 +26,10 @@
 
 # Clear environment and load packages -----------------------------------------
 
+# install required packages if necessary 
+# install.packages('tidyverse')
+# install.packages('rstudioapi')
+
 rm(list=ls())
 library(dplyr)           # http://r4ds.had.co.nz/
 library(readr)
@@ -98,6 +102,11 @@ qgumbel <- function(p, mu, s){ # quantile function
 # file and directory management -----------------------------------------------
 
 # set working directory to location of this script
+# note: this is problematic because in RStudio, the default working directory
+# is the project folder, and this is one level down (so we will suffer from
+# file-not-found errors if we don't fix this). There is not an easy fix.
+# this approach requires the rstudioapi package. see also:
+# http://stackoverflow.com/questions/13672720/r-command-for-setting-working-directory-to-source-file-location
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) 
 
 # create folders for results if they do not already exist
