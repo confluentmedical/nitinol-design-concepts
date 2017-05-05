@@ -43,8 +43,9 @@ monteCarloRuns <- 10
 material <- 'eli' # se508 or eli
 
 # set random numer seed to made results repeatable
-# disable the next line to get randomized results with every run
-#set.seed(42)
+# DISABLE THIS NEXT LINE TO GET RANDOM RESULTS WITH EACH RUN
+# (it is enabled here only to make the output reproducible)
+set.seed(42)
 
 # two character prefix to filter files in inputPath
 # symmetry factor for thisCode models
@@ -206,6 +207,10 @@ roundProb <- function(x){
 
 for(m in 1:monteCarloRuns){
   for(i in seq_along(dfList)){
+
+    # for each row (integration point), convert the theoretical (floating point)
+    # number of inclusions into an integer number, using the probabilistic rounding
+    # function defined above.
     df <- dfList[[i]]$df %>% 
       rowwise() %>%
       mutate(iN = roundProb(iProb)
@@ -282,7 +287,7 @@ for(m in 1:monteCarloRuns){
     out.04 <- signif(median(df$dK33),4)          # median dK in axial orientation
     out.05 <- signif(quantile(df$dK33,0.99),4)   # 99th percentile dK in axial orientation
     out.06 <- signif(median(df$k33),4)           # median K in axial orientation
-    out.07 <- signif(quantile(df$k33),4)         # 99th percentile K in axial orientation
+    out.07 <- signif(quantile(df$k33,0.99),4)    # 99th percentile K in axial orientation
 
     # for the row (int pt) with the most critical dK in the 11 (radial) direction.
     # output the corresponding strain and stress amplitude, defect size, dK, and K
@@ -331,7 +336,7 @@ for(m in 1:monteCarloRuns){
     # additional montecarlo runs; if this is the intent, set.seed() should
     # be commented out, otherwise the results will be the same every time.
     write_lines(lineToWrite, path = logPath, append = TRUE)
-    
+
   }
 }
 
