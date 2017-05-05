@@ -39,7 +39,7 @@ library(readr)
 # number of montecarlo cases to run
 # 10 runs in <30 seconds, 100 in < 1 hour, 1000 < 1 day
 # (laptop class hardware)
-monteCarloRuns <- 10
+monteCarloRuns <- 500
 
 # material selection
 # typically, change this then re-source the script
