@@ -3,9 +3,9 @@ PREVIEW: Nitinol Design Concepts
 
 **THIS IS A PREVIEW SITE.** _Welcome and thanks to invited previewers! If you have found this site by accident, please note that content is still being drafted and reviewed, so proceed with caution._
 
-This project includes tutorials and examples related to design and simulation of superelastic nitinol components. This content is provided by [Confluent Medical Technologies](http://confluentmedical.com) as a resource to the industry and community. If you want to know more about the background, or how you can contribute, read [about this project](about.md).
+This project includes tutorials and examples related to design and simulation of superelastic nitinol components. This content is provided by [Confluent Medical Technologies](http://confluentmedical.com) as a resource for the industry and community. If you want to know more about the background, or how you can contribute, read [about this project](about.md).
 
-The material here includes a deeper dive into topic covered in our Nitinol University courses, as well as research supporting scientific presentation and publications. [Design Tutorial](#design-tutorial) provides an introduction to design and simulation of a nitinol component, following methods that are commonly applied in the medical device industry. [Advanced Topics](#advanced-topics) ventures into some more speculative territory, including new and emerging approaches that we find interesting. 
+The material here includes a deeper dive into topic covered in our Nitinol University courses, as well as research supporting scientific presentations and publications. The [Design Tutorial](#design-tutorial) series provides an introduction to design and simulation of a nitinol component, following methods that are commonly applied in the medical device industry. The [Advanced Topics](#advanced-topics) series ventures into some more speculative territory, including new and emerging approaches that we find interesting. 
 
 ## Design Tutorial
 
@@ -18,7 +18,7 @@ This first series follows each step in the design and analysis of a realistic (b
 
 ## Advanced Topics
 
-Building on the foundation of the example design and simulation material above, these next topic explore new methodologies and analysis approaches that we find interesting.
+Building on the foundation of the example design and simulation material above, these next topics explore new methodologies and analysis approaches that we are currently researching. This is work in progress, so proceed with caution!
 
 * [Volumetric FEA Postprocessing](125-volumetric-analysis) \| Advanced scripting to extract volumetric stress and strain data from an Abaqus output database.
 * [Advancing Nitinol Fatigue Prediction](205-advancing-fatigue-prediction) \| A review of present and future approaches to lifetime prediction of superelastic nitinol.
