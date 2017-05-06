@@ -137,7 +137,7 @@ Note also that our field output report provided us with the *absolute* maximum p
 
 ## Credits
 
-This model was developed by Karthikeyan Senthilnathan, [@karthikSenthi](https://github.com/karthikSenthi), of Confluent Medical Technologies.
+This model was developed by Karthikeyan Senthilnathan, [@karthikSenthi](https://github.com/karthikSenthi), of Confluent Medical Technologies. Learn more about fatigue properties of nitinol from Alan Pelton's 2011 [Nitinol Fatigue: A Review of Microstructures and Mechanisms](https://nitinol.com/wp-content/uploads/references/Pelton-2011-NiTi-Fatigue-Microstructures-and-Mechanisms1.pdf), and application to stents in Pelton, Schroeder, Mitchell, Gong, and Barney's 2008 [Fatigue and durability of Nitinol stents](https://nitinol.com/wp-content/uploads/references/144_Pelton_Schroeder_Mitchell_Gong_Barney_Robertson_2008.pdf), both available from the Confluent reference library at [nitinol.com](nitinol.com). Dordoni, Petrini, Wu, Migliavacca, Dubini, and Pennati also published a detailed stent simulation example in the open access 2015 [Computational Modeling to Predict Fatigue Behavior of NiTi Stents: What Do We Need?](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4493513/pdf/jfb-06-00299.pdf).
 
 
 
