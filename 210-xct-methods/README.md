@@ -282,6 +282,11 @@ A new data frame is created to summarize the results for each condition, includi
 
 This example documents feasible methods for distilling volumetric computed tomography image data into a compact mathematical "fingerprint", describing  inclusion density, distribution, size, and orientation in just a few numbers. The next topic in this series, [NDC-215](215-xct-fea), will explore methods for improved fatigue durability prediction, combining this information with results of finite element analysis.
 
+## Credits
+
+This work was a collaboration of Craig Bonsignore and Ali Shamimi of Confluent Medical Technologies. It builds upon concepts first presented by Payman Saffari at SMST-2013 [Strain Amplitude Volume Fraction Method for Evaluation of Fatigue Durability](https://nitinol.com/wp-content/uploads/references/smst_volume_fraction_2013-05-23.pdf). This approach has also been strongly influenced by the work of friends and colleagues Robertson, Launey, Shelley, Ong, Vien, Senthilnathan, Saffari, Schlegel, and Pelton in [A statistical approach to understand the role of inclusions on the fatigue resistance of superelastic Nitinol wire and tubing](https://nitinol.com/wp-content/uploads/references/A-statistical-approach-to-understand-the-role-of-inclusions-on-the-fatigue-resistance-of-superelastic-Nitinol-wire-and-tubing.pdf). Urbano, Cadelli, Sczerzenie, Luccarelli, Beretta, and Coda's 2015 [Inclusions Size-based Fatigue Life Prediction Model of NiTi Alloy for Biomedical Applications](https://link.springer.com/article/10.1007/s40830-015-0016-1) is also an important reference related to this topic.
+
+
 ## Acknowledgment
 
 Part of this work was performed at the Stanford Nano Shared Facilities (SNSF)  using the ZEISS Xradia 250 Versa, acquired with support from the NSF under award [CMMI-1532224](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1532224). SNSF is supported by the NSF as part of the National Nanotechnology Coordinated Infrastructure under award [ECCS-1542152](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1542152).
