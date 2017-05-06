@@ -39,12 +39,12 @@ library(readr)
 # number of montecarlo cases to run
 # 10 runs in <30 seconds, 100 in < 1 hour, 1000 < 1 day
 # (laptop class hardware)
-monteCarloRuns <- 500
+monteCarloRuns <- 10
 
 # material selection
 # typically, change this then re-source the script
 # to write results for both materials into one file
-material <- 'se508' # se508 or eli
+material <- 'eli' # se508 or eli
 
 # set random numer seed to made results repeatable
 # DISABLE THIS NEXT LINE TO GET RANDOM RESULTS WITH EACH RUN
