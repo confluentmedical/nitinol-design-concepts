@@ -31,7 +31,7 @@
 # install.packages('rstudioapi')
 
 rm(list=ls())
-library(dplyr)           # http://r4ds.had.co.nz/
+library(tidyverse)           # http://r4ds.had.co.nz/
 library(readr)
 
 # settings --------------------------------------------------------------------
@@ -348,6 +348,32 @@ for(m in 1:monteCarloRuns){
 
   }
 }
+
+# luckiness plot: dS vs defect size at every point
+# large defect + high cyclic stress = unlucky
+# save results as a PNG
+fortune.cloud <- ggplot(data = df, aes(x=xyD,y=dS33)) +
+  geom_point(alpha = 1/5) +
+  xlab(expression(paste('d (',mu,`m)`))) +
+  ylab(expression(paste(Delta,sigma,` (MPa)`))) +
+  xlim(0, 30) +
+  ggtitle('fortune cloud: cyclic stress vs. defect (inclusion) size',
+          paste('single monte-carlo run,',material))
+plot(fortune.cloud)
+ggsave(paste0('fortune.cloud.',material,'.png'))
+
+# create a stress intensity factor point cloud for the last monte-carlo
+# case considered, and save results as a PNG
+k.cloud <- ggplot(data = df, aes(x=k33,y=dK33)) +
+  geom_point(alpha = 1/5) +
+  xlab(expression(paste('K',` (MPa`,sqrt(m),')'))) +
+  ylab(expression(paste(Delta,'K',` (MPa`,sqrt(m),')'))) +
+  xlim(0, 3.0) +
+  ylim(0, 1.5) +
+  ggtitle('stress intensity factor point cloud',
+          paste('single monte-carlo run,',material))
+plot(k.cloud)
+ggsave(paste0('kcloud.',material,'.png'))
 
 # thoughts --------------------------------------------------------------------
 
