@@ -32,3 +32,5 @@ Confluent does not require you to assign the copyright of your contributions, yo
 
 If appropriate, include the Apache 2.0 License summary at the top of each file along with the copyright info. If you are adding a new file that you wrote, include your name in the copyright notice in the license summary at the top of the file.
 
+Return to [front page](/nitinol-design-concepts/).
+
