@@ -106,6 +106,9 @@ Typically, material purity is measured and reported in terms of mass percentages
 
 Computational models routinely report values such as stress and strain, but can also report the volume of material associated with the stress and strain at each integration point. The analyst can also establish one or more strain threshold values, and by considering the connectivity of associated elements, calculate the location, volume, and shape of each critical strain region exceeding the specified threshold. We have developed a Python script to perform these calculations [23] and some example results are shown in Figure 7. With this approach, we can calculate a volumetric distribution of critical strain regions as required by the second part of the above hypothesis. 
 
+![figure 7](figs/regions.png)
+**Figure 7.** *Single strut critical strain regions exceeding a strain amplitude threshold of 0.4% in a diamond surrogate strut, using a Python script to analyze the results of an Abaqus computational simulation[23].*
+
 ### All fatigue fractures originate at PVA’s
 
 While this is an extreme statement, reports from the literature and our own experience evaluating fatigue fracture surfaces suggest that this assumption is usually true.
@@ -124,7 +127,13 @@ Now, recognizing that the volume fraction of particles and critical regions are 
 
 The volumetric hazard probability H incorporates information about material purity, geometry, and loading conditions. It can be expressed in terms of a percentage, or a parts-per-million (PPM) hazard rate, as commonly used in reliability statistics. This measure is therefore well suited to provide the analyst quantitative prediction for the influence of material purity on component durability for a given loading condition.
 
+![figure 8](figs/critical-volumes.png)
+**Figure 8.** *Example component subjected to 9% cyclic diameter fatigue condition, highlighting a total of 512 critical strain regions exceeding a strain amplitude threshold of 0.4%.*
+
 Table I provides an example use case for this approach, using fabricated but realistic data for a nitinol component made from standard vs. high purity material. The material values (Eq. 1-4) are estimated based on preliminary scans of standard purity and high purity nitinol tubing, considering only inclusions having a volume of 8 um<sup>3</sup> or more. The component values (Eq 5-8) are taken from a laser cut nitinol component pictured in Figure 8. This component is fabricated from a 60mm length of 8.0mm x 7.0mm tubing, expanded to 28mm in diameter, and subjected to a displacement controlled fatigue cycle imposing and releasing a 9% diameter reduction. The total volume of material from which the component is fabricated V<sub>t</sub><sup>c</sup> is the tubing cross section (pi*((8<sup>2</sup>-7<sup>2</sup>)/4)mm<sup>2</sup> multiplied by the length of 60mm. The number of critical regions N^c and total volume of these regions V<sub>p</sub><sup>c</sup> is derived from computational simulation. For this example, figure 8 shows the critical volume regions found by isolating elements exceeding a strain amplitude threshold of 0.4% during this fatigue cycle.
+
+**Table I.** *Example calculation of volumetric hazard probability for standard purity and high purity materials.*
+![table I](figs/table1.png)
 
 ## Conclusions
 
