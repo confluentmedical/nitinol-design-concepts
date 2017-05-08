@@ -1,5 +1,11 @@
 # mergeResults.R
-#
+
+# Copyright 2017 Confluent Medical Technologies
+# Released as part of nitinol-design-concepts
+# https://github.com/confluentmedical/nitinol-design-concepts
+# under terms of Apache 2.0 license
+# http://www.apache.org/licenses/LICENSE-2.0.txt
+
 # merges results from postprocessing of multiple FEA models into a single table
 #
 # IN:   *.csv files in ./out folder

@@ -1,5 +1,11 @@
 # postprocessFEA.R
-#
+
+# Copyright 2017 Confluent Medical Technologies
+# Released as part of nitinol-design-concepts
+# https://github.com/confluentmedical/nitinol-design-concepts
+# under terms of Apache 2.0 license
+# http://www.apache.org/licenses/LICENSE-2.0.txt
+
 # post-process FEA results. create point clouds. calculate volume of
 # material exceeding strain amplitude thresholds. calculate volume of
 # material transforming to martensite, cycling between A and M ,etc.

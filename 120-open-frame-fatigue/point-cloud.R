@@ -1,7 +1,13 @@
 # point-cloud.R
 
-# if you are starting with a new R installation, install with the following command.
-#install.packages('tidyverse')
+# Copyright 2017 Confluent Medical Technologies
+# Released as part of nitinol-design-concepts
+# https://github.com/confluentmedical/nitinol-design-concepts
+# under terms of Apache 2.0 license
+# http://www.apache.org/licenses/LICENSE-2.0.txt
+
+# if you are starting with a new R installation, install with the following commands.
+#install.packages('tidyverse','rstudioapi')
 library(tidyverse) # http://r4ds.had.co.nz
 
 # set working directory to location of this script

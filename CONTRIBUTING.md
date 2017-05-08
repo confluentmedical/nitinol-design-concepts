@@ -26,7 +26,7 @@ Learn more from Github's guides on [Understanding the GitHub Flow](https://guide
 Copyright and Licensing
 -----------------------
 
-Please refer to [LICENSING.md](LICENSING.md) for copyright and licensing details. In general, creative content (writing and images) are released with a Creative Commons Attribution No Derivatives 4.0 International license, and code is released with the Apache 2.0 License.
+Please refer to [LICENSING.md](cc-by-nd-4.0-alv2.md) for copyright and licensing details. In general, creative content (writing and images) are released with a Creative Commons Attribution No Derivatives 4.0 International license, and code is released with the Apache 2.0 License.
 
 Confluent does not require you to assign the copyright of your contributions, you retain the copyright. Confluent does require that you make your contributions available under the Apache 2.0 license in order to be included in the main repo.
 
