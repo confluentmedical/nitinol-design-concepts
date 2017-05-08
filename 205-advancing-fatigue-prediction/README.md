@@ -112,34 +112,28 @@ This paper has highlighted some of the challenges currently faced by industry in
 
 ## References
 
-[1] D. Scheinert, S. Scheinert, J. Sax, C. Piorkowski, S. Bräunlich, M. Ulrich, G. Biamino, A. Schmidt, Prevalence and clinical impact of stent fractures after femoropopliteal stenting, J. Am. Coll. Cardiol. 45 (2005) 312–315. doi:10.1016/j.jacc.2004.11.026.
-[2] M. Chen, Y. Feng, H. Tang, Y.N. Xu, X. Wei, D.J. Huang, Strut fractures of CoreValve frames, Int. J. Cardiol. 163 (2013) e42–e43. doi:10.1016/j.ijcard.2012.09.004.
-[3] S.L. Wang, A. Siddiqui, E. Rosenthal, Long-term complications of inferior vena cava filters, J. Vasc. Surg. Venous Lymphat. Disord. 5 (2017) 33–41. doi:10.1016/j.jvsv.2016.07.002.
-[4] ASTM, F2633 Specification for Wrought Seamless Nickel-Titanium Shape Memory Alloy Tube for Medical Devices and Surgical Implants, (n.d.). doi:10.1520/f2633-13.
-[5] M. Wohlschlögel, R. Steegmüller, A. Schüßler, Effect of Inclusion Size and Distribution on the Corrosion Behavior of Medical-Device Grade Nitinol Tubing, J. Mater. Eng. Perform. 23 (2014) 2635–2640. doi:10.1007/s11665-014-0996-6.
-[6] M.F. Urbano, A. Cadelli, F. Sczerzenie, P. Luccarelli, S. Beretta, A. Coda, Inclusions Size-based Fatigue Life Prediction Model of NiTi Alloy for Biomedical Applications, Shape Mem. Superelasticity. 1 (2015) 1–12. doi:10.1007/s40830-015-0016-1.
-[7] F. Sczerzenie, G. Vergani, C. Belden, The measurement of total inclusion content in nickel-titanium alloys, J. Mater. Eng. Perform. 21 (2012) 2578–2586. doi:10.1007/s11665-012-0377-y.
-[8] M. Rahim, J. Frenzel, M. Frotscher, J. Pfetzing-Micklich, R. Steegmüller, M. Wohlschlögel, H. Mughrabi, G. Eggeler, Impurity levels and fatigue lives of pseudoelastic NiTi shape memory alloys, Acta Mater. 61 (2013) 3667–3686. doi:10.1016/j.actamat.2013.02.054.
-[9] P.K. Kumar, C. Lasley, The influence of microcleanliness on the fatigue performance of nitinol, J. Mater. Eng. Perform. 23 (2014) 2457–2463. doi:10.1007/s11665-013-0857-8.
-[10]    J.A. Moore, D. Frankel, R. Prasannavenkatesan, A.G. Domel, G.B. Olson, W. Kam, A crystal plasticity-based study of the relationship between microstructure and ultra-high-cycle fatigue life in nickel titanium alloys, Int. J. Fatigue. 91 (2016) 183–194. doi:10.1016/j.ijfatigue.2016.06.006.
-[11]    M. Launey, S.W. Robertson, L. Vien, K. Senthilnathan, P. Chintapalli, A.R. Pelton, Influence of microstructural purity on the bending fatigue behavior of VAR-melted superelastic Nitinol, J. Mech. Behav. Biomed. Mater. 34 (2014) 181–186. doi:10.1016/j.jmbbm.2014.02.008.
-[12]    S.W. Robertson, M. Launey, O. Shelley, I. Ong, L. Vien, K. Senthilnathan, P. Saffari, S. Schlegel, A.R. Pelton, A statistical approach to understand the role of inclusions on the fatigue resistance of superelastic Nitinol wire and tubing, J. Mech. Behav. Biomed. Mater. 51 (2015) 119–131. doi:10.1016/j.jmbbm.2015.07.003.
-[13]    D.J. Frankel, G.B. Olson, Design of Heusler Precipitation Strengthened NiTi- and PdTi-Base SMAs for Cyclic Performance, Shape Mem. Superelasticity. 1 (2015) 162–179. doi:10.1007/s40830-015-0017-0.
-[14]    Z. Lin, K. Pike, M. Schlun, A. Zipse, J. Draper, Nitinol fatigue life for variable strain amplitude fatigue, J. Mater. Eng. Perform. 21 (2012) 2628–2632. doi:10.1007/s11665-012-0387-9.
-[15]    A. Zipse, M. Schlun, G. Dreher, J. Zum Gahr, N. Rebelo, Accelerated fatigue testing of stent-like diamond specimens, J. Mater. Eng. Perform. 20 (2011) 579–583. doi:10.1007/s11665-010-9794-y.
-[16]    A.R. Pelton, Nitinol Fatigue: A Review of Microstructures and Mechanisms, J. Mater. Eng. Perform. 20 (2011) 613–617. doi:10.1007/s11665-011-9864-9.
-[17]    A.R. Pelton, V. Schroeder, M.R. Mitchell, X.-Y.Y. Gong, M. Barney, S.W. Robertson, Fatigue and durability of Nitinol stents, J Mech Behav Biomed Mater. 1 (2008) 153–164. doi:10.1016/j.jmbbm.2007.08.001.
-[18]    F. Auricchio, R.L. Taylor, J. Lubliner, Shape-memory alloys: macromodelling and numerical simulations of the superelastic behavior, Comput. Methods Appl. Mech. Eng. 146 (1997) 281–312. doi:10.1016/S0045-7825(96)01232-7.
-[19]    F. Auricchio, R.L. Taylor, Shape-memory alloys: modelling and numerical simulations of the finite-strain superelastic behavior, Comput. Methods Appl. Mech. Eng. 143 (1997) 175–194. doi:10.1016/S0045-7825(96)01147-4.
-[20]    L. Zheng, Y. He, Z. Moumni, Effects of Lüders-like bands on NiTi fatigue behaviors, Int. J. Solids Struct. 83 (2015) 28–44. doi:10.1016/j.ijsolstr.2015.12.021.
-[21]    E. Maire, P.J. Withers, Quantitative X-ray tomography, Int. Mater. Rev. 59 (2014) 1–43. doi:10.1179/1743280413Y.0000000023.
-[22]    B. Harrer, J. Kastner, W. Winkler, H.P. Degischer, On the Detection of Inhomogeneities in Steel by Computed Tomography, Mater. Sci. (2008) 1–7.
-[23]    C. Bonsignore, strain-amplitude-volume-fraction Python script, Github.com. (2014). https://github.com/cbonsig/strain-amplitude-volume-fraction (accessed January 21, 2017).
-[24]    R. Guerchais, F. Morel, N. Saintier, Effect of defect size and shape on the high-cycle fatigue behavior, Int. J. Fatigue. (2016). doi:10.1016/j.ijfatigue.2016.12.010.
-[25]     a. Wormsen, G. Harkegard, A Novel Probabilistic Fatigue Assessment Tool and its Application to an Offshore Riser Joint, Procedia Mater. Sci. 3 (2014) 1210–1215. doi:10.1016/j.mspro.2014.06.197.
- 
-
-
-
-
-
+1. D. Scheinert, S. Scheinert, J. Sax, C. Piorkowski, S. Bräunlich, M. Ulrich, G. Biamino, A. Schmidt, Prevalence and clinical impact of stent fractures after femoropopliteal stenting, J. Am. Coll. Cardiol. 45 (2005) 312–315. doi:10.1016/j.jacc.2004.11.026.
+2.  M. Chen, Y. Feng, H. Tang, Y.N. Xu, X. Wei, D.J. Huang, Strut fractures of CoreValve frames, Int. J. Cardiol. 163 (2013) e42–e43. doi:10.1016/j.ijcard.2012.09.004.
+3.  S.L. Wang, A. Siddiqui, E. Rosenthal, Long-term complications of inferior vena cava filters, J. Vasc. Surg. Venous Lymphat. Disord. 5 (2017) 33–41. doi:10.1016/j.jvsv.2016.07.002.
+4.  ASTM, F2633 Specification for Wrought Seamless Nickel-Titanium Shape Memory Alloy Tube for Medical Devices and Surgical Implants, (n.d.). doi:10.1520/f2633-13.
+5.  M. Wohlschlögel, R. Steegmüller, A. Schüßler, Effect of Inclusion Size and Distribution on the Corrosion Behavior of Medical-Device Grade Nitinol Tubing, J. Mater. Eng. Perform. 23 (2014) 2635–2640. doi:10.1007/s11665-014-0996-6.
+6.  M.F. Urbano, A. Cadelli, F. Sczerzenie, P. Luccarelli, S. Beretta, A. Coda, Inclusions Size-based Fatigue Life Prediction Model of NiTi Alloy for Biomedical Applications, Shape Mem. Superelasticity. 1 (2015) 1–12. doi:10.1007/s40830-015-0016-1.
+7.  F. Sczerzenie, G. Vergani, C. Belden, The measurement of total inclusion content in nickel-titanium alloys, J. Mater. Eng. Perform. 21 (2012) 2578–2586. doi:10.1007/s11665-012-0377-y.
+8.  M. Rahim, J. Frenzel, M. Frotscher, J. Pfetzing-Micklich, R. Steegmüller, M. Wohlschlögel, H. Mughrabi, G. Eggeler, Impurity levels and fatigue lives of pseudoelastic NiTi shape memory alloys, Acta Mater. 61 (2013) 3667–3686. doi:10.1016/j.actamat.2013.02.054.
+9.  P.K. Kumar, C. Lasley, The influence of microcleanliness on the fatigue performance of nitinol, J. Mater. Eng. Perform. 23 (2014) 2457–2463. doi:10.1007/s11665-013-0857-8.
+10.  J.A. Moore, D. Frankel, R. Prasannavenkatesan, A.G. Domel, G.B. Olson, W. Kam, A crystal plasticity-based study of the relationship between microstructure and ultra-high-cycle fatigue life in nickel titanium alloys, Int. J. Fatigue. 91 (2016) 183–194. doi:10.1016/j.ijfatigue.2016.06.006.
+11.  M. Launey, S.W. Robertson, L. Vien, K. Senthilnathan, P. Chintapalli, A.R. Pelton, Influence of microstructural purity on the bending fatigue behavior of VAR-melted superelastic Nitinol, J. Mech. Behav. Biomed. Mater. 34 (2014) 181–186. doi:10.1016/j.jmbbm.2014.02.008.
+12.  S.W. Robertson, M. Launey, O. Shelley, I. Ong, L. Vien, K. Senthilnathan, P. Saffari, S. Schlegel, A.R. Pelton, A statistical approach to understand the role of inclusions on the fatigue resistance of superelastic Nitinol wire and tubing, J. Mech. Behav. Biomed. Mater. 51 (2015) 119–131. doi:10.1016/j.jmbbm.2015.07.003.
+13.  D.J. Frankel, G.B. Olson, Design of Heusler Precipitation Strengthened NiTi- and PdTi-Base SMAs for Cyclic Performance, Shape Mem. Superelasticity. 1 (2015) 162–179. doi:10.1007/s40830-015-0017-0.
+14.  Z. Lin, K. Pike, M. Schlun, A. Zipse, J. Draper, Nitinol fatigue life for variable strain amplitude fatigue, J. Mater. Eng. Perform. 21 (2012) 2628–2632. doi:10.1007/s11665-012-0387-9.
+15.  A. Zipse, M. Schlun, G. Dreher, J. Zum Gahr, N. Rebelo, Accelerated fatigue testing of stent-like diamond specimens, J. Mater. Eng. Perform. 20 (2011) 579–583. doi:10.1007/s11665-010-9794-y.
+16.  A.R. Pelton, Nitinol Fatigue: A Review of Microstructures and Mechanisms, J. Mater. Eng. Perform. 20 (2011) 613–617. doi:10.1007/s11665-011-9864-9.
+17.  A.R. Pelton, V. Schroeder, M.R. Mitchell, X.-Y.Y. Gong, M. Barney, S.W. Robertson, Fatigue and durability of Nitinol stents, J Mech Behav Biomed Mater. 1 (2008) 153–164. doi:10.1016/j.jmbbm.2007.08.001.
+18.  F. Auricchio, R.L. Taylor, J. Lubliner, Shape-memory alloys: macromodelling and numerical simulations of the superelastic behavior, Comput. Methods Appl. Mech. Eng. 146 (1997) 281–312. doi:10.1016/S0045-7825(96)01232-7.
+19.  F. Auricchio, R.L. Taylor, Shape-memory alloys: modelling and numerical simulations of the finite-strain superelastic behavior, Comput. Methods Appl. Mech. Eng. 143 (1997) 175–194. doi:10.1016/S0045-7825(96)01147-4.
+20.  L. Zheng, Y. He, Z. Moumni, Effects of Lüders-like bands on NiTi fatigue behaviors, Int. J. Solids Struct. 83 (2015) 28–44. doi:10.1016/j.ijsolstr.2015.12.021.
+21.  E. Maire, P.J. Withers, Quantitative X-ray tomography, Int. Mater. Rev. 59 (2014) 1–43. doi:10.1179/1743280413Y.0000000023.
+22.  B. Harrer, J. Kastner, W. Winkler, H.P. Degischer, On the Detection of Inhomogeneities in Steel by Computed Tomography, Mater. Sci. (2008) 1–7.
+23.  C. Bonsignore, strain-amplitude-volume-fraction Python script, Github.com. (2014). https://github.com/cbonsig/strain-amplitude-volume-fraction (accessed January 21, 2017).
+24.  R. Guerchais, F. Morel, N. Saintier, Effect of defect size and shape on the high-cycle fatigue behavior, Int. J. Fatigue. (2016). doi:10.1016/j.ijfatigue.2016.12.010.
+25.  a. Wormsen, G. Harkegard, A Novel Probabilistic Fatigue Assessment Tool and its Application to an Offshore Riser Joint, Procedia Mater. Sci. 3 (2014) 1210–1215. doi:10.1016/j.mspro.2014.06.197.
