@@ -5,7 +5,7 @@ The writing and images of this project, including without limitation files with 
 # Apache License
 
 _Version 2.0, January 2004_  
-_<<http://www.apache.org/licenses/>>_
+_<http://www.apache.org/licenses/>_
 
 ### Terms and Conditions for use, reproduction, and distribution
 
