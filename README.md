@@ -20,8 +20,8 @@ This first series follows each step in the design and analysis of a realistic (b
 
 Building on the foundation of the example design and simulation material above, these next topics explore new methodologies and analysis approaches that we are currently researching. This is work in progress, so proceed with caution!
 
-* [Volumetric FEA Postprocessing](125-volumetric-analysis) \| Advanced scripting to extract volumetric stress and strain data from an Abaqus output database.
 * [Advancing Nitinol Fatigue Prediction](205-advancing-fatigue-prediction) \| A review of present and future approaches to lifetime prediction of superelastic nitinol.
+* [Volumetric FEA Postprocessing](125-volumetric-analysis) \| Advanced scripting to extract volumetric stress and strain data from an Abaqus output database.
 * [Volumetric characterization of inclusions from submicron CT scans](210-xct-methods) \| submicron xray tomography: methods and results
 * [Probabilistic durability prediction using Monte-Carlo methods](215-monte-carlo) \| durability prediction methods combining submicron x-ray CT inclusion data with FEA results
 
