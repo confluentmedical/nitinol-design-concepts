@@ -47,7 +47,7 @@ A fatigue criterion is a mathematical model used to predict the risk of fracture
 
 Relevant deformation conditions for surrogate specimens, typically expressed as target values for mean and cyclic strains, are selected to match those related to in-vivo deformations expected for the component. Typically computational simulations are first conducted for the finished component to establish the expected range strains related to loading conditions. Then, computational simulations are conducted on the surrogate specimen to establish the cyclic displacement required to match the mean strain and strain amplitude in the surrogate specimen with those in the component. This process is repeated for each of the conditions to be tested. Typically, several strain conditions are tested, including conditions within the expected operating range for the component, as well as conditions exceeding the expected operating range. Results at each condition are commonly represented on a strain limit diagram, with a fatigue threshold line drawn according to fracture or run-out results at various conditions[16,17]. 
 
-![strain limit diagram](figs/sld.png){: width="500px"}
+![strain limit diagram](figs/sld.png)
 **Figure 1:** Strain limit diagram combining results of diamond surrogate samples (square symbols) and tension-tension surrogate samples (triangle and circle symbols) [16]
 
 ### Tensile specimen testing
