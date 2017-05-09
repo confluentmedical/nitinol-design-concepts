@@ -280,7 +280,7 @@ A new data frame is created to summarize the results for each condition, includi
 
 ## Next
 
-This example documents feasible methods for distilling volumetric computed tomography image data into a compact mathematical "fingerprint", describing  inclusion density, distribution, size, and orientation in just a few numbers. The next topic in this series, [NDC-215](215-xct-fea), will explore methods for improved fatigue durability prediction, combining this information with results of finite element analysis.
+This example documents feasible methods for distilling volumetric computed tomography image data into a compact mathematical "fingerprint", describing  inclusion density, distribution, size, and orientation in just a few numbers. The next topic in this series, [Probabilistic durability prediction using Monte-Carlo methods](215-xct-fea), will explore methods for improved fatigue durability prediction, combining this information with results of finite element analysis.
 
 ## Credits
 
