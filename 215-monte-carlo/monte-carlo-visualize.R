@@ -130,7 +130,7 @@ fortune <- ggplot(data=filter(df,orient=='dK33'),aes(x=D,y=dS,color=dK)) +
   geom_point(alpha=1/2) +
   facet_grid(matl ~ .) +
   scale_colour_gradientn(colours = rev(RColorBrewer::brewer.pal(5,'Spectral'))) +
-  xlab(expression(paste(d[xy],` (`,mu,'m',`)`))) +
+  xlab(expression(paste(sqrt(area[xy]),'(',mu,`m)`))) +
   ylab(expression(paste(Delta,sigma[z],` (MPa)`))) +
   labs(color = expression(paste(Delta,K[z]))) +
   ggtitle(expression(paste('max. ',Delta,K[z], ' by cyclic stress and defect (inclusion) size')),
@@ -169,7 +169,7 @@ savePdfPng('max-dK')
 # max dK vs defect (inclusion) size
 max.dK.v.D <- ggplot(data=filter(df,orient=='dK33'),aes(x=D,y=dK,color=matl)) +
   geom_point(alpha=1/5) +
-  xlab(expression(paste(d[xy],` (`,mu,'m',`)`))) +
+  xlab(expression(paste(sqrt(area[xy]),'(',mu,`m)`))) +
   ylab(expression(paste(Delta,K[z],` (MPa`,sqrt(m),')'))) +
   ggtitle('maximum stress intensity factor depends strongly on defect (inclusion) size',
           '500 monte carlo runs with each material')

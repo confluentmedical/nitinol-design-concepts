@@ -357,8 +357,8 @@ thisColor <- ifelse(material=='eli','#F8766D','#00BFC4')
 # save results as a PNG
 fortune.cloud <- ggplot(data = df, aes(x=xyD,y=dS33)) +
   geom_point(alpha = 1/5, color = thisColor) +
-  xlab(expression(paste('d (',mu,`m)`))) +
-  ylab(expression(paste(Delta,sigma,` (MPa)`))) +
+  xlab(expression(paste(sqrt(area[xy]),'(',mu,`m)`))) +
+  ylab(expression(paste(Delta,sigma[z],` (MPa)`))) +
   xlim(0, 30) +
   ggtitle('fortune cloud: cyclic stress vs. defect (inclusion) size',
           paste('single monte-carlo run,',material))
