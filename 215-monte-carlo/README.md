@@ -1,0 +1,3 @@
+# Probabilistic durability prediction using Monte-Carlo methods
+
+This page is intentionally left blank... until it is written, check out [monte-carlo-visualize.R](https://github.com/confluentmedical/nitinol-design-concepts/blob/master/215-monte-carlo/monte-carlo-visualize.R), and the plots it creates in the mc-png folder of [215-monte-carlo](https://github.com/confluentmedical/nitinol-design-concepts/tree/master/215-monte-carlo) for a preview.
