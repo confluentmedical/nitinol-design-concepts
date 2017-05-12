@@ -349,11 +349,14 @@ for(m in 1:monteCarloRuns){
   }
 }
 
+# manually set color for SE508 and ELI to be consistent with other plots
+thisColor <- ifelse(material=='eli','#F8766D','#00BFC4')
+
 # luckiness plot: dS vs defect size at every point
 # large defect + high cyclic stress = unlucky
 # save results as a PNG
 fortune.cloud <- ggplot(data = df, aes(x=xyD,y=dS33)) +
-  geom_point(alpha = 1/5) +
+  geom_point(alpha = 1/5, color = thisColor) +
   xlab(expression(paste('d (',mu,`m)`))) +
   ylab(expression(paste(Delta,sigma,` (MPa)`))) +
   xlim(0, 30) +
@@ -365,9 +368,9 @@ ggsave(paste0('fortune.cloud.',material,'.png'))
 # create a stress intensity factor point cloud for the last monte-carlo
 # case considered, and save results as a PNG
 k.cloud <- ggplot(data = df, aes(x=k33,y=dK33)) +
-  geom_point(alpha = 1/5) +
-  xlab(expression(paste('K',` (MPa`,sqrt(m),')'))) +
-  ylab(expression(paste(Delta,'K',` (MPa`,sqrt(m),')'))) +
+  geom_point(alpha = 1/5, color = thisColor) +
+  xlab(expression(paste(K[z],` (MPa`,sqrt(m),')'))) +
+  ylab(expression(paste(Delta,K[z],` (MPa`,sqrt(m),')'))) +
   xlim(0, 3.0) +
   ylim(0, 1.5) +
   ggtitle('stress intensity factor point cloud',
