@@ -117,8 +117,8 @@ dK.vs.K <- ggplot(data=filter(df,orient=='dK11'|orient=='dK22'|orient=='dK33'),
                   aes(x=k,y=dK,color=matl)) +
   geom_point(alpha=1/4) +
   facet_grid(. ~ orient, labeller = as_labeller(coords)) +
-  ylab(expression(paste(Delta,'K'))) +
-  xlab('K') +
+  ylab(expression(paste(Delta,K[max]))) +
+  xlab(expression(K[paste(Delta,K[max])])) +
   labs(color = 'material') +
   ggtitle(expression(paste('stress intensity factor: maximum ',Delta,'K and corresponding K')),
           'for 500 monte carlo runs with each material')
