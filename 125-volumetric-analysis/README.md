@@ -45,7 +45,7 @@ job name as odbName, ending in .ivol.csv. If this file exists, script prompts
 for a new file name. The "-overwrite yes" option will override this protection.
 All other parameters are mandatory.
 
-Field output requests must include strain, stress, state dependant variables,
+Field output requests must include strain, stress, state dependent variables,
 and integration point volume:
 LE, S, SDV, IVOL
 
@@ -137,3 +137,46 @@ If we were only interested in creating a point cloud, we could use a spreadsheet
 If you are starting up R for the first time, you will need to install some packages before running postprocessFEA.R](postprocessFEA.R). Using the tool bar menu, select Tools > Install Packages. Type in `tidyverse, forcats` in the Packages field, and click install. 
 
 Create a new project in RStudio and select New Directory. Copy [postprocessFEA.R](postprocessFEA.R) into the newly created directory, and open it in RStudio (File > Open File). Copy [open-frame-fatigue-v25mm-9pct.ivol.csv](./open-frame-fatigue-v25mm-9pct.ivol.csv) to that same directory. To run the R script, click the "Source" button at the top right of the code window. In a few seconds, it will create and save several plots in the [./png](./pdf) and [./pdf](./pdf) folders, and a summary of output information in the [./out](./out) folder.
+
+## Filtered point cloud
+
+In this script, we address some some considerations that we ignored in the simple point cloud created at the end of [Open Frame Fatigue Analysis](../120-open-frame-fatigue). We begin with by considering the hydrostatic pressure at each element, and coloring the points accordingly.
+
+![png/open-frame-fatigue-v25mm-9pct-p00.png]
+
+In this plot, the blue points are in hydrostatic tension for at least 90 percent of the fatigue cycle, and the red points are in compression. Note that the blue points are primarily those associated with a negative difference in maximum principal tensile strain, when the the "unloaded" fatigue frame strain tensor is subtracted from the "loaded" tensor. It is common to simply plot the absolute value of all of these points, which would flip the blue points to the positive axis. With this approach, we sometimes find that one of these "red" points has the overall highest strain amplitude, and thus appears to be most critical; in such cases, we would disregard such a result upon confirming that the element is in compression. To avoid this, the plot below sets all of the red points to have an effective strain amplitude of zero,
+
+![png/open-frame-fatigue-v25mm-9pct-p01.png]
+
+## Smith-Watson-Topper point cloud
+
+The Smith-Watson-Topper (SWT) criterion considers the effects of mean stress in addition to strain amplitude. This approach is not yet commonly used to evaluate nitinol durability, but can easily be calculated and plotted using the results extracted from our model. SWT results can be compared with alternatives in future studies to determine if this approach offers prediction benefits.
+
+![png/open-frame-fatigue-v25mm-9pct-p03.png]
+
+## Phase transition point cloud
+
+At a macroscopic scale, superelastic nitinol material is commonly understood to exist in an austenite phase at low stress, then transition to martensite as stress is applied, with a plateau in stress as strain increases, until the material is fully transformed to martensite. However, at the scale of individual atoms, the phase of the material is binary: either austenite (A) or martensite (M). It has been suggested that the transition between phases contributes damage in the material, and is therefore an important mechanism in fatigue durability.
+
+Our computational simulation calculates the volume percentage of martensite at each integration point, and we also know the volume associated with each point. From this information, we can calculate the total volume of material in the M phase at each frame of our fatigue cycle. Not surprisingly, there is always a difference in volume, so we can therefore calculate the volume of material that is changing phase during the fatigue cycle.
+
+It would be interesting to know which points are transforming during the cycle. To estimate this, we create a list of every integration point in the model, sorted by the calculated martensite volume fraction (SDV21) at that point. We start at the top of this list (at the point with the maximum value of SDV21), and assign that point to the M phase. We subtract the volume of this point from the total volume of M in the model, and move to the next point, repeating this classification until the total martensite volume has been accounted for. This process is completed for the loaded frame of the fatigue analysis, and repeated for the unloaded frame. Then, comparing the results for these two frames, we can classify each point as "always A", "always M", or "transitioning A/M" during the fatigue cycle. This result is plotted below in terms of a conventional strain amplitude vs. mean strain point cloud.
+
+![png/open-frame-fatigue-v25mm-9pct-p05.png]
+
+The above plot is somewhat surprising. If the A/M transition is in fact an important factor in fatigue durability, the most critical points are not necessarily those at the top right of a conventional point cloud. Rather, the A/M transition point, in green, span nearly the full range of mean strain and strain amplitude. Further study will be necessary to understand the possible implications of this to our understanding of durability prediction.
+
+## Phase transition volumetric histogram
+
+As we explore such implications, the resources here offer the ability to consider the material volume associated with the cyclic stress, strain, and phase changes. The plot below is an example of how we may visualize this information.
+
+![png/open-frame-fatigue-v25mm-9pct-p08.png]
+
+For example, this plot allows us to quantify the total volume of material that exceeds a given strain amplitude threshold. This may provide a useful measure of the amount of material that is "at risk" for a given design, and given loading condition. Furthermore, it provides an absolute measure that can be compared between different models, and/or loading conditions, possibly improving our ability to compare relative risk.
+
+This plot is also colored to represent the estimated volume of material in each phase, as well as the volume of material that is transitioning A/M during the fatigue cycle. This information alone, or in combination with strain amplitude or SWT results, may provide additional insights into durability prediction, and will be investigated in future studies.
+
+## Credits
+
+These methods were developed by Craig Bonsignore, [@cbonsig](https://github.com/cbonsig), of Confluent Medical Technologies, and were inspired by numerous conversations Ali Shamimi, Karthik Senthilnathan, Tom Duerig, Nuno Rebelo, Alan Pelton, Mike Mitchell, among many others.
+
