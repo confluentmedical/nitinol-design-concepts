@@ -4,7 +4,7 @@
 
 **Prerequisites:** [Open Frame Design](../105-open-frame-design), [Open Frame Shape Set](../115-open-frame-shape-set), [Open Frame Fatigue Analysis](../120-open-frame-fatigue), Simulia Abaqus 2017, [RStudio](https://www.rstudio.com/)
 
-**Resources** Python and R scripts used for this example can be found in [this repository](.). The output database (65MB) processed in this example can be downloaded from the 120-open-frame-fatigue folder at [nitinol.app.box.com/v/nitinol-design-concepts](https://nitinol.box.com/v/nitinol-design-concepts).
+**Resources** Python and R scripts used for this example can be found in [this repository](https://github.com/confluentmedical/nitinol-design-concepts/tree/master/125-volumetric-analysis). The output database (65MB) processed in this example can be downloaded from the 120-open-frame-fatigue folder at [nitinol.app.box.com/v/nitinol-design-concepts](https://nitinol.box.com/v/nitinol-design-concepts).
 
 ## Introduction
 

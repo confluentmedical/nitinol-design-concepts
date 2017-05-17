@@ -4,6 +4,8 @@
 
 **Prerequisites:** [Open Frame Design](../105-open-frame-design), [Mechanical Properties](../110-material-characterization), SIMULIA Abaqus 2017.
 
+**Resources** Abaqus CAE models and input files used for this example can be found in [this repository](https://github.com/confluentmedical/nitinol-design-concepts/tree/master/125-volumetric-analysis). The output database (91MB) processed in this example can be downloaded from the 115-open-frame-shape-set folder at [nitinol.app.box.com/v/nitinol-design-concepts](https://nitinol.box.com/v/nitinol-design-concepts).
+
 ## Introduction
 
 In [Open Frame Design](../105-open-frame-design) and [NDC-110 Mechanical Properties](../110-material-characterization), we created a design and characterized the material from which it is to be fabricated. Now it's time to dive into the world of computational simulation using finite element analysis (FEA), starting with an expansion analysis. 
