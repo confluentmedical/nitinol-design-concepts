@@ -146,13 +146,13 @@ In this script, we address some some considerations that we ignored in the simpl
 
 In this plot, the blue points are in hydrostatic tension for at least 90 percent of the fatigue cycle, and the red points are in compression. Note that the blue points are primarily those associated with a negative difference in maximum principal tensile strain, when the the "unloaded" fatigue frame strain tensor is subtracted from the "loaded" tensor. It is common to simply plot the absolute value of all of these points, which would flip the blue points to the positive axis. With this approach, we sometimes find that one of these "red" points has the overall highest strain amplitude, and thus appears to be most critical; in such cases, we would disregard such a result upon confirming that the element is in compression. To avoid this, the plot below sets all of the red points to have an effective strain amplitude of zero,
 
-![png/open-frame-fatigue-v25mm-9pct-p01.png]
+![png/open-frame-fatigue-v25mm-9pct-p01.png](png/open-frame-fatigue-v25mm-9pct-p01.png)
 
 ## Smith-Watson-Topper point cloud
 
 The Smith-Watson-Topper (SWT) criterion considers the effects of mean stress in addition to strain amplitude. This approach is not yet commonly used to evaluate nitinol durability, but can easily be calculated and plotted using the results extracted from our model. SWT results can be compared with alternatives in future studies to determine if this approach offers prediction benefits.
 
-![png/open-frame-fatigue-v25mm-9pct-p03.png]
+![png/open-frame-fatigue-v25mm-9pct-p03.png](png/open-frame-fatigue-v25mm-9pct-p03.png)
 
 ## Phase transition point cloud
 
@@ -162,7 +162,7 @@ Our computational simulation calculates the volume percentage of martensite at e
 
 It would be interesting to know which points are transforming during the cycle. To estimate this, we create a list of every integration point in the model, sorted by the calculated martensite volume fraction (SDV21) at that point. We start at the top of this list (at the point with the maximum value of SDV21), and assign that point to the M phase. We subtract the volume of this point from the total volume of M in the model, and move to the next point, repeating this classification until the total martensite volume has been accounted for. This process is completed for the loaded frame of the fatigue analysis, and repeated for the unloaded frame. Then, comparing the results for these two frames, we can classify each point as "always A", "always M", or "transitioning A/M" during the fatigue cycle. This result is plotted below in terms of a conventional strain amplitude vs. mean strain point cloud.
 
-![png/open-frame-fatigue-v25mm-9pct-p05.png]
+![png/open-frame-fatigue-v25mm-9pct-p05.png](png/open-frame-fatigue-v25mm-9pct-p05.png)
 
 The above plot is somewhat surprising. If the A/M transition is in fact an important factor in fatigue durability, the most critical points are not necessarily those at the top right of a conventional point cloud. Rather, the A/M transition point, in green, span nearly the full range of mean strain and strain amplitude. Further study will be necessary to understand the possible implications of this to our understanding of durability prediction.
 
@@ -170,7 +170,7 @@ The above plot is somewhat surprising. If the A/M transition is in fact an impor
 
 As we explore such implications, the resources here offer the ability to consider the material volume associated with the cyclic stress, strain, and phase changes. The plot below is an example of how we may visualize this information.
 
-![png/open-frame-fatigue-v25mm-9pct-p08.png]
+![png/open-frame-fatigue-v25mm-9pct-p08.png](png/open-frame-fatigue-v25mm-9pct-p08.png)
 
 For example, this plot allows us to quantify the total volume of material that exceeds a given strain amplitude threshold. This may provide a useful measure of the amount of material that is "at risk" for a given design, and given loading condition. Furthermore, it provides an absolute measure that can be compared between different models, and/or loading conditions, possibly improving our ability to compare relative risk.
 
