@@ -142,7 +142,7 @@ Create a new project in RStudio and select New Directory. Copy [postprocessFEA.R
 
 In this script, we address some some considerations that we ignored in the simple point cloud created at the end of [Open Frame Fatigue Analysis](../120-open-frame-fatigue). We begin with by considering the hydrostatic pressure at each element, and coloring the points accordingly.
 
-![png/open-frame-fatigue-v25mm-9pct-p00.png]
+![png/open-frame-fatigue-v25mm-9pct-p00.png](png/open-frame-fatigue-v25mm-9pct-p00.png)
 
 In this plot, the blue points are in hydrostatic tension for at least 90 percent of the fatigue cycle, and the red points are in compression. Note that the blue points are primarily those associated with a negative difference in maximum principal tensile strain, when the the "unloaded" fatigue frame strain tensor is subtracted from the "loaded" tensor. It is common to simply plot the absolute value of all of these points, which would flip the blue points to the positive axis. With this approach, we sometimes find that one of these "red" points has the overall highest strain amplitude, and thus appears to be most critical; in such cases, we would disregard such a result upon confirming that the element is in compression. To avoid this, the plot below sets all of the red points to have an effective strain amplitude of zero,
 
