@@ -1,7 +1,5 @@
-PREVIEW: Nitinol Design Concepts
+Nitinol Design Concepts
 ================================
-
-**THIS IS A PREVIEW SITE.** _Welcome and thanks to invited previewers! If you have found this site by accident, please note that content is still being drafted and reviewed, so proceed with caution._
 
 **Welcome SMST 2017 attendees!** _Confluent Medical presentations will be posted to our nitinol reference library at [nitinol.com](http://nitinol.com) before the end of the conference._
 
