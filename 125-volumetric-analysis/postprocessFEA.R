@@ -354,7 +354,7 @@ if(nrow(filter.AM)>0){
 if(nrow(filter.M)>0){
   p5 = p5 + geom_point(data=filter.M, 
                        mapping = aes(x=cycEM,y=cycEA, color="M"), 
-                       alpha=0.2)
+                       alpha=0.8)
 }
 p5 = p5 +
   labs(colour = "phase") +
