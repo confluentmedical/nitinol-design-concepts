@@ -68,7 +68,7 @@ A 50-slice subset of the `scan01` image stack was used to train the model. The t
 5. Create a total of four classes (click "Create new class" twice)
 6. Click Settings. Apply settings and classifier options as shown below. The "Difference of Gaussians" feature compares progressively blurred copies of each frame to detect blob-like particles. The "Hessian" feature detects gradients, and is sensitive to edges and particle orientation. [Machine Learning as a tool for classifying electron tomographic reconstructions](https://link.springer.com/article/10.1186/s40679-015-0010-x) is a 2015 open-access paper by Staniewicz that I found very helpful to understand this. (note: in settings, "numThreads" should be set to the number of available CPU cores; likely 2 or 4 on a personal computer, rather than 20 for a server as shown here.) ![weka-settings.png](segmentation-settings.png)
 7. Trace a path through the matrix (gray area) of the cross section, then click "add to matrix" in the label area at the right. Repeat this for several of the inclusions, the air, and the edge. Then repeat the process for multiple images in the stack (use the slider at the bottom to adjust the Z position). The image below shows an example training image for one frame. ![weka-training](weka-train.png)
-8. Click "Train Classifier", then go get at coffee.
+8. Click "Train Classifier", then go get a coffee.
 9. When complete, each pixel will be assigned a probability of belonging to each of the four classes. Review the result, and if there are obvious mismatches, add more training traces in the problematic area and retrain the model. Repeat until satisfied. ![weka-classified](weka-classified.png)
 10. The final classifier model [classifier-0500-0549-3.model](https://nitinol.box.com/s/9d7hp332ppra56dzqnh1r40giamfzacb) used for this example can be downloaded from the [nitinol.app.box.com](https://nitinol.box.com/s/kcpbivbdszlqtx9zxsgkq636hfnzbo9p) site.
 
@@ -110,7 +110,7 @@ We now have a binary 8-bit image stack, where white voxels represent particles (
 
 #### 3.4 Morphological calculations
 
-[MorphoLibJ](http://imagej.net/MorphoLibJ) is MorphoLibJ is a collection of mathematical morphology methods and plugins for ImageJ, created at [INRA-IJPB Modeling and Digital Imaging lab](http://www-ijpb.versailles.inra.fr/en/bc/equipes/modelisation-imagerie/). Source code and installation details can be found at [https://github.com/ijpb/MorphoLibJ/](https://github.com/ijpb/MorphoLibJ/).
+[MorphoLibJ](http://imagej.net/MorphoLibJ) is a collection of mathematical morphology methods and plugins for ImageJ, created at [INRA-IJPB Modeling and Digital Imaging lab](http://www-ijpb.versailles.inra.fr/en/bc/equipes/modelisation-imagerie/). Source code and installation details can be found at [https://github.com/ijpb/MorphoLibJ/](https://github.com/ijpb/MorphoLibJ/).
 
 In the next steps, we start with the 8-bit binary image stack from above, with particles represented by white (255), and absence of particles represented by black (0). Individual particles are typically composed of a cluster of contiguous white pixels. In the first step, we find these connected clusters, and assign each one a unique 16-bit label number. The result of this step is a "labeled image", with pixel intensity representing the label (particle or inclusion) to with each pixel belongs. With the labeled image prepared, two additional routines are run to collect morphology data, including the centroid position, volume, and orientation of each inclusion.
 
@@ -140,7 +140,7 @@ The previous sections document the process for distilling a 26GB scan into three
 
 Our next task is to visualize these results, and create a mathematical model to represent the probabilistic and volumetric distribution of inclusions found in each scan. This will be completed with the R script [xct-process-imagej-results.R](xct-process-imagej-results.R). R is an open source programming language and software environment for statistical computing and graphics, and is quite useful for data analysis tasks such as this. [RStudio](https://www.rstudio.com/) is freely available for all computing platforms, and [R for Data Science](http://r4ds.had.co.nz/) is an excellent primer on this environment.
 
-The [xct-process-imagej-results.R](xct-process-imagej-results.R) code is documented throughout, and some of the important steps are summarized here.
+The [xct-process-imagej-results.R](https://github.com/confluentmedical/nitinol-design-concepts/blob/master/210-xct-methods/xct-process-imagej-results.R) code is documented throughout, and some of the important steps are summarized here.
 
 #### 4.2 Import morphology data
 
@@ -265,7 +265,7 @@ gumbel.se508.yz <- gumbelFit(xct.se508$rootYzArea)
 gumbel.se508.xy <- gumbelFit(xct.se508$rootXyArea)
 ``` 
 
-A new data frame is created to summarize the results for each condition, including Gumbel parameters mu and sigma, are written to [gumbel-parameters.csv](out/gumbel-parameters.csv).
+A new data frame is created to summarize the results for each condition, including Gumbel parameters mu and sigma, are written to [gumbel-parameters.csv](https://github.com/confluentmedical/nitinol-design-concepts/blob/master/210-xct-methods/out/gumbel-parameters.csv).
 
 ```
    matl plane cutoff   nPerMm3       mu         s
