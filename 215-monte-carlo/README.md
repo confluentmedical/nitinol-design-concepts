@@ -1,6 +1,6 @@
 # Probabilistic durability prediction using Monte-Carlo methods
 
-**Objective:** Develop a durability prediction method that considers the probability of critical regions co-located with material defects.
+**Objective:** Develop a durability prediction method that considers the probability of critical stress regions co-located with material defects.
 
 **Prerequisites:** [Open Frame Design](../105-open-frame-design), [Open Frame Shape Set](../115-open-frame-shape-set), [Open Frame Fatigue Analysis](../120-open-frame-fatigue), [Volumetric FEA Postprocessing](125-volumetric-analysis), [Volumetric characterization of inclusions from submicron CT scans](../210-xct-methods), [RStudio](https://www.rstudio.com/)
 
@@ -12,7 +12,7 @@ Having completed all of the prerequisites listed above, we are now prepared for 
 
 ## Stress intensity factor, K
 
-To achieve this objective, we will need to decide upon a fatigue indicator parameter that considers both defect size _and_ stress/strain at each material point of interest. For this, we propose stress intensity factor K, from the field of fracture mechanics. Urbano et al proposed the formulation of K in the open access SMST journal paper "[Inclusions Size-based Fatigue Life Prediction Model of NiTi Alloy for Biomedical Applications](http://link.springer.com/article/10.1007/s40830-015-0016-1)", referencing earlier work of Murakami and Endo, "[Effects of Hardness and Crack Geometries on AK, h of Small Cracks Emanating from Small Defects.](http://www.gruppofrattura.it/ocs/index.php/esis/EGF1/paper/viewFile/9663/6375)". In this formulation, defect (inclusion) size is expressed as the square root of the projected area of the inclusion in a plane perpendicular to the cyclic stress.
+To achieve this objective, we will need to decide upon a fatigue indicator parameter that considers both defect size _and_ stress/strain at each material point of interest. For this, we propose stress intensity factor K, from the field of fracture mechanics. Urbano _et. al._ proposed the formulation of K in the open access SMST journal paper "[Inclusions Size-based Fatigue Life Prediction Model of NiTi Alloy for Biomedical Applications](http://link.springer.com/article/10.1007/s40830-015-0016-1)", referencing earlier work of Murakami and Endo, "[Effects of Hardness and Crack Geometries on delta-Kth of Small Cracks Emanating from Small Defects.](http://www.gruppofrattura.it/ocs/index.php/esis/EGF1/paper/viewFile/9663/6375)". In this formulation, defect (inclusion) size is expressed as the square root of the projected area of the inclusion in a plane perpendicular to the cyclic stress.
 
 ![k.png](k.png)
 
@@ -20,7 +20,7 @@ It is proposed that delta-K, the change in stress intensity factor K during the 
 
 ![kdk.png](kdk.png)
 
-Note that these formulations apply a factor of 0.65 to estimate the maximum value of K associated with a surface defect. Murakami also proposes that a 0.50 factor is appropriate for an internal defects([Metal Fatigue, Effects of Small Defects and Nonmetallic Inclusions. Page 16](https://scholar.google.com/scholar?lookup=0&q=Metal+Fatigue,+Effects+of+Small+Defects+and+Nonmetallic+Inclusions&hl=en&as_sdt=0,5&as_vis=1)). The methods we propose can not currently account for the location of inclusions or critical stress regions relative to the surface, so we conservatively assume the larger 0.65 factor.
+Note that these formulations apply a factor of 0.65 to estimate the maximum value of K associated with a surface defect. Murakami also proposes that a 0.50 factor is appropriate for an internal defects ([Metal Fatigue, Effects of Small Defects and Nonmetallic Inclusions. Page 16](https://scholar.google.com/scholar?lookup=0&q=Metal+Fatigue,+Effects+of+Small+Defects+and+Nonmetallic+Inclusions&hl=en&as_sdt=0,5&as_vis=1)). The methods we propose can not currently account for the location of inclusions or critical stress regions relative to the surface, so we conservatively assume the larger 0.65 factor.
 
 ## Gumbel quantile function
 
@@ -58,7 +58,7 @@ There are some other data tidying steps that we'll skip over here, but you can r
 
 These next few steps are repeated for each run, or "roll of the dice". Here, we introduce some elements of randomness, so each run has a different distribution of inclusions. 
 
-First, we need to determine the number of inclusions to be assigned to each integration point in the simulation. We know the volume associated with each point, and we know the volumetric probability (inclusion density), so this should be easy: `iProb = probV * cycV` (inclusion probability = volumetric probability for this material * volume at this point). There is a problem: `iProb` is not a whole number, but we need to have an integer number of inclusions associated with each integration point. And we can't use simple rounding rules, because then integration points with N<0.5 will _never_ be assigned an inclusion. Instead, if `iProb=0.5`, we want that inclusion to receive one inclusion half of the time, and zero inclusions half of the time. To do this, we'll need to create a rounding function that takes probability into account:
+First, we need to determine the number of inclusions to be assigned to each integration point in the simulation. We know the volume associated with each point, and we know the volumetric probability (inclusion density), so this should be easy: `iProb = probV * cycV` (inclusion probability = volumetric probability for this material * volume at this point). There is a problem: `iProb` is not a whole number, but we need to have an integer number of inclusions associated with each integration point. And we can't use simple rounding rules, because then integration points with `iProb<0.5` will _never_ be assigned an inclusion. Instead, if `iProb=0.5`, we want that inclusion to receive one inclusion half of the time, and zero inclusions half of the time. To do this, we'll need to create a rounding function that takes probability into account:
 
 ```R
 roundProb <- function(x){
@@ -85,7 +85,7 @@ Now, we can move onto randomly assigning the inclusion size to each of those inc
              xzD = ifelse(xzD<=0,0,xzD))
  ```
 
-Now we have established the maximum defect size for each orientation at each integration point, so all we have left to so is calculate the value of the stress intensity factor K and delta-K for each orientation, at each point. We use the formula described above, converting defect size in microns to meters, so the resulting units are in MPa root-meters, consistent with conventions for reporting K values.
+Now we have established the maximum defect size for each orientation at each integration point, so all we have left to do is calculate the value of the stress intensity factor K and delta-K for each orientation, at each point. We use the formula described above, converting defect size in microns to meters, so the resulting units are in MPa root-meters, consistent with conventions for reporting K values.
 
 ```R
     df <- df %>%
@@ -98,7 +98,7 @@ Now we have established the maximum defect size for each orientation at each int
       )
 ```
 
-Finally, we find the integration point that has the maximum value of dK in each orientation. We assume this will be these will be the most critical values for each run, so we'll save them for reporting later.
+Finally, we find the integration point that has the maximum value of dK in each orientation. We assume these will be the most critical values for each run, so we'll save them for reporting later.
 
 ## Example results for a single run
 
@@ -129,6 +129,8 @@ set.seed(42)
 Note that we have defined a random seed value, which makes the results reproducible. If you want to have a truly random result, different every time, remove or comment out this line. Also note that you'll want to delete or rename the output .CSV file before running this script, because otherwise it will append to the previously created file. To create another 500 runs for the ELI material, simply change the material variable to `material <- 'eli'`. When this has been completed, you should have a file `mc-out\open-frame-fatigue-v25mm-9pct.mc.csv` with 1000 rows of data, 500 for each material. I renamed this to [mc-out\open-frame-fatigue-v25mm-9pct-500se508-500eli.mc.csv](https://github.com/confluentmedical/nitinol-design-concepts/blob/master/215-monte-carlo/mc-out/open-frame-fatigue-v25mm-9pct-500se508-500eli.mc.csv).
 
 ## Visualize Monte-Carlo results
+
+In this final section, we will use [monte-carlo-visualize.R](https://github.com/confluentmedical/nitinol-design-concepts/blob/master/215-monte-carlo/monte-carlo-visualize.R) to visualize the results of the 500+500 runs summarized in [mc-out\open-frame-fatigue-v25mm-9pct-500se508-500eli.mc.csv](https://github.com/confluentmedical/nitinol-design-concepts/blob/master/215-monte-carlo/mc-out/open-frame-fatigue-v25mm-9pct-500se508-500eli.mc.csv).
 
 As noted above, we'll make the assumption that for each run, the point with the maximum value of delta-K is the most critical point in the model. Therefore, we recorded data related to this point for each run, and we can examine it more closely here.
 
