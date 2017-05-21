@@ -12,7 +12,7 @@ Having completed all of the prerequisites listed above, we are now prepared for 
 
 ## Stress intensity factor, K
 
-To achieve this objective, we will need to decide upon a fatigue indicator parameter that considers both defect size _and_ stress/strain at each material point of interest. For this, we propose stress intensity factor K, from the field of fracture mechanics. Urbano _et. al._ proposed the formulation of K in the open access SMST journal paper "[Inclusions Size-based Fatigue Life Prediction Model of NiTi Alloy for Biomedical Applications](http://link.springer.com/article/10.1007/s40830-015-0016-1)", referencing earlier work of Murakami and Endo, "[Effects of Hardness and Crack Geometries on delta-Kth of Small Cracks Emanating from Small Defects.](http://www.gruppofrattura.it/ocs/index.php/esis/EGF1/paper/viewFile/9663/6375)". In this formulation, defect (inclusion) size is expressed as the square root of the projected area of the inclusion in a plane perpendicular to the cyclic stress.
+To achieve this objective, we will need to decide upon a fatigue indicator parameter that considers both defect size _and_ stress/strain at each material point of interest. For this, we propose stress intensity factor K, from the field of fracture mechanics. Urbano _et. al._ proposed the formulation of K in the open access SMST journal paper "[Inclusions Size-based Fatigue Life Prediction Model of NiTi Alloy for Biomedical Applications](http://link.springer.com/article/10.1007/s40830-015-0016-1)", referencing earlier work of Murakami and Endo, "[Effects of Hardness and Crack Geometries on delta-Kth of Small Cracks Emanating from Small Defects](http://www.gruppofrattura.it/ocs/index.php/esis/EGF1/paper/viewFile/9663/6375)". In this formulation, defect (inclusion) size is expressed as the square root of the projected area of the inclusion in a plane perpendicular to the cyclic stress.
 
 ![k.png](k.png)
 
@@ -42,7 +42,7 @@ modelName <- 'open-frame-fatigue-v25mm-9pct'
 symmetry <- 16
 ```
 
-Next, we define material signatures, shown below for the SE508 material. They are hard coded here, but could have been read automatically from [gumbel-parameters.csv](https://github.com/confluentmedical/nitinol-design-concepts/blob/master/210-xct-methods/out/gumbel-parameters.csv). We include the volumetric probability (density) of inclusions per cubic millimeter, and Gumbel parameters for root-area defect size in each plane. 
+Next, we define material signatures, shown below for the SE508 material. They are hard coded here, but also could have been read automatically from [gumbel-parameters.csv](https://github.com/confluentmedical/nitinol-design-concepts/blob/master/210-xct-methods/out/gumbel-parameters.csv). We include the volumetric probability (density) of inclusions per cubic millimeter, and Gumbel parameters for root-area defect size in each plane. 
 
 ```R
 gumbel.se508 <- list(probV=7474.7403,
