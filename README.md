@@ -16,9 +16,9 @@ This first series follows each step in the design and analysis of a realistic (b
 * [Shape Setting](115-open-frame-shape-set) \| Expand the laser cut component into a complex expanded shape using Abaqus finite element analysis.
 * [Fatigue Simulation](120-open-frame-fatigue) \| Apply fatigue loading conditions using Abaqus.
 
-## Advanced Topics
+## SMST-2017
 
-Building on the foundation of the example design and simulation material above, these next topics explore new methodologies and analysis approaches that we are currently researching. This is work in progress, so proceed with caution!
+Building on the foundation of the example design and simulation material above, these next topics explore new methodologies and analysis approaches presented in "Volume weighted probabilistic methods for nitinol lifetime prediction" at [SMST-2017](http://www.asminternational.org/web/smst2017) in San Diego. You can find a [recording of the talk on YouTube](https://youtu.be/fGN6rWQzPnY). The slides and videos are [here on GitHub](https://github.com/confluentmedical/nitinol-design-concepts/tree/master/smst17).
 
 * [Advancing Nitinol Fatigue Prediction](205-advancing-fatigue-prediction) \| A review of present and future approaches to lifetime prediction of superelastic nitinol.
 * [Volumetric FEA Postprocessing](125-volumetric-analysis) \| Advanced scripting to extract volumetric stress and strain data from an Abaqus output database.
