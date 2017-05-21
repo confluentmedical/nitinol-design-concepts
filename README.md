@@ -5,7 +5,7 @@ Nitinol Design Concepts
 
 This project includes tutorials and examples related to design and simulation of superelastic nitinol components. This content is provided by [Confluent Medical Technologies](http://confluentmedical.com) as a resource for our customers, industry and community. If you want to know more about the background, or how you can contribute, read [about this project](about.md).
 
-The material here includes a deeper dive into topic covered in our Nitinol University courses, as well as research supporting scientific presentations and publications. The [Design Tutorial](#design-tutorial) series provides an introduction to design and simulation of a nitinol component, following methods that are commonly applied in the medical device industry. The [Advanced Topics](#advanced-topics) series ventures into some more speculative territory, including new and emerging approaches that we find interesting. 
+The material here includes a deeper dive into topic covered in our Nitinol University courses, as well as research supporting scientific presentations and publications. The [Design Tutorial](#design-tutorial) series provides an introduction to design and simulation of a nitinol component, following methods that are commonly applied in the medical device industry. The [SMST-2017](#smst-2017) series ventures into some more advanced topics related to volumetric and probabilistic methods for assessing fatigue durability, first presented in April 2017 at the SMST conference. 
 
 ## Design Tutorial
 
