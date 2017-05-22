@@ -20,7 +20,7 @@ In the most broad terms, any fatigue simulation includes three essential compone
 
 ## Geometry
 
-In [Open Frame Shape Set](../115-open-frame-shape-set), we transformed a laser cut component from a starting diameter of 8mm to a complex expanded shape 28-40mm in diameter. The formed geometry at the end of this simulation will be be starting geometry at the beginning of this simulation. To begin, we will import the deformed geometry from the last frame of the final step of the forming analysis. `shape-set.odb` (91MB) can be downloaded from the 115-open-frame-shape-set folder of [https://nitinol.box.com/v/nitinol-design-concepts](https://nitinol.box.com/v/nitinol-design-concepts).
+In [Open Frame Shape Set](../115-open-frame-shape-set), we transformed a laser cut component from a starting diameter of 8mm to a complex expanded shape 28-40mm in diameter. The formed geometry at the end of this simulation will be the starting geometry at the beginning of this simulation. To begin, we will import the _deformed_ geometry from the last frame of the final step of the forming analysis. `shape-set.odb` (91MB) can be downloaded from the 115-open-frame-shape-set folder of [https://nitinol.box.com/v/nitinol-design-concepts](https://nitinol.box.com/v/nitinol-design-concepts).
 
 ![import-part](120-import-part.png)
 
@@ -61,13 +61,13 @@ These simulations can quickly generate many gigabytes of results! We try to keep
 
 ## Visualizing Results
 
-This simulation was required a total of about 2.7 CPU-hours on our system, and was completed in under 30 minutes of actual time using multiple CPU cores. The output database (65MB) can be downloaded from the 120-open-frame-fatigue folder at [nitinol.app.box.com/v/nitinol-design-concepts](https://nitinol.box.com/v/nitinol-design-concepts), and requires Abaqus 2017 CAE or Viewer to post-process.
+This simulation required a total of about 2.7 CPU-hours on our system, and was completed in under 30 minutes of actual time using multiple CPU cores. The output database (65MB) can be downloaded from the 120-open-frame-fatigue folder at [nitinol.app.box.com/v/nitinol-design-concepts](https://nitinol.box.com/v/nitinol-design-concepts), and requires Abaqus 2017 CAE or Viewer to post-process.
 
 We are only interested in visualizing the nitinol frame component, so we will first create a new display group. Select the nitinol part instance, and use this to replace the current selection.
 
 ![display-group](120-display-group.png)
 
-Since the actual model is just a fraction of the real geometry, it is helpful to mirror and pattern the model to visualize the full frame.
+Since the actual model is just a fraction of the real geometry, it is helpful to mirror and pattern the model to visualize the full frame. Note that we mirror our single strut about the global YZ plane, then rotate about the global Z axis 16 times to represent the complete frame component.
 
 ![mirror-rotate](120-mirror-rotate.png)
 
@@ -75,7 +75,7 @@ When visualizing field outputs like stress and strain, by default Abaqus contour
 
 ![quilt](120-contour-plot-options.png)
 
-Now we can visualize the deformations, stresses, and strains associated with the fatigue cycle. The animation below cycles between stress of the "zeroth" increment of the final step, diastole-03 (which is actually the last increment of the previous step, systole-03). 
+Now we can visualize the deformations, stresses, and strains associated with the fatigue cycle. The animation below cycles between stress of the "zeroth" and last increments of the final step, diastole-03. Note that the zeroth increment of diastole-03 is actually the last increment of the previous step, systole-03; therefore our fatigue cycle is bounded by the end of systole and the end of diastole.
 
 ![pulse](120-pulse.gif)
 
@@ -102,7 +102,7 @@ The resulting report file, [open-frame-fatigue-v25mm-9pct.rpt](open-frame-fatigu
 
 ## Point Cloud
 
-Mean strain and strain amplitude results are commonly represented visually as a scatterplot called a "point cloud". Using a spreadsheet to create these plots becomes cumbersome quickly with large models. R is well suited to visualizing large datasets, so we'll create a short script, [point-cloud.R](point-cloud.R), to do the job.
+Mean strain and strain amplitude results are commonly represented visually as a scatterplot called a "point cloud". Using a spreadsheet to create these plots becomes cumbersome quickly with large models. The [statistical computing environment called R](https://www.r-project.org) is well suited to visualizing large datasets, so we'll create a short script, [point-cloud.R](point-cloud.R), to do the job.
 
 ```R
 library(tidyverse) # http://r4ds.had.co.nz
@@ -131,13 +131,13 @@ ggsave('point-cloud.png')
 ```
 ![point-cloud](point-cloud.png)
 
-Here again, we can see that the maximum mean strain occurs at a different point from the maximum strain amplitude. We call this "point cloud divergence", and it is more likely to be seen as parts of the model experience high mean strains. This introduces some ambiguity about which point is actually most critical, a topic we will revisit in the next sections.
+Here again, we can see that the maximum mean strain occurs at a different point from the maximum strain amplitude. We call this "point cloud divergence", and it is more likely to be seen as parts of the model experience high mean strains. This introduces some ambiguity about which point is actually most critical, a topic we will revisit in the future examples.
 
 Note also that our field output report provided us with the *absolute* maximum principal scalar values for strain amplitude. This considers the absolute value of the *maximum* principal strain, and the absolute value of the *minimum* principal strain, and returns the larger of the two while preserving the sign. We will consider this subtlety more carefully in upcoming episodes, but for now we are simply plotting the absolute value.
 
 ## Next
 
-This completes the [Design Tutorial](/#design-tutorial) series, and with it a high level overview of common industry practices for design and analysis of a superelastic nitinol medical component. If you feel inspired to continue into more speculative terrain, this series provides a foundation for the [SMST-2017](/#smst-2017) series. There, we explore volumetric and probabilistic enhancements to the methods introduced here.
+This completes the [Design Tutorial](/nitinol-design-concepts/#design-tutorial) series, and with it a high level overview of common industry practices for design and analysis of a superelastic nitinol medical component. If you feel inspired to continue into more speculative terrain, this series provides a foundation for the [SMST-2017](/nitinol-design-concepts/#smst-2017) series. There, we explore volumetric and probabilistic enhancements to the methods introduced here.
 
 ## Credits
 
