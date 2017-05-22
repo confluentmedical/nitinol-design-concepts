@@ -2,7 +2,7 @@
 
 **Objective:** Deploy a nitinol component in a simulated use case, apply a fatigue loading condition, calculate mean strains and strain amplitudes, and create a "point cloud" to predict fatigue performance. 
 
-**Prerequisites:** [NDC-105 Open Frame Design](../105-open-frame-design), [NDC-115 Open Frame Shape Set](../115-open-frame-shape-set), Simulia Abaqus 2017, [RStudio](https://www.rstudio.com/) (optional).
+**Prerequisites:** [Open Frame Design](../105-open-frame-design), [Open Frame Shape Set](../115-open-frame-shape-set), Simulia Abaqus 2017, [RStudio](https://www.rstudio.com/) (optional).
 
 **Resources** The Abaqus CAE model database for this example can be downloaded from [this repository](https://github.com/cbonsig/nitinol-design-concepts/tree/master/120-open-frame-fatigue). The output database (65MB) can be downloaded from the 120-open-frame-fatigue folder at [nitinol.app.box.com/v/nitinol-design-concepts](https://nitinol.box.com/v/nitinol-design-concepts).
 
@@ -12,15 +12,15 @@ Superelastic nitinol has remarkable abilities to transform in shape, from large 
 
 In the most broad terms, any fatigue simulation includes three essential components:
 
-1. **Geometry**: The shape and form of the component of interest. We typically start a nitinol fatigue simulation with geometry that represents the expanded shape of the component, with finished feature dimensions. This example will use nominal dimensions; tolerance variations are an important consideration that will be excluded from this example. We will start this simulation with the expanded geometry created in [NDC-115 Open Frame Shape Set](../115-open-frame-shape-set).
+1. **Geometry**: The shape and form of the component of interest. We typically start a nitinol fatigue simulation with geometry that represents the expanded shape of the component, with finished feature dimensions. This example will use nominal dimensions; tolerance variations are an important consideration that will be excluded from this example. We will start this simulation with the expanded geometry created in [Open Frame Shape Set](../115-open-frame-shape-set).
 
-2. **Material**: Material properties and constitutive model. Here will will use the tensile properties described in [NDC-110 Material Characterization](../110-material-characterization), derived from the same tubing material from which the component is fabricated, subjected to the same heat treatments as the formed component as well. This simulation uses the superelasticity constitutive model that has been included with Abaqus for many years.
+2. **Material**: Material properties and constitutive model. Here will will use the tensile properties described in [Material Characterization](../110-material-characterization), derived from the same tubing material from which the component is fabricated, subjected to the same heat treatments as the formed component as well. This simulation uses the superelasticity constitutive model that has been included with Abaqus for many years.
 
 3. **Boundary Conditions**: This is often the most challenging of the three components, as realistic biomechanical boundary conditions can be difficult to know with confidence. Usually there are several different loading modes to consider (e.g. cardiovascular pulsatile pressure changes, bending or axial deformation related to the gait cycle, crushing related to the respiratory cycle). For this example, we will apply a single fictional radial deformation cycle, just to show how the process works.
 
 ## Geometry
 
-In [NDC-115 Open Frame Shape Set](../115-open-frame-shape-set), we transformed a laser cut component from a starting diameter of 8mm to a complex expanded shape 28-40mm in diameter. The formed geometry at the end of this simulation will be be starting geometry at the beginning of this simulation. To begin, we will import the deformed geometry from the last frame of the final step of the forming analysis. `shape-set.odb` (91MB) can be downloaded from the 115-open-frame-shape-set folder of [https://nitinol.box.com/v/nitinol-design-concepts](https://nitinol.box.com/v/nitinol-design-concepts).
+In [Open Frame Shape Set](../115-open-frame-shape-set), we transformed a laser cut component from a starting diameter of 8mm to a complex expanded shape 28-40mm in diameter. The formed geometry at the end of this simulation will be be starting geometry at the beginning of this simulation. To begin, we will import the deformed geometry from the last frame of the final step of the forming analysis. `shape-set.odb` (91MB) can be downloaded from the 115-open-frame-shape-set folder of [https://nitinol.box.com/v/nitinol-design-concepts](https://nitinol.box.com/v/nitinol-design-concepts).
 
 ![import-part](120-import-part.png)
 
@@ -36,7 +36,7 @@ We also use Abaqus CAE to create a cylindrical surface to constrain the frame fr
 
 ## Material Properties and Boundary Conditions
 
-The nitinol material properties used in this example are identical to those used previously in [NDC-115 Open Frame Shape Set](../115-open-frame-shape-set). 
+The nitinol material properties used in this example are identical to those used previously in [Open Frame Shape Set](../115-open-frame-shape-set). 
 ![material-properties](../115-open-frame-shape-set/115-material.png)
 
 This simulation represents fatigue conditions in the human body, so the environmental temperature will be set to 37 degrees C for the entire analysis. *(this will lead to conservatively high stresses during the initial crimping step, which in reality is likely performed at or below 22 degrees C)*
