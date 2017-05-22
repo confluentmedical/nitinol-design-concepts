@@ -139,6 +139,10 @@ Table I provides an example use case for this approach, using fabricated but rea
 
 This paper has highlighted some of the challenges currently faced by industry in predicting the fatigue durability of nitinol components. The most fundamental among them, understanding realistic biomechanical loads and boundary conditions, will likely continue to challenge designers for some time, as every device, disease state, and patient is unique. As higher purity materials become more widely utilized, and methods improve for characterizing these materials, we can expect fatigue performance to improve, and also expect designers to challenge improved durability limits with ever smaller components. Finally, there is great opportunity to improve our computational simulations, and to apply statistical thinking to our interpretation of results, and thereby improve our predictions and better assess risk of fracture.
 
+## Next
+
+The next topic in this series, [Volumetric FEA Postprocessing](..//125-volumetric-analysis) begins building the tools necessary to apply the concepts introduced here to a realistic example based on the Open Frame design detailed in the [Design Tutorial](/nitinol-design-concepts/#design-tutorial) series.
+
 ## References
 
 1. D. Scheinert, S. Scheinert, J. Sax, C. Piorkowski, S. Bräunlich, M. Ulrich, G. Biamino, A. Schmidt, Prevalence and clinical impact of stent fractures after femoropopliteal stenting, J. Am. Coll. Cardiol. 45 (2005) 312–315. doi:10.1016/j.jacc.2004.11.026.
