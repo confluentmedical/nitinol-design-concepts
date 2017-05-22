@@ -1,6 +1,6 @@
 # Design
 
-**Objective:** Create a 3D solid expandable frame design suitable for laser cutting from nitinol tubing, including a planar form to create a toolpath, a wrapped form to visualize the actual geometry, and a symmetrical subset for finite element analysis. 
+**Objective:** Create a 3D solid expandable frame design suitable for laser cutting from nitinol tubing, including a planar configuration to create a toolpath, a wrapped configuration to visualize the actual geometry, and a symmetrical subset for finite element analysis. 
 
 **Prerequisites:** Solidworks 2016.
 
@@ -15,7 +15,7 @@ This example assumes that the reader is familiar with parametric solid modeling 
 
 ## Equations and Sketches
 
-Stents and stent-like structures are often composed of repeating patterns of similar features. Commonly, designers will seek to consider many variations of a common architecture, each with a specific adjustment of feature dimensions, such as strut width, strut length, or wall thickness. As such, it is convenient to a build *parametric* solid model, with feature dimensions driven by equations and variables as shown below.
+Stents and stent-like structures are often composed of repeating patterns of similar features. Commonly, designers will seek to consider many variations of a common architecture, each with a specific adjustment of feature dimensions, such as strut width, strut length, or wall thickness. As such, it is convenient to a build a *parametric* solid model, with feature dimensions driven by equations and variables as shown below.
 
 ```vb
 "Tube_OD"= 8.00mm
