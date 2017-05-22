@@ -8,17 +8,17 @@
 
 ## Introduction
 
-In [Open Frame Design](../105-open-frame-design) and [NDC-110 Mechanical Properties](../110-material-characterization), we created a design and characterized the material from which it is to be fabricated. Now it's time to dive into the world of computational simulation using finite element analysis (FEA), starting with an expansion analysis. 
+In [Open Frame Design](../105-open-frame-design) and [Mechanical Properties](../110-material-characterization), we created a design and characterized the material from which it is to be fabricated. Now it's time to dive into the world of computational simulation using finite element analysis (FEA), starting with an expansion analysis. 
 
 We are often asked why use FEA to create expanded geometry; why not just create an expanded 3D geometry in Solidworks instead? Well, nitinol components are commonly formed in several steps, with intermediate heat treatments between each step. Each step imparts subtle influences in the shape, curvature, bend, and twist of design features that are difficult (or perhaps impossible) to replicate using conventional CAD. By matching the virtual expansion process step-for-step with the physical process, we can ensure that the virtual geometry is an accurate match with its physical counterpart. In fact, in a first iteration expansion simulation, a mismatch is quite common! The design, simulation, and prototyping cycle often includes adjustments to modeling assumptions (and/or physical tooling) to converge on a solution that matches the design intent. Let's get started!
 
 ## SIMULIA Abaqus
 
-This example uses Abaqus 2017, a commercial finite element analysis package from Dassault Systèmes SIMULIA. This is the most widely used FEA package for nitinol computational simulation, and includes a material constitutive model designed specifically for unique characteristics of superelasticity. This model, based on the work of [Auricchio and Taylor](http://www.sciencedirect.com/science/article/pii/S0045782596011474) is based on a principle of additive strain decomposition. With this approach, the strain in each element can be a combination of an elastic, transformation, or plastic components. While there are more advanced constitutive models in development, the Abaqus implementation is well tested, robust, and still widely used. The superelasticity model can be used with Abaqus Standard for quasi-static simulations, or Abaqus Explicit for dynamic simulations. This example uses Standard, which is typically our first choice for nitinol medical component simulations.
+This example uses [Abaqus](https://www.3ds.com/products-services/simulia/products/abaqus/) 2017, a commercial finite element analysis package from Dassault Systèmes [SIMULIA](https://www.3ds.com/products-services/simulia/). This is the most widely used FEA package for nitinol computational simulation, and includes a material constitutive model designed specifically for unique characteristics of superelasticity. This model, based on the work of [Auricchio and Taylor](http://www.sciencedirect.com/science/article/pii/S0045782596011474) is based on a principle of additive strain decomposition. With this approach, the strain in each element can be a combination of an elastic, transformation, or plastic components. While there are more advanced constitutive models in development, the Abaqus implementation is well tested, robust, and still widely used. The superelasticity model can be used with Abaqus Standard for quasi-static simulations, or Abaqus Explicit for dynamic simulations. This example uses Standard, which is typically our first choice for nitinol medical component simulations.
 
 We will assume that the reader is familiar with creating, running, and troubleshooting simulations in Abaqus. If you have access to the Simulia knowledge base, some helpful resources includes: [UMAT and VUMAT routines for the elastic-plastic simulation of Nitinol](https://kb.dsxclient.3ds.com/mashup-ui/page/resultqa?from=search%3fq%3dQA00000009225&id=QA00000009225e&q=QA00000009225), [Abaqus Technology Brief: Simulation of Implantable Nitinol Stents](https://kb.dsxclient.3ds.com/mashup-ui/page/resultqa?from=search%3fq%3dQA00000009132&id=QA00000009132e&q=QA00000009132), and [Best practices for stent analysis with Abaqus/Standard and Abaqus/Explicit](https://kb.dsxclient.3ds.com/mashup-ui/page/resultqa?from=search%3fq%3dQA00000008135&id=QA00000008135e&q=QA00000008135).
 
-The original Abaqus CAE model files for this example are available for download in this GitHub project. We will not address every detail of the model, so please explore the model and input file in addition to reading through this guide.
+The original Abaqus CAE model files for this example are available for download in [this GitHub project](https://github.com/confluentmedical/nitinol-design-concepts/tree/master/115-open-frame-shape-set). We will not address every detail of the model, so please explore the model and input file in addition to reading through this guide.
 
 ## Import and Partition
 
@@ -70,6 +70,10 @@ As with the interactions, boundary conditions are created or modified for each s
 
 For the expansion analysis, the only essential field output is displacement U for the final frame of the final step. It is usually also interesting to report strain LE and superelasticity internal state variables SDV as well, including at intermediate steps.
 ![field-output](115-field-output.png)
+
+## Next
+
+After completing shape setting, the next and final topic in this series is [Fatigue Simulation](../120-open-frame-fatigue).
 
 ## Credits
 
