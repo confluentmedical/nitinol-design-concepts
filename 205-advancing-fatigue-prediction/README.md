@@ -1,8 +1,8 @@
 # Advancing Nitinol Fatigue Prediction
 
-Author's manuscript [Present and Future Approaches to Lifetime Prediction of Superelastic Nitinol](http://dx.doi.org/10.1016/j.tafmec.2017.04.001), Craig Bonsignore, Confluent Medical Technologies. Published in *Theoretical and Applied Fracture Mechanics (2017)*.
+Author's manuscript: [Present and Future Approaches to Lifetime Prediction of Superelastic Nitinol](http://dx.doi.org/10.1016/j.tafmec.2017.04.001), Craig Bonsignore, Confluent Medical Technologies. Published in *Theoretical and Applied Fracture Mechanics (2017)*.
 
-This paper is based on [The Frontiers of Lifetime Prediction of Superelastic Nitinol](http://www.ecf21.eu/site/13-ecf21?start=35), originally [presented](https://s3-eu-west-1.amazonaws.com/pfigshare-u-files/5439233/ECF2123June2016NitinolFrontiersBonsignore.pdf) 23 June 2017 at ECF21, the European Conference on Fracture. It provides a review of current industry approaches to nitinol lifetime prediction, and introduces the volumetric and probabilistic methods discussed here in more detail, in the [Advanced Topics](/nitinol-design-concepts/#advanced-topics) series.
+This paper is based on [The Frontiers of Lifetime Prediction of Superelastic Nitinol](http://www.ecf21.eu/site/13-ecf21?start=35), originally [presented](https://s3-eu-west-1.amazonaws.com/pfigshare-u-files/5439233/ECF2123June2016NitinolFrontiersBonsignore.pdf) 23 June 2016 at ECF21, the European Conference on Fracture. It provides a review of current industry approaches to nitinol lifetime prediction, and introduces the volumetric and probabilistic methods discussed here in more detail, in the [SMST-2017](/nitinol-design-concepts/#smst-2017) series.
 
 ## Introduction
 
