@@ -2,7 +2,7 @@
 
 **Objective:** Develop a durability prediction method that considers the probability of critical stress regions co-located with material defects.
 
-**Prerequisites:** [Open Frame Design](../105-open-frame-design), [Open Frame Shape Set](../115-open-frame-shape-set), [Open Frame Fatigue Analysis](../120-open-frame-fatigue), [Volumetric FEA Postprocessing](125-volumetric-analysis), [Volumetric characterization of inclusions from submicron CT scans](../210-xct-methods), [RStudio](https://www.rstudio.com/)
+**Prerequisites:** [Open Frame Design](../105-open-frame-design), [Open Frame Shape Set](../115-open-frame-shape-set), [Open Frame Fatigue Analysis](../120-open-frame-fatigue), [Volumetric FEA Postprocessing](../125-volumetric-analysis), [Volumetric characterization of inclusions from submicron CT scans](../210-xct-methods), [RStudio](https://www.rstudio.com/)
 
 **Resources** R scripts and related plots used for this example can be found in [this repository](https://github.com/confluentmedical/nitinol-design-concepts/blob/master/215-monte-carlo/).
 
