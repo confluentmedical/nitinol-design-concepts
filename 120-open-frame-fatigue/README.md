@@ -137,7 +137,7 @@ Note also that our field output report provided us with the *absolute* maximum p
 
 ## Next
 
-This completes the [Design Tutorial](/nitinol-design-concepts/#design-tutorial) series, and with it a high level overview of common industry practices for design and analysis of a superelastic nitinol medical component. If you feel inspired to continue into more speculative terrain, this series provides a foundation for the [SMST-2017](/nitinol-design-concepts/#smst-2017) series. There, we explore volumetric and probabilistic enhancements to the methods introduced here.
+This completes the [Design Tutorial](/nitinol-design-concepts/#design-tutorial) series, and with it a high level overview of common industry practices for design and analysis of a superelastic nitinol medical component. If you feel inspired to continue into more speculative terrain, this series provides a foundation for the [SMST-17 Volumetric Methods](/nitinol-design-concepts/#smst-17-volumetric-methods) series. There, we explore volumetric and probabilistic enhancements to the methods introduced here.
 
 ## Credits
 

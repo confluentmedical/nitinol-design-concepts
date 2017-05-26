@@ -5,7 +5,7 @@ Nitinol Design Concepts
 
 This project includes tutorials and examples related to design and simulation of superelastic nitinol components. This content is provided by [Confluent Medical Technologies](http://confluentmedical.com) as a resource for our customers, industry and community. If you want to know more about the background, or how you can contribute, read [about this project](about.md).
 
-The material here includes a deeper dive into topics covered in our Nitinol University courses, as well as research supporting scientific presentations and publications. The [Design Tutorial](#design-tutorial) series provides an introduction to design and simulation of a nitinol component, following methods that are commonly applied in the medical device industry. The [SMST-2017](#smst-2017) series ventures into more advanced topics related to volumetric and probabilistic methods for assessing fatigue durability, first presented in April 2017 at the [SMST](http://www.asminternational.org/web/smst2017) conference. 
+The material here includes a deeper dive into topics covered in our Nitinol University courses, as well as research supporting scientific presentations and publications. The [Design Tutorial](#design-tutorial) series provides an introduction to design and simulation of a nitinol component, following methods that are commonly applied in the medical device industry. The [SMST-17 Volumetric Methods](#smst-17-volumetric-methods) series ventures into more advanced topics related to volumetric and probabilistic methods for assessing fatigue durability, first presented in May 2017 at the [SMST](http://www.asminternational.org/web/smst2017) conference. 
 
 ## Design Tutorial
 
@@ -16,7 +16,7 @@ This first series follows each step in the design and analysis of a realistic (b
 * [Shape Setting](115-open-frame-shape-set) \| Expand the laser cut component into a complex expanded shape using Abaqus finite element analysis.
 * [Fatigue Simulation](120-open-frame-fatigue) \| Apply fatigue loading conditions using Abaqus.
 
-## SMST-2017
+## SMST-17 Volumetric Methods
 
 Building on the foundation of the example design and simulation material above, these next topics explore new methodologies and analysis approaches presented in "Volume weighted probabilistic methods for nitinol lifetime prediction" at [SMST-2017](http://www.asminternational.org/web/smst2017) in San Diego. You can find a [recording of the talk on YouTube](https://youtu.be/fGN6rWQzPnY). The slides and videos are [here on GitHub](https://github.com/confluentmedical/nitinol-design-concepts/tree/master/smst17).
 
