@@ -25,3 +25,7 @@ Building on the foundation of the example design and simulation material above, 
 * [Volumetric characterization of inclusions from submicron CT scans](210-xct-methods) \| submicron xray tomography: methods and results
 * [Probabilistic durability prediction using Monte-Carlo methods](215-monte-carlo) \| durability prediction methods combining submicron x-ray CT inclusion data with FEA results
 
+## Cite this project
+
+[![DOI](https://zenodo.org/badge/87218697.svg)](https://zenodo.org/badge/latestdoi/87218697)
+
