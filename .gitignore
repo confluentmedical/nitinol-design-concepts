@@ -46,3 +46,14 @@ Network Trash Folder
 Temporary Items
 .apdisk
 .Rproj.user
+
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+.bundle/
+vendor/bundle/
+
+# Browser test artifacts
+.playwright-cli/

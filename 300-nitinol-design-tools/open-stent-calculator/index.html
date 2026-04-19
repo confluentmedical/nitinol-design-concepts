@@ -1,0 +1,158 @@
+---
+layout: default
+title: Open Stent Calculator
+body_class: ndt-body
+extra_css:
+  - /300-nitinol-design-tools/static/nitinol-design-tools.css
+extra_js:
+  - /300-nitinol-design-tools/static/open_stent_calculator.js
+---
+
+<div class="ndt-page">
+  <header class="ndt-intro">
+    <p class="ndt-eyebrow">Nitinol Design Tools</p>
+    <h1>Open Stent Calculator</h1>
+    <p>
+      Screen open-cell nitinol stent concepts while iterating laser-cut tube geometry. Inputs and calculation state stay
+      in the browser.
+    </p>
+    <nav class="ndt-tool-nav" aria-label="Open Stent Calculator page navigation">
+      <a href="{{ '/' | relative_url }}">Project home</a>
+      <a href="{{ '/300-nitinol-design-tools/' | relative_url }}">Design tools</a>
+      <a href="{{ '/300-nitinol-design-tools/abaqus-matprops/' | relative_url }}">Abaqus Matprops</a>
+    </nav>
+  </header>
+
+  <section id="open-stent-calculator" class="rd-shell ndt-tool open-stent-shell">
+    <header class="ndt-tool-header">
+      <div>
+        <p class="rd-kicker">Stent geometry screening</p>
+        <h2>Open Stent Calculator</h2>
+      </div>
+      <p class="rd-copy">
+        Screen open-cell nitinol stent concepts while iterating laser-cut tube geometry.
+      </p>
+    </header>
+
+    <section class="open-stent-disclaimer">
+      <strong>Engineering screen only.</strong>
+      This calculator is for early design comparison. It is not a validated design-release, verification, or clinical
+      decision tool.
+    </section>
+
+    <section class="open-stent-layout">
+      <form id="osc-form" class="rd-card rd-form open-stent-inputs">
+        <div class="rd-section-head">
+          <div>
+            <p class="rd-kicker">Inputs</p>
+            <h3>Design parameters</h3>
+          </div>
+          <p class="rd-copy">Defaults match the Open Stent baseline worksheet. Changes recalculate immediately.</p>
+        </div>
+        <div id="osc-input-groups" class="open-stent-input-groups"></div>
+        <div class="rd-actions">
+          <button id="osc-reset" type="button" class="secondary-button">Reset baseline</button>
+          <button id="osc-copy" type="button" class="secondary-button">Copy summary</button>
+          <button id="osc-download" type="button" class="secondary-button">Download CSV</button>
+          <span id="osc-status" class="rd-status" aria-live="polite"></span>
+        </div>
+      </form>
+
+      <aside class="rd-card open-stent-summary" aria-label="Open Stent calculation summary">
+        <div class="rd-section-head">
+          <div>
+            <p class="rd-kicker">Live results</p>
+            <h3>Design screen</h3>
+          </div>
+        </div>
+        <div id="osc-primary-metrics" class="open-stent-metric-grid"></div>
+        <div id="osc-warnings" class="open-stent-warnings" aria-live="polite"></div>
+      </aside>
+    </section>
+
+    <section class="rd-card">
+      <div class="rd-section-head">
+        <div>
+          <p class="rd-kicker">Parameter guide</p>
+          <h3>Reference geometry and mechanics</h3>
+        </div>
+        <p class="rd-copy">Figures are shown next to the relevant calculator sections.</p>
+      </div>
+      <div class="open-stent-figure-grid">
+        <figure>
+          <img src="{{ '/300-nitinol-design-tools/static/open_stent_calculator/figures/unit-cell-raw.png' | relative_url }}" alt="Raw as-cut unit cell geometry">
+          <figcaption>Raw/as-cut unit cell geometry for tube, strut, apex, and bridge inputs.</figcaption>
+        </figure>
+        <figure>
+          <img src="{{ '/300-nitinol-design-tools/static/open_stent_calculator/figures/unit-cell-expanded.png' | relative_url }}" alt="Expanded finished unit cell geometry">
+          <figcaption>Expanded/finished unit cell geometry used for deployment and length calculations.</figcaption>
+        </figure>
+        <figure>
+          <img src="{{ '/300-nitinol-design-tools/static/open_stent_calculator/figures/af-modulus-curve.png' | relative_url }}" alt="Modulus versus Af curve">
+          <figcaption>Material modulus estimate as a function of finished Af.</figcaption>
+        </figure>
+        <figure>
+          <img src="{{ '/300-nitinol-design-tools/static/open_stent_calculator/figures/moment-of-inertia.png' | relative_url }}" alt="Moment of inertia reference">
+          <figcaption>Curved strut cross-section model for moment of inertia.</figcaption>
+        </figure>
+        <figure>
+          <img src="{{ '/300-nitinol-design-tools/static/open_stent_calculator/figures/beam-deflection.png' | relative_url }}" alt="Fixed guided beam model">
+          <figcaption>Fixed-guided beam model used for force and strain estimates.</figcaption>
+        </figure>
+        <figure>
+          <img src="{{ '/300-nitinol-design-tools/static/open_stent_calculator/figures/mean-amplitude.png' | relative_url }}" alt="Mean strain and strain amplitude">
+          <figcaption>Mean strain and strain amplitude relationship for fatigue screening.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="rd-card">
+      <div class="rd-section-head">
+        <div>
+          <p class="rd-kicker">Calculated detail</p>
+          <h3>Workbook-aligned outputs</h3>
+        </div>
+        <p class="rd-copy">Intermediate values are grouped to mirror the Open Stent worksheet sections.</p>
+      </div>
+      <div id="osc-result-groups" class="open-stent-result-groups"></div>
+    </section>
+
+    <section class="rd-card">
+      <div class="rd-section-head">
+        <div>
+          <p class="rd-kicker">Sensitivity</p>
+          <h3>One-variable sweep</h3>
+        </div>
+        <p class="rd-copy">Run quick frontend-only sweeps without saving data to a backend.</p>
+      </div>
+      <div class="rd-grid rd-grid-3 open-stent-sensitivity-controls">
+        <label class="rd-field">
+          <span>Sweep variable</span>
+          <select id="osc-sweep-variable"></select>
+        </label>
+        <label class="rd-field">
+          <span>Start</span>
+          <input id="osc-sweep-start" type="number" step="0.01">
+        </label>
+        <label class="rd-field">
+          <span>End</span>
+          <input id="osc-sweep-end" type="number" step="0.01">
+        </label>
+        <label class="rd-field">
+          <span>Step</span>
+          <input id="osc-sweep-step" type="number" step="0.01" min="0.0001">
+        </label>
+      </div>
+      <div id="osc-sensitivity-chart" class="open-stent-sensitivity-chart" aria-label="Fatigue safety factor sensitivity chart"></div>
+      <div id="osc-sensitivity-table" class="rd-table-preview open-stent-sensitivity-table"></div>
+    </section>
+
+    <section class="rd-card open-stent-source-note">
+      <p class="rd-copy">
+        Source basis: formulas and figures are derived from the Open Stent Design manuscript and
+        <code>Stent_Calculator_Worksheet.xls</code> from the cbonsig/open-stent project. Baseline output values are
+        validated against the worksheet's <code>OSD_Baseline</code> sheet.
+      </p>
+    </section>
+  </section>
+</div>

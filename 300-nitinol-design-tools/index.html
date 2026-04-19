@@ -1,0 +1,53 @@
+---
+layout: default
+title: Nitinol Design Tools
+body_class: ndt-body
+extra_css:
+  - /300-nitinol-design-tools/static/nitinol-design-tools.css
+---
+
+<div class="ndt-page">
+  <header class="ndt-intro">
+    <p class="ndt-eyebrow">Nitinol Design Concepts</p>
+    <h1>Nitinol Design Tools</h1>
+    <p>
+      Browser-based tools for early nitinol medical device design work. Files and calculation data stay in the browser;
+      these tools do not require a backend service.
+    </p>
+    <nav class="ndt-tool-nav" aria-label="Nitinol design tools navigation">
+      <a href="{{ '/' | relative_url }}">Project home</a>
+      <a href="#abaqus-matprops">Abaqus Matprops</a>
+      <a href="#open-stent-calculator">Open Stent Calculator</a>
+    </nav>
+  </header>
+
+  <section class="rd-shell ndt-tool-directory" aria-label="Available Nitinol design tools">
+    <article id="abaqus-matprops" class="rd-card ndt-tool-card">
+      <div>
+        <p class="rd-kicker">Material model fitting</p>
+        <h2>Abaqus Matprops</h2>
+        <p class="rd-copy">
+          Fit Abaqus Auricchio/Taylor superelastic-plastic material properties from Instron tensile data. Upload CSV or
+          XLSX files, review detected stress and strain columns, refit with overrides, and export an XLSX summary.
+        </p>
+      </div>
+      <div class="rd-actions">
+        <a class="primary-button" href="{{ '/300-nitinol-design-tools/abaqus-matprops/' | relative_url }}">Open Abaqus Matprops</a>
+      </div>
+    </article>
+
+    <article id="open-stent-calculator" class="rd-card ndt-tool-card">
+      <div>
+        <p class="rd-kicker">Stent geometry screening</p>
+        <h2>Open Stent Calculator</h2>
+        <p class="rd-copy">
+          Screen open-cell nitinol stent concepts while iterating tube, strut, bridge, deployment, vessel, and fatigue
+          inputs. Recalculate live, run one-variable sweeps, copy a summary, and download CSV results.
+        </p>
+      </div>
+      <div class="rd-actions">
+        <a class="primary-button" href="{{ '/300-nitinol-design-tools/open-stent-calculator/' | relative_url }}">Open Stent Calculator</a>
+      </div>
+    </article>
+  </section>
+</div>

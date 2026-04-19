@@ -1,5 +1,18 @@
 theme: jekyll-theme-minimal
 title: Nitinol Design Concepts
 description: Design, simulation, and analysis resources from Confluent Medical Technologies
+url: "https://confluentmedical.github.io"
+baseurl: "/nitinol-design-concepts"
+repository: confluentmedical/nitinol-design-concepts
 show_downloads: TRUE
 google_analytics: UA-10953535-3
+plugins:
+  - jekyll-github-metadata
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - Makefile
+  - vendor
+  - .bundle
+  - .jekyll-cache
+  - .playwright-cli

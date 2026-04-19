@@ -1,0 +1,152 @@
+---
+layout: default
+title: Abaqus Matprops
+body_class: ndt-body
+extra_css:
+  - /300-nitinol-design-tools/static/nitinol-design-tools.css
+extra_js:
+  - /300-nitinol-design-tools/static/vendor/xlsx.full.min.js
+  - /300-nitinol-design-tools/static/abaqus_matprops_export.js
+  - /300-nitinol-design-tools/static/abaqus_matprops.js
+---
+
+<div class="ndt-page">
+  <header class="ndt-intro">
+    <p class="ndt-eyebrow">Nitinol Design Tools</p>
+    <h1>Abaqus Matprops</h1>
+    <p>
+      Fit Abaqus Auricchio/Taylor superelastic-plastic material properties from Instron tensile data. Files stay in the
+      browser and are processed with frontend JavaScript and a local Web Worker.
+    </p>
+    <nav class="ndt-tool-nav" aria-label="Abaqus Matprops page navigation">
+      <a href="{{ '/' | relative_url }}">Project home</a>
+      <a href="{{ '/300-nitinol-design-tools/' | relative_url }}">Design tools</a>
+      <a href="{{ '/300-nitinol-design-tools/open-stent-calculator/' | relative_url }}">Open Stent Calculator</a>
+    </nav>
+  </header>
+
+  <section id="abaqus-matprops" class="rd-shell ndt-tool">
+    <header class="ndt-tool-header">
+      <div>
+        <p class="rd-kicker">Material model fitting</p>
+        <h2>Abaqus Matprops</h2>
+      </div>
+      <p class="rd-copy">
+        Fit Abaqus Auricchio/Taylor superelastic-plastic material properties from Instron tensile data.
+      </p>
+    </header>
+
+    <section class="rd-card">
+      <div class="rd-section-head">
+        <div>
+          <p class="rd-kicker">Stage 1</p>
+          <h3>Upload and review source files</h3>
+        </div>
+        <p class="rd-copy">
+          Auto-detect stress and strain columns first, then refine only the files that need overrides.
+        </p>
+      </div>
+      <form id="matprops-analyze-form" class="rd-form" enctype="multipart/form-data">
+        <label class="rd-field rd-field-full">
+          <span>Instron tensile raw data files</span>
+          <input id="matprops-files" name="files" type="file" accept=".csv,.xlsx" multiple required>
+          <small>CSV and XLSX are supported. Limit 8 files per run, 20 MB per file, and 100,000 numeric rows per file.</small>
+        </label>
+        <details class="rd-advanced" id="matprops-advanced">
+          <summary>Advanced fitting controls</summary>
+          <div class="rd-grid rd-grid-3">
+            <label class="rd-field">
+              <span>Moving-average mode</span>
+              <select id="moving_average_mode" name="moving_average_mode">
+                <option value="fixed" selected>Fixed</option>
+                <option value="optimize">Optimize</option>
+              </select>
+            </label>
+            <label class="rd-field">
+              <span>Fixed window (points)</span>
+              <input id="moving_average_window_points" name="moving_average_window_points" type="number" min="3" step="2" value="5">
+            </label>
+            <label class="rd-field">
+              <span>Modulus cutoff (MPa)</span>
+              <input id="modulus_cutoff" name="modulus_cutoff" type="number" min="0" step="100" value="25000">
+            </label>
+            <label class="rd-field">
+              <span>Reference temperature (deg C)</span>
+              <input id="reference_temperature_c" name="reference_temperature_c" type="number" step="0.1" value="37">
+            </label>
+            <label class="rd-field">
+              <span>dsigma/dT loading (MPa/deg C)</span>
+              <input id="dsig_dt_loading_mpa_per_c" name="dsig_dt_loading_mpa_per_c" type="number" step="0.01" value="0">
+            </label>
+            <label class="rd-field">
+              <span>dsigma/dT unloading (MPa/deg C)</span>
+              <input id="dsig_dt_unloading_mpa_per_c" name="dsig_dt_unloading_mpa_per_c" type="number" step="0.01" value="0">
+            </label>
+          </div>
+        </details>
+        <div class="rd-actions">
+          <button id="matprops-analyze-button" class="primary-button" type="submit">Analyze files</button>
+          <div id="matprops-status" class="rd-status" aria-live="polite"></div>
+        </div>
+      </form>
+    </section>
+
+    <section id="matprops-workspace" class="rd-workspace" hidden>
+      <section class="rd-card">
+        <div class="rd-section-head">
+          <div>
+            <p class="rd-kicker">Stage 2</p>
+            <h3>Per-file fit review</h3>
+          </div>
+          <p class="rd-copy">
+            Adjust sheet, column, unit, or plastic-range overrides only where the first-pass fit needs correction.
+          </p>
+        </div>
+        <div id="dataset-review" class="rd-stack"></div>
+        <div class="rd-actions">
+          <button id="matprops-refit-button" class="primary-button" type="button">Refit with overrides</button>
+        </div>
+      </section>
+
+      <section class="rd-card matprops-output-panel">
+        <div class="rd-section-head">
+          <div>
+            <p class="rd-kicker">Stage 3</p>
+            <h3>Fitted material output</h3>
+          </div>
+          <div class="rd-button-row">
+            <button id="export-workbook-button" class="secondary-button" type="button" disabled>Export XLSX</button>
+          </div>
+        </div>
+        <div class="matprops-output-stack">
+          <section class="matprops-output-section">
+            <div class="rd-section-head rd-section-head-compact">
+              <div>
+                <h4>Fitted parameters</h4>
+                <p class="rd-muted">Abaqus-ready property rows with dataset values, average, and sample standard deviation.</p>
+              </div>
+            </div>
+            <div id="results-grid" class="rd-grid-panel"></div>
+          </section>
+          <section class="matprops-output-section">
+            <div class="rd-section-head rd-section-head-compact">
+              <div>
+                <h4>Annotated fit charts</h4>
+                <p class="rd-muted">Raw tensile curves with fitted elastic lines, plateau lines, and plastic interpolation points.</p>
+              </div>
+            </div>
+            <div id="chart-stack" class="rd-stack matprops-chart-stack"></div>
+          </section>
+          <details id="matprops-debug-panel" class="rd-debug-panel">
+            <summary>Debug information</summary>
+            <div id="debug-info" class="rd-debug-content"></div>
+          </details>
+        </div>
+      </section>
+    </section>
+  </section>
+
+  <script>
+    window.NDT_STATIC_BASE = "{{ '/300-nitinol-design-tools/static' | relative_url }}";
+  </script>
+</div>
